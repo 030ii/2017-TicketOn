@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <% include ../header.ejs %>
     <script type="text/javascript" src="js/register.js"></script>
   </head>
   <body>
@@ -12,19 +13,11 @@
       <dt>userID</dt>
       <dd><input type="text" name="id" id="u_id" /></dd>
       <dt>userPassword</dt>
-      <dd><input type="password" name="password" id="u_password" /></dd>
+      <dd><input type="password" name="password" id="password" /></dd>
       <dt>userpasswordch</dt>
-      <dd><input type="password" name="passwordch" id="u_passwordch" /></dd>
-      <dt>userEmail</dt>
-      <dd><input type="text" name="email" id="u_email" /></dd>
+      <dd><input type="password" name="passwordch" id="passwordch" /></dd>
       <dt>userTel</dt>
       <dd><input type="text" name="tel" id="u_tel" /></dd>
-      <dt>userBank</dt>
-      <dd><input type="text" name="bank" id="u_bank" /></dd>
-      <dt>userAccount</dt>
-      <dd><input type="text" name="account" id="u_account" /></dd>
-      <dt>userholder</dt>
-      <dd><input type="text" name="holder" id="u_holder" /></dd>
       <p><input type="button" value="sign up" onclick="dosubmit()" /></p>
     </dl>
   </form>

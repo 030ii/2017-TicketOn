@@ -18,9 +18,6 @@ function dosubmit(){
   if(blankcheck(register_fm.passwordch,'비밀번호확인')) {
     return;
    }
-  if(blankcheck(register_fm.email,'이메일')) {
-    return;
-   }
   if(blankcheck(register_fm.tel,'전화번호')) {
     return;
    }
