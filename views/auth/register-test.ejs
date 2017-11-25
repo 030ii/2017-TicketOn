@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <% include ../header.ejs %>
+    <!-- <% include ../header.ejs %> -->
     <script type="text/javascript" src="js/register.js"></script>
   </head>
   <body>
@@ -9,13 +9,13 @@
     <form method="post" action="/register" id="register_fm" name="register_fm">
     <dl>
       <dt>userName</dt>
-      <dd><input type="text" name="name" id="u_name" /></dd>
+      <dd><input type="text" name="name" id="name" /></dd>
       <dt>userID</dt>
-      <dd><input type="text" name="id" id="u_id" /></dd>
+      <dd><input type="text" name="id" id="id" /></dd>
       <dt>userPassword</dt>
       <dd><input type="password" name="password" id="password" /></dd>
       <dt>userpasswordch</dt>
-      <dd><input type="password" name="passwordch" id="passwordch" /></dd>
+      <dd><input type="password" name="passwordch" id="passwordCh" /></dd>
       <dt>userTel</dt>
       <dd><input type="text" name="tel" id="u_tel" /></dd>
       <p><input type="button" value="sign up" onclick="dosubmit()" /></p>

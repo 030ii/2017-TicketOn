@@ -5,7 +5,9 @@ function blankcheck(el,msg){
   return true;
  }
 }
+
 function dosubmit(){
+
   if(blankcheck(register_fm.name,'이름')) {
     return;
    }
@@ -28,10 +30,6 @@ function dosubmit(){
 
     return true;
   }
-
-
-
-
   register_fm.submit();
 
 }
