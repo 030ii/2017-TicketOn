@@ -6,27 +6,27 @@ function blankcheck(el,msg){
  }
 }
 function dosubmit(){
-  if(blankcheck(register_fm.u_name,'이름')) {
+  if(blankcheck(register_fm.name,'이름')) {
     return;
    }
-  if(blankcheck(register_fm.u_id,'아이디')) {
+  if(blankcheck(register_fm.id,'아이디')) {
     return;
    }
-  if(blankcheck(register_fm.u_password,'비밀번호')) {
+  if(blankcheck(register_fm.password,'비밀번호')) {
     return;
    }
-  if(blankcheck(register_fm.u_passwordch,'비밀번호확인')) {
+  if(blankcheck(register_fm.passwordch,'비밀번호확인')) {
     return;
    }
-  if(blankcheck(register_fm.u_email,'이메일')) {
+  if(blankcheck(register_fm.email,'이메일')) {
     return;
    }
-  if(blankcheck(register_fm.u_tel,'전화번호')) {
+  if(blankcheck(register_fm.tel,'전화번호')) {
     return;
    }
-  if(u_password.value != u_passwordch.value){
-    u_password.value = "";
-    u_passwordch.value = "";
+  if(password.value != passwordch.value){
+    password.value = "";
+    passwordch.value = "";
     alert('비밀번호가 일치하지않습니다.');
 
     return true;
