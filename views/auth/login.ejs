@@ -1,0 +1,40 @@
+<!-- loginModal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="loginModalLabel">로그인 하기</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label class="sr-only" for="log-email">아이디</label>
+            <input type="email" class="form-control" id="log-email" name="id" placeholder="아이디(이메일)">
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="log-password">비밀번호</label>
+            <input type="password" class="form-control" id="log-password" placeholder="비밀번호">
+          </div>
+          <button type="submit" class="btn btn-primary form-control">로그인</button>
+        </form>
+        <div class="info-user">
+          <div class="auto-login">
+            <label>
+              <input type="checkbox"> 자동 로그인
+            </label>
+          </div>
+          <ul class="list_user">
+            <li>
+              <a href="#" class="search-user" data-toggle="modal" data-target="#findIdModal">아이디 찾기</a>
+              <span class="txt_bar"></span>
+            </li>
+            <li>
+              <a href="#" class="search-user" data-toggle="modal" data-target="#findPwdModal">비밀번호 찾기</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
