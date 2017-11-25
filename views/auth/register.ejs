@@ -1,9 +1,34 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <% include ../header.ejs %>
+    <script type="text/javascript" src="javascripts/register.js"></script>
   </head>
   <body>
-    <% include ../layout.ejs %>
+    <h1>회원가입</h1>
+    <form method="post" action="/register" id="register_fm" name="register_fm">
+    <dl>
+      <dt>userName</dt>
+      <dd><input type="text" name="u_name" id="u_name" /></dd>
+      <dt>userID</dt>
+      <dd><input type="text" name="u_id" id="u_id" /></dd>
+      <dt>userPassword</dt>
+      <dd><input type="password" name="u_password" id="u_password" /></dd>
+      <dt>userpasswordch</dt>
+      <dd><input type="password" name="u_passwordch" id="u_passwordch" /></dd>
+      <dt>userEmail</dt>
+      <dd><input type="text" name="u_email" id="u_email" /></dd>
+      <dt>userTel</dt>
+      <dd><input type="text" name="u_tel" id="u_tel" /></dd>
+      <dt>userBank</dt>
+      <dd><input type="text" name="u_bank" id="u_bank" /></dd>
+      <dt>userAccount</dt>
+      <dd><input type="text" name="u_account" id="u_account" /></dd>
+      <dt>userholder</dt>
+      <dd><input type="text" name="u_holder" id="u_holder" /></dd>
+      <p><input type="button" value="sign up" onclick="dosubmit()" /></p>
+    </dl>
+  </form>
+
+
   </body>
 </html>
