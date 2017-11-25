@@ -31,8 +31,8 @@ app.use(session({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/login', login);
-app.use('/register', register);
+app.use('/login', login); // @TODO 챙 : 로그인 페이지 별도로 없음~ 로그인하는 것은 모달로 바꿔서 고쳐야 함
+app.use('/register', register); // @TODO 챙 : 이것도 로그인 페이지와 마찬가지로 회원가입 페이지가 별도로 존재하지 않음
 app.use('/auctionPost', auctionPost);
 
 // catch 404 and forward to error handler
