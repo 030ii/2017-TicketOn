@@ -1,8 +1,3 @@
-/*!
- * Start Bootstrap - Creative v4.0.0-beta.2 (https://startbootstrap.com/template-overviews/creative)
- * Copyright 2013-2017 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-creative/blob/master/LICENSE)
- */
 body,
 html {
   width: 100%;
@@ -162,57 +157,11 @@ header.masthead {
     header.masthead h1 {
       font-size: 4rem; } }
 
-.service-box {
-  max-width: 400px; }
-
-.portfolio-box {
-  position: relative;
-  display: block;
-  max-width: 650px;
-  margin: 0 auto; }
-  .portfolio-box .portfolio-box-caption {
-    position: absolute;
-    bottom: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    opacity: 0;
-    color: #fff;
-    background: rgba(240, 95, 64, 0.9);
-    -webkit-transition: all 0.2s;
-    -moz-transition: all 0.2s;
-    transition: all 0.2s; }
-    .portfolio-box .portfolio-box-caption .portfolio-box-caption-content {
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      transform: translateY(-50%);
-      text-align: center; }
-      .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category,
-      .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
-        padding: 0 15px;
-        font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; }
-      .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category {
-        font-size: 14px;
-        font-weight: 600;
-        text-transform: uppercase; }
-      .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
-        font-size: 18px; }
-  .portfolio-box:hover .portfolio-box-caption {
-    opacity: 1; }
-  .portfolio-box:focus {
-    outline: none; }
-  @media (min-width: 768px) {
-    .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category {
-      font-size: 16px; }
-    .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
-      font-size: 22px; } }
-
 .text-primary {
   color: #F05F40 !important; }
 
-.btn {
+.btn-radius {
+  margin: 0 5px;
   font-weight: 700;
   text-transform: uppercase;
   border: none;
@@ -230,3 +179,38 @@ header.masthead {
     background-color: #ee4b28 !important; }
   .btn-primary:active, .btn-primary:focus {
     box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important; }
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+.modal .form-control {
+  height: 45px; }
+.modal .btn {
+  width: 100%; }
+.modal .info-user {
+  margin-top: 16px;
+  width: 100%;
+  position: relative; }
+  .modal .info-user .list_user, .modal .info-user .show-agree {
+    position: absolute;
+    top: 0;
+    right: 0; }
+    .modal .info-user .list_user li, .modal .info-user .show-agree li {
+      float: left;
+      position: relative; }
+      .modal .info-user .list_user li .search-user, .modal .info-user .show-agree li .search-user {
+        text-decoration: none;
+        color: #000; }
+      .modal .info-user .list_user li .txt_bar, .modal .info-user .show-agree li .txt_bar {
+        display: inline-block;
+        width: 1px;
+        height: 16px;
+        margin: 3px 9px 0;
+        background-color: #000;
+        opacity: .6;
+        filter: alpha(opacity=60);
+        vertical-align: top; }
+
+/*# sourceMappingURL=creative.css.map */

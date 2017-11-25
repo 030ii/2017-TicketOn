@@ -1,0 +1,46 @@
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.modal {
+  .form-control {
+    height: 45px;
+  }
+  .btn {
+    width:100%;
+  }
+  .info-user {
+    margin-top: 16px;
+    width: 100%;
+    position: relative;
+
+    .list_user, .show-agree {
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      li {
+        float: left;
+        position: relative;
+
+        .search-user {
+          text-decoration: none;
+          color: $black;
+        }
+
+        .txt_bar {
+          display: inline-block;
+          width: 1px;
+          height: 16px;
+          margin: 3px 9px 0;
+          background-color: $black;
+          opacity: .6;
+          filter: alpha(opacity=60);
+          vertical-align: top;
+        }
+      }
+    }
+  }
+
+}
