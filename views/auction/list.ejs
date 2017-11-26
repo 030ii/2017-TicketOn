@@ -4,6 +4,24 @@
     <% include ../header.ejs %>
   </head>
   <body>
-    <% include ../layout.ejs %>
+    <div class="container-fluid">
+      <div class="row text-center mt-3 mx-auto">
+        <% for (var i = 0; i < auction.length; i++) { %>
+          <div class="col-md-4" style="border: solid 1px black;">
+            <h5><%= auction[i].a_title %></h5>
+            <img src="../uploads/<%= auction[i].a_img %>" /><br>
+            <p><strong>시작가:</strong> <%= auction[i].a_min_price %></p>
+            <% var curPrice = auction[i].a_min_price;
+              for (var j = 0; j < bid.length; j++) {
+                if (bid[j].a_id == auction[i].a_id) {
+                    curPrice = bid[j].b_price;
+                }
+              } %>
+            <p><strong>현재가:</strong><%= curPrice %></p>
+          </div>
+        <% } %>
+      </div>
+    </div>
+    <% include ../footer.ejs %>
   </body>
 </html>

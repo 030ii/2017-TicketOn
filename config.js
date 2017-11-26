@@ -1,5 +1,7 @@
 var mysql = require('mysql');
 var crypto = require('crypto');
+var multer = require('multer');
+var path = require('path');
 
 // mysql pool
 exports.pool = mysql.createPool({
@@ -27,3 +29,15 @@ exports.decrypt = function (text) {
 
     return decipheredPlaintext;
 }
+
+// multer 파일 업로드
+exports.upload = multer({
+  storage: multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'uploads/');
+    },
+    filename: function (req, file, cb) {
+      cb(null, new Date().valueOf() + path.extname(file.originalname));
+    }
+  })
+});
