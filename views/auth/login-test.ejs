@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="js/login.js"></script>
+  </head>
+  <body>
+    <h1>로그인</h1>
+    <form method="post" action="/login" id="login_fm" name="login_fm" >
+    <dl>
+      <dt>userID</dt>
+      <dd><input type="text" name="id" /></dd>
+      <dt>userPassword</dt>
+      <dd><input type="password" name="password" /></dd>
+      <input type="button" value="login" onclick="dosubmit()" />
+      <input type="button" value="sign up" onclick="location.href='/register'">
+    </dl>
+    </form>
+
+
+  </body>
+</html>

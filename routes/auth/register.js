@@ -27,8 +27,7 @@ router.post('/', function(req, res, next){
 
     for(var i = 0; i < users.length; i++) {
         if (body.id == users[i].u_id) {
-            res.send('<script>alert("중복아이디가 있습니다.");</script>');
-            res.redirect('/auth/register');
+            res.send('<script>alert("중복아이디가 있습니다.");window.location.href="/register";</script>');
             return;
         }
       }
@@ -36,7 +35,7 @@ router.post('/', function(req, res, next){
           connection.query(query, inputs, function(err, rows) {
               if(err) console.log("err: ", err);
           });
-          res.redirect('/auth/login');
+          res.redirect('/login');
           connection.release();
     });
 });

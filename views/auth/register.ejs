@@ -1,27 +1,48 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <% include ../header.ejs %>
-    <script type="text/javascript" src="js/register.js"></script>
-  </head>
-  <body>
-    <h1>회원가입</h1>
-    <form method="post" action="/register" id="register_fm" name="register_fm">
-    <dl>
-      <dt>userName</dt>
-      <dd><input type="text" name="name" id="u_name" /></dd>
-      <dt>userID</dt>
-      <dd><input type="text" name="id" id="u_id" /></dd>
-      <dt>userPassword</dt>
-      <dd><input type="password" name="password" id="password" /></dd>
-      <dt>userpasswordch</dt>
-      <dd><input type="password" name="passwordch" id="passwordch" /></dd>
-      <dt>userTel</dt>
-      <dd><input type="text" name="tel" id="u_tel" /></dd>
-      <p><input type="button" value="sign up" onclick="dosubmit()" /></p>
-    </dl>
-  </form>
-
-
-  </body>
-</html>
+<!-- registerModal -->
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="registerModalLabel">회원가입 하기</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="/register" name="register_fm">
+          <div class="form-group">
+            <label class="sr-only" for="reg-name">이름</label>
+            <input type="text" class="form-control" id="reg-name" name="name" placeholder="이름">
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="reg-email">아이디</label>
+            <input type="email" class="form-control" id="reg-email" name="id" placeholder="아이디(이메일)">
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="reg-password">비밀번호</label>
+            <input type="password" class="form-control" id="reg-password" name="password" placeholder="비밀번호">
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="reg-passwordCh">비밀번호 확인</label>
+            <input type="password" class="form-control" id="reg-passwordCh" name="passwordCh" placeholder="비밀번호 확인">
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="reg-tel">핸드폰 번호</label>
+            <input type="text" class="form-control" id="reg-tel" name="tel" placeholder="핸드폰 번호">
+          </div>
+          <div class="info-user">
+            <div class="agree-checkbox">
+              <label>
+                <input type="checkbox"> 이용 약관 동의
+              </label>
+            </div>
+            <ul class="show-agree">
+              <li>
+                <a href="#" class="">자세히 보기</a>
+              </li>
+            </ul>
+          </div>
+          <button type="submit" class="btn btn-primary form-control">회원가입</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
