@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
       connection.query(query, function(err,rows){
         if(err) console.log("err : ", err);
         users = rows;
-        res.render('auth/register.ejs');
+        res.render('auth/register');
         connection.release();
     });
   });
@@ -25,7 +25,7 @@ router.post('/', function(req, res, next){
     var newPwd = encrypt(body.password);
     var inputs = [body.name, body.id, newPwd, body.tel];
 
-    for(var i = 0; i < users.length; i++) {
+    for(var i = 0; i < users.lenght; i++) {
         if (body.id == users[i].u_id) {
             res.send('<script>alert("중복아이디가 있습니다.");window.location.href="/register";</script>');
             return;

@@ -11,6 +11,8 @@ var login = require('./routes/auth/login');
 var register = require('./routes/auth/register');
 var auctionPost = require('./routes/auction/post');
 var list = require('./routes/auction/list');
+var findID = require('./routes/auth/findID');
+var findPwd = require('./routes/auth/findPwd');
 
 var app = express();
 
@@ -36,6 +38,8 @@ app.use('/login', login); // @TODO 챙 : 로그인 페이지 별도로 없음~ �
 app.use('/register', register); // @TODO 챙 : 이것도 로그인 페이지와 마찬가지로 회원가입 페이지가 별도로 존재하지 않음
 app.use('/auctionPost', auctionPost);
 app.use('/auctionList', list);
+app.use('/findID', findID);
+app.use('/findPwd', findPwd);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
