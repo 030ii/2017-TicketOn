@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<form method="post" action="/users">
+  <table border="1">
+      <tr>
+          <td>이름</td>
+          <td>아이디</td>
+          <td>전화번호</td>
+          <td>기능</td>
+      </tr>
+
+  <%
+       for(var i=0; i<rows.length; i++)
+       {
+          var row = rows[i];
+  %>
+      <tr>
+          <td><%=row.u_name%></td>
+          <td><%=row.u_id%></td>
+          <td><%=row.u_tel%></td>
+          <td><a href="/users/<%=row.uid%>">삭제</a></td>
+      </tr>
+
+  <%
+       }
+  %>
+  </table>
+</form>
+
+</body>
+</html>

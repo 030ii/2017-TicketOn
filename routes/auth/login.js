@@ -8,6 +8,7 @@ router.get('/', function(req, res, next) {
     res.render('auth/login');
 });
 
+var admin = 'admin@naver.com';
 router.post('/', function(req, res, next) {
     var body = req.body;
 
@@ -16,11 +17,23 @@ router.post('/', function(req, res, next) {
         connection.query(query, body.id, function(err, rows) {
             if(err) console.log("err: ", err);
             else if(rows[0]) {
-              if(body.password == decrypt(rows[0].u_password)){
-                    req.session.id = rows[0].u_id;
-                    res.redirect('/');
-              }else {
-                    res.redirect('/login/fail2');
+              if(admin == rows[0].u_id){
+                console.log('admin password ' + decrypt(rows[0].u_password));
+                console.log('admin password ' + body.password);
+                if(body.password == decrypt(rows[0].u_password)){
+                      req.session.id = rows[0].u_id;
+                      res.redirect('/admin');
+                }else {
+                      res.redirect('/login/fail2');
+                }
+              }else{
+                console.log('user password ' + decrypt(rows[0].u_password));
+                if(body.password == decrypt(rows[0].u_password)){
+                      req.session.id = rows[0].u_id;
+                      res.redirect('/mypage');
+                }else {
+                      res.redirect('/login/fail2');
+                }
               }
             }else {
               res.redirect('/login/fail1');

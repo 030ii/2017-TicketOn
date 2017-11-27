@@ -13,6 +13,9 @@ var auctionPost = require('./routes/auction/post');
 var list = require('./routes/auction/list');
 var findID = require('./routes/auth/findID');
 var findPwd = require('./routes/auth/findPwd');
+var admin = require('./routes/admin/index');
+var mypage = require('./routes/mypage/index');
+var users = require('./routes/admin/users');
 
 var app = express();
 
@@ -40,7 +43,11 @@ app.use('/auctionPost', auctionPost);
 app.use('/auctionList', list);
 app.use('/findID', findID);
 app.use('/findPwd', findPwd);
+app.use('/admin', admin);
+app.use('/mypage', mypage);
+app.use('/users', users);
 
+app.get('/users', users)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
