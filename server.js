@@ -16,6 +16,7 @@ var findPwd = require('./routes/auth/findPwd');
 var admin = require('./routes/admin/index');
 var mypage = require('./routes/mypage/index');
 var users = require('./routes/admin/users');
+var changeInfo = require('./routes/mypage/changeInfo');
 
 var app = express();
 
@@ -46,6 +47,7 @@ app.use('/findPwd', findPwd);
 app.use('/admin', admin);
 app.use('/mypage', mypage);
 app.use('/users', users);
+app.use('/changeInfo', changeInfo);
 
 app.get('/users', users)
 // catch 404 and forward to error handler

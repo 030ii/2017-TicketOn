@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<form method="post" action="/changeInfo">
+
+  <% var row = rows[0]; %>
+  <input type="hidden" name="uid" value="<%=row.uid%>"/>
+  이름   : <%=row.u_name%>
+  아이디 : <%=row.u_id%>
+  전화번호 : <input type="text" name="tel"/>
+
+  <button type="submit">수정</button>
+<!-- <a href="/mypage/:<%=row.u_tel%>">수정</a> -->
+      <!-- <tr>
+          <td><%=row.u_name%></td>
+          <td><%=row.u_id%></td>
+          <td><%=row.u_tel%></td>
+          <td><a href="/users/<%=row.uid%>">삭제</a></td>
+      </tr> -->
+
+
+</form>
+
+</body>
+</html>

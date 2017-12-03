@@ -4,6 +4,13 @@
 
   </head>
   <body>
-로그인후 마이페이지
+로그인후 마이페이지<br/>
+<% row = rows[0];
+  if(row.u_id){
+%>
+<a href="/mypage/logout">로그아웃</a><br/>
+
+<% } %>
+<button type="button" onclick="location.href='changeInfo'">개인정보 변경</button>
   </body>
 </html>
