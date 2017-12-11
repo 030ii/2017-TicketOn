@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <% include ./header.ejs %>
+    <% include ./config/header.ejs %>
   </head>
   <body>
-
-    <% include ./nav.ejs %>
-
+    <% include ./config/nav.ejs %>
     <header class="masthead text-center text-white d-flex">
       <div class="container my-auto">
         <div class="row">
@@ -17,19 +15,20 @@
             <hr>
           </div>
           <div class="col-lg-8 mx-auto">
-            <p class="text-faded mb-5">티켓온은 본인에게는 필요가 없거나 안쓰는 티켓을 필요한 사람에게 팔 수 있는 경매 방식의 서비스입니다. 경매를 통해 티켓을 원하는 가격선에서 쟁취하세요!</p>
+            <p class="text-faded mb-5">티켓온은 본인에게는 필요가 없거나 안쓰는 티켓을 필요한 사람에게 팔 수 있는 경매 방식의 서비스입니다.
+               경매를 통해 티켓을 원하는 가격선에서 쟁취하세요!</p>
+            <% if (!session.name) { %>
             <a class="btn-radius btn-primary btn-xl js-scroll-trigger" data-toggle="modal" data-target="#loginModal">로그인 하기</a>
             <a class="btn-radius btn-primary btn-xl js-scroll-trigger" data-toggle="modal" data-target="#registerModal">회원가입 하기</a>
+            <% } %>
           </div>
         </div>
       </div>
     </header>
-
     <% include ./auth/login.ejs %>
     <% include ./auth/register.ejs %>
     <% include ./auth/findID.ejs %>
     <% include ./auth/findPwd.ejs %>
-
-    <% include ./footer.ejs %>
+    <% include ./config/footer.ejs %>
   </body>
 </html>

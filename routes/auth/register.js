@@ -22,7 +22,7 @@ router.post('/', function(req, res, next){
 
         for(var i = 0; i < rows.lenght; i++) {
             if (body.id == rows[i].u_id) {
-                res.send('<script>alert("중복아이디가 있습니다.");window.location.href="/register";</script>');
+                res.send('<script>alert("이미 존재하는 아이디 입니다.");</script>');
                 return;
             }
           }

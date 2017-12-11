@@ -18,11 +18,9 @@ router.post('/', function(req, res, next) {
             }else{
               if(body.id == rows[0].u_id){
                 console.log(rows);
-                    res.send('<script>alert("비밀번호는 '+ decrypt(rows[0].u_password) +' 입니다!");' +
-                            'window.location.replace("/login");</script>');
+                    res.send('<script>alert("비밀번호는 '+ decrypt(rows[0].u_password) +' 입니다!");</script>');
               }else {
-                res.send('<script>alert("이름, 전화번호가 일치하지 않습니다.");' +
-                        'window.location.replace("/findPwd");</script>');
+                res.send('<script>alert("이름, 전화번호가 일치하지 않습니다.");</script>');
               }
             connection.release();
             }

@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-
-  </head>
-  <body>
-로그인후 마이페이지<br/>
-<% row = rows[0];
-  if(row.u_id){
-%>
-<a href="/mypage/logout">로그아웃</a><br/>
-
-<% } %>
-<button type="button" onclick="location.href='changeInfo'">개인정보 변경</button>
-  </body>
+<head>
+    <% include ../config/header.ejs %>
+</head>
+<body>
+    <% include ../config/nav.ejs %>
+    <header class="masthead text-center text-white d-flex">
+        <div class="container my-auto">
+            <div class="row">
+                <h1>마이페이지</h1>
+            </div>
+            <div class="row">
+                <a class="btn btn-primary" href="/mypage/changeInfo">개인정보 변경</a>
+            </div>
+        </div>
+    </header>
+    <% include ../config/footer.ejs %>
+</body>
 </html>

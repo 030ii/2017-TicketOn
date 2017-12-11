@@ -3,7 +3,6 @@ var router = express.Router();
 var pool = require('../../config.js').pool;
 var decrypt = require('../../config.js').decrypt;
 
-
 router.get('/', function(req, res, next) {
     res.render('auth/login');
 });
@@ -26,11 +25,13 @@ router.post('/', function(req, res, next) {
                 }else {
                       res.redirect('/login/fail2');
                 }
-              }else{
+              } else{
                 console.log('user password ' + decrypt(rows[0].u_password));
                 if(body.password == decrypt(rows[0].u_password)){
+                      req.session.uid = rows[0].uid;
                       req.session.id = rows[0].u_id;
-                      res.redirect('/mypage');
+                      req.session.name = rows[0].u_name;
+                      res.redirect('/');
                 }else {
                       res.redirect('/login/fail2');
                 }
@@ -44,13 +45,11 @@ router.post('/', function(req, res, next) {
 });
 
 router.get('/fail1', function(req, res, next) {
-  res.send('<script>alert("아이디가 존재하지 않습니다!");' +
-          'window.location.replace("/login");</script>');
+  res.send('<script>alert("아이디가 존재하지 않습니다!");</script>');
 });
 
 router.get('/fail2', function(req, res, next) {
-  res.send('<script>alert("비밀번호가 틀립니다!");' +
-          'window.location.replace("/login");</script>');
+  res.send('<script>alert("비밀번호가 틀립니다!");</script>');
 });
 
 module.exports = router;

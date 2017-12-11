@@ -17,11 +17,9 @@ router.post('/', function(req, res, next) {
             console.log("err: ", err);
             }else{
               if(body.name == rows[0].u_name && body.tel == rows[0].u_tel){
-                    res.send('<script>alert("아이디는 '+ rows[0].u_id +' 입니다!");' +
-                            'window.location.replace("/login");</script>');
+                    res.send('<script>alert("아이디는 '+ rows[0].u_id +' 입니다!");</script>');
               }else {
-                res.send('<script>alert("이름, 전화번호가 일치하지 않습니다.");' +
-                        'window.location.replace("/findID");</script>');
+                res.send('<script>alert("이름, 전화번호가 일치하지 않습니다.");</script>');
               }
             connection.release();
             }

@@ -5,11 +5,14 @@ var pool = require('../../config.js').pool;
 
 router.get('/', function(req,res,next){
     pool.getConnection(function (err, connection) {
-        var query = "SELECT * FROM user";
-        connection.query(query, function (err, rows) {
+        var query = "SELECT * FROM user WHERE uid=?";
+        connection.query(query, req.session.uid, function (err, rows) {
             if (err) console.error("err : " + err);
             console.log("rows : " + JSON.stringify(rows));
-            res.render('mypage/changeInfo', {rows: rows});
+            res.render('mypage/changeInfo', {
+                user: rows[0],
+                session: req.session
+              });
             connection.release();
         });
     });
@@ -21,7 +24,6 @@ router.post('/', function(req, res, next){
             uid = req.body.uid;
         var querylist = "SELECT * FROM user";
         var query = "UPDATE user set u_tel=? where uid=?";
-
         connection.query(query, [tel, uid], function (err, rows) {
             if (err) console.error("err : " + err);
             console.log("rows : " + rows);
@@ -30,11 +32,9 @@ router.post('/', function(req, res, next){
         pool.getConnection(function (err, connection) {
             connection.query(querylist, function (err, rows) {
                 if (err) console.error("err : " + err);
-                req.session.id = rows[0].u_id;
+                req.session.id = uid;
                 console.log("rows : " + JSON.stringify(rows));
 
-                console.log(uid);
-                console.log(tel);
                 res.render('mypage/index', {rows: rows});
                 connection.release();
             });
@@ -42,6 +42,5 @@ router.post('/', function(req, res, next){
 
     });
 });
-
 
 module.exports = router;

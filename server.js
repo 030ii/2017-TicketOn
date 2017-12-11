@@ -5,18 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var bodyParser = require('body-parser');
-
-var index = require('./routes/index');
-var login = require('./routes/auth/login');
-var register = require('./routes/auth/register');
-var auctionPost = require('./routes/auction/post');
-var list = require('./routes/auction/list');
-var findID = require('./routes/auth/findID');
-var findPwd = require('./routes/auth/findPwd');
-var admin = require('./routes/admin/index');
-var mypage = require('./routes/mypage/index');
-var users = require('./routes/admin/users');
-var changeInfo = require('./routes/mypage/changeInfo');
+var methodOverride = require('method-override');
 
 var app = express();
 
@@ -35,21 +24,15 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride('_method'));
 
-app.use('/', index);
-app.use('/login', login); // @TODO 챙 : 로그인 페이지 별도로 없음~ 로그인하는 것은 모달로 바꿔서 고쳐야 함
-app.use('/register', register); // @TODO 챙 : 이것도 로그인 페이지와 마찬가지로 회원가입 페이지가 별도로 존재하지 않음
-app.use('/auctionPost', auctionPost);
-app.use('/auctionList', list);
-app.use('/findID', findID);
-app.use('/findPwd', findPwd);
-app.use('/admin', admin);
-app.use('/mypage', mypage);
-app.use('/users', users);
-app.use('/changeInfo', changeInfo);
+app.use('/', express.static(path.join(__dirname, 'public')));
+app.use('/:a', express.static(path.join(__dirname, 'public')));
+app.use('/:a/:b', express.static(path.join(__dirname, 'public')));
 
-app.get('/users', users)
+app.use('/', require('./routes/index'));
+app.use('/mypage', require('./routes/mypage/index'));
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -65,7 +48,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('config/error');
 });
 
 module.exports = app;
