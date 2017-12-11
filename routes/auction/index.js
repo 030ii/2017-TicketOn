@@ -17,7 +17,7 @@ router.get('/', function(req, res) {
             },
             function(callback) {
                 // 모든 입찰 정보 조회
-                queryStr = 'SELECT * FROM bid';
+                queryStr = 'SELECT * FROM bid ORDER BY b_time DESC';
                 connection.query(queryStr, function(err, bids) {
                     if(err) callback(err);
                     callback(null, bids);
@@ -26,7 +26,7 @@ router.get('/', function(req, res) {
         ], function(err, results) {
             connection.release();
             if(err) console.log(err);
-            res.render('auction/list.ejs', {
+            res.render('auction/products', {
                 session: req.session,
                 auction: results[0],  // 경매 정보
                 bid: results[1] // 입찰 정보

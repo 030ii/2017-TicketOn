@@ -18,6 +18,8 @@
     <% include ../config/nav.ejs %>
     <div class="container-fluid">
       <div class="row my-5 mx-auto">
+        <a class="btn btn-primary btn-block" href="/auction/post">경매등록</a>
+        <a class="btn btn-primary btn-block" href="/auction/detail">경매정보</a>
         <% for (var i = 0; i < auction.length; i++) { %>
           <div class="col-md-3 col-sm-4 col-xs-6 my-5">
             <div class="row m-1 border">
@@ -42,5 +44,6 @@
         <% } %>
       </div>
     </div>
+    <% include ../config/footer.ejs %>
   </body>
 </html>

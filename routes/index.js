@@ -9,7 +9,5 @@ router.get('/', function(req, res, next) {
 });
 
 router.use('/', require('./auth/index'));
-router.use('/mypage', require('./mypage/index'));
-router.use('/admin', require('./admin/index'));
 
 module.exports = router;

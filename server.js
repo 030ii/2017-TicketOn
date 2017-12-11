@@ -32,7 +32,8 @@ app.use('/:a/:b', express.static(path.join(__dirname, 'public')));
 
 app.use('/', require('./routes/index'));
 app.use('/mypage', require('./routes/mypage/index'));
-router.use('/auction', require('./routes/auction/index'));
+app.use('/admin', require('./routes/admin/index'));
+app.use('/auction', require('./routes/auction/index'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
