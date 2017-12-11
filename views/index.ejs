@@ -18,8 +18,10 @@
             <p class="text-faded mb-5">티켓온은 본인에게는 필요가 없거나 안쓰는 티켓을 필요한 사람에게 팔 수 있는 경매 방식의 서비스입니다.
                경매를 통해 티켓을 원하는 가격선에서 쟁취하세요!</p>
             <% if (!session.name) { %>
-            <a class="btn-radius btn-primary btn-xl js-scroll-trigger" data-toggle="modal" data-target="#loginModal">로그인 하기</a>
-            <a class="btn-radius btn-primary btn-xl js-scroll-trigger" data-toggle="modal" data-target="#registerModal">회원가입 하기</a>
+              <a class="btn-radius btn-primary btn-xl js-scroll-trigger" data-toggle="modal" data-target="#loginModal">로그인 하기</a>
+              <a class="btn-radius btn-primary btn-xl js-scroll-trigger" data-toggle="modal" data-target="#registerModal">회원가입 하기</a>
+            <% } else { %>
+              <a class="btn-radius btn-primary btn-xl js-scroll-trigeger" href="/auction">경매 하기</a>
             <% } %>
           </div>
         </div>
