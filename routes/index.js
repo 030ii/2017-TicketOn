@@ -11,6 +11,5 @@ router.get('/', function(req, res, next) {
 router.use('/', require('./auth/index'));
 router.use('/mypage', require('./mypage/index'));
 router.use('/admin', require('./admin/index'));
-router.use('/auction', require('./auction/index'));
 
 module.exports = router;
