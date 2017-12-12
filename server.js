@@ -29,6 +29,7 @@ app.use(methodOverride('_method'));
 app.use('/', express.static(path.join(__dirname, 'public')));
 app.use('/:a', express.static(path.join(__dirname, 'public')));
 app.use('/:a/:b', express.static(path.join(__dirname, 'public')));
+app.use('/:a/:b/:c', express.static(path.join(__dirname, 'public')));
 
 app.use('/', require('./routes/index'));
 app.use('/mypage', require('./routes/mypage/index'));
