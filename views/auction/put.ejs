@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../config/header.ejs %>
+  </head>
+  <body>
+    <div class="container my-3">
+        <form action="/auction/put/<%= auction.aid %>?_method=PUT" method="POST" enctype="multipart/form-data">
+          <div class="form-group my-3">
+            <div class="form-row">
+              <div class="col-md-1">
+                <strong>제목</strong>
+              </div>
+              <div class="col-md-11">
+                <input type="text" name="title" style="width:100%" placeholder="제목을 입력하세요." value="<%= auction.a_title %>" />
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-4">
+                  <strong>분류</strong>
+                  <select name="category">
+                      <option value="<%= auction.a_category %>"><%= auction.a_category %></option>
+                      <option value="">선택</option>
+                      <option value="뮤지컬/연극">뮤지컬/연극</option>
+                      <option value="영화">영화</option>
+                      <option value="전시/체험">전시/체험</option>
+                      <option value="콘서트/마술">콘서트/마술</option>
+                      <option value="외식/편의점">외식/편의점</option>
+                      <option value="놀이동산/컨텐츠">놀이동산/컨텐츠</option>
+                      <option value="뷰티/생활">뷰티/생활</option>
+                  </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-12">
+                <strong>내용: </strong><br>
+                <textarea name="content" rows="4" style="width:100%"><%= auction.a_content %></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-12">
+                <strong>첨부사진:</strong><br>
+                <% if (auction.a_img) { %>
+                  <input type="text" name="img" style="width:100%;border:solid 1px gray" value="<%= auction.a_img %>" readonly>
+                <% } else { %>
+                  <input type="file" name="img" style="width:100%;border:solid 1px gray"/>
+                <% } %>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2 mx-auto">
+              <input type="submit" class="btn btn-primary" style="display:inline" value="수정">
+              <a class="btn btn-danger" href="/auction">취소</a>
+            </div>
+          </div>
+        </form>
+    </div>
+    <% include ../config/footer.ejs %>
+  </body>
+</html>

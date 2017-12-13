@@ -8,7 +8,7 @@ router.get('/', function(req, res) {
         async.series([
             function(callback) {
                 // 마감시간 순으로 모든 경매 정보 조회
-                queryStr = 'SELECT * FROM auction ORDER BY a_deadline ASC';
+                queryStr = "SELECT * FROM auction WHERE a_status='0' ORDER BY a_deadline ASC";
                 connection.query(queryStr, function(err, auctions) {
                     if(err) callback(err);
                     callback(null, auctions);

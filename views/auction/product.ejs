@@ -108,7 +108,9 @@
                                                         <p>등록시간 <small><%= String(auction.a_start).substr(0, 24) %></small></p>
                                                         <div>
                                                             <a class="btn btn-sm btn-default" href="javascript:void(0)"><i class="fa fa-plus push-5-r"></i> 관심등록</a>
-                                                            <a class="btn btn-sm btn-default" href="javascript:void(0)"><i class="fa fa-envelope"></i></a>
+                                                            <% if(session.uid == auction.uid) { %>
+                                                            <a class="btn btn-sm btn-default" href="/auction/put/<%= auction.aid %>"><i class="fa fa-pencil push-5-r"></i> 수정</a>
+                                                            <% } %>
                                                         </div>
                                                     </div>
                                                 </div>
