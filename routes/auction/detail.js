@@ -18,8 +18,8 @@ router.get('/:aid', function(req, res, next) {
             },
             function(callback) {
                 // 해당 경매에 대한 입찰정보를 내림차순으로 조회
-                queryStr = 'SELECT * FROM bid AS B JOIN user AS U WHERE U.uid=(' +
-                          'SELECT uid FROM bid WHERE aid=?) AND B.aid=? ORDER BY bid DESC';
+                queryStr = 'SELECT * FROM bid AS B JOIN user AS U WHERE U.uid IN (' +
+                          'SELECT uid FROM bid WHERE aid=?) AND B.aid=? ORDER BY B.b_price DESC';
                 connection.query(queryStr, [req.params.aid, req.params.aid], function(err, rows) {
                     if(err) callback(err);
                     callback(null, rows);
