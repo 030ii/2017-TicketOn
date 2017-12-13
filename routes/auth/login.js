@@ -31,7 +31,7 @@ router.post('/', function(req, res, next) {
                       req.session.uid = rows[0].uid;
                       req.session.id = rows[0].u_id;
                       req.session.name = rows[0].u_name;
-                      res.redirect('/');
+                      res.redirect('/auction'); // 메인페이지로 이동
                 }else {
                       res.redirect('/login/fail2');
                 }

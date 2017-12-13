@@ -29,7 +29,7 @@ router.get('/:aid', function(req, res, next) {
             if(err) console.log(err);
             var time = getTime(results[0].a_deadline);
             // 경매 상세정보 페이지 렌더링
-            res.render('auction/product', {
+            res.render('auction/detail', {
                 auction: results[0],  // 경매 정보
                 time: time, // 남은 시간
                 bid: results[1],  // 입찰 정보

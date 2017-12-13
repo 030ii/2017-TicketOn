@@ -1,0 +1,25 @@
+.a-bg-primary {
+  background-color: #7fc7d7; }
+
+.a-bg-gray {
+  background-color: #e6ecec; }
+
+.a-logo img {
+  display: inline;
+  height: 34px;
+  float: left; }
+
+.a-nav-menu {
+  margin-top: 6px;
+  font-size: 1.2em;
+  vertical-align: middle; }
+  .a-nav-menu a {
+    color: white;
+    magin-left: 10px; }
+    .a-nav-menu a i {
+      font-size: 1.5em;
+      margin-left: 10px; }
+    .a-nav-menu a span {
+      margin-left: 20px; }
+
+/*# sourceMappingURL=auction.css.map */

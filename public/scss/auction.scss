@@ -1,0 +1,39 @@
+$a-primary: #7fc7d7 !default;
+//$a-primary: #a1cfd9 !default;
+
+$a-gray : #e6ecec !default;
+
+.a-bg-primary {
+  background-color: $a-primary;
+}
+
+.a-bg-gray {
+  background-color: $a-gray;
+}
+
+.a-logo {
+  img {
+    display: inline;
+    height: 34px;
+    float:left
+  }
+}
+
+.a-nav-menu {
+  margin-top: 6px;
+  font-size: 1.2em;
+  vertical-align: middle;
+  a {
+    color:white;
+    magin-left: 10px;
+
+    i {
+      font-size: 1.5em;
+      margin-left: 10px;
+    }
+
+    span {
+      margin-left: 20px;
+    }
+  }
+}
