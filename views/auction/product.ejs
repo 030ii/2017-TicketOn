@@ -84,11 +84,13 @@
                                             </div>
                                             <hr>
                                             <div align="right">
-                                                <form action="/auction/" method="post">
-                                                    <input type="number" name="price" step="10" min="<%= ((bid[0]) ? bid[0].b_price : auction.a_min_price)+10 %>"
+                                              <% if(session.uid != auction.uid) { %>
+                                                <form action="/auction/bid" method="post" name="bid">
+                                                     <input type="number" name="price" step="10" min="<%= ((bid[0]) ? bid[0].b_price : auction.a_min_price)+10 %>"
                                                      value="<%= ((bid[0]) ? bid[0].b_price : auction.a_min_price)+10 %>">
                                                      <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> 입찰</button>
                                                 </form>
+                                              <% } %>
                                             </div>
                                             <hr>
                                             <div class="">
@@ -205,6 +207,29 @@
                 }
                 $(".timer").text(hour + ':' + min + ":" + sec);
             }, 1000);
+
+            $("form[name=bid] button[type=submit]").on('click', function(e) {
+                e.preventDefault();
+                swal({
+                    title: $(this).siblings().val() + '원',
+                    text: "정말 입찰하시겠습니까?",
+                    type: 'info',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#aaa',
+                    confirmButtonText: '네',
+                    cancelButtonText: '아니요'
+                }).then(function () {
+                    $.ajax({
+                        url: '/auction/bid',
+                        type: 'post',
+                        data: {aid:<%= auction.aid %>, uid:<%= session.uid %>, price:$(this).siblings().val()},
+                        success: function (response) {
+                            location.reload();
+                        }
+                    });
+                });
+            });
         });
     </script>
 </body>

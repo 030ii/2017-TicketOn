@@ -28,6 +28,7 @@ router.get('/:aid', function(req, res, next) {
         ], function(err, results) {
             if(err) console.log(err);
             var time = getTime(results[0].a_deadline);
+            // 경매 상세정보 페이지 렌더링
             res.render('auction/product', {
                 auction: results[0],  // 경매 정보
                 time: time, // 남은 시간
@@ -41,9 +42,6 @@ router.get('/:aid', function(req, res, next) {
 
 var getTime = function(deadline) {
     var time = deadline.getTime() - Date.now(); // 마감시간에서 현재시간을 뺀다
-    console.log('deadline: ', deadline.getTime());
-    console.log('   now  : ', Date.now());
-    console.log('time: ', time);
     return (time > 0) ? time : 0; // 시:분:초 형식을 반환한다
 }
 

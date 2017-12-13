@@ -29,6 +29,7 @@ router.get('/', function(req, res) {
             results[0].forEach(function(element, index) {
                 times[index] = getTime(element.a_deadline);
             });
+            // 경매 목록 페이지 랜더링
             res.render('auction/products', {
                 session: req.session,
                 auction: results[0],  // 경매 정보
@@ -78,6 +79,7 @@ router.use('/post', require('./post'));
 router.use('/put', require('./put'));
 router.use('/detail', require('./detail'));
 router.use('/pay', require('./pay'));
+router.use('/bid', require('./bid'));
 
 var getTime = function(deadline) {
     var time = deadline.getTime() - Date.now(); // 마감시간에서 현재시간을 뺀다
