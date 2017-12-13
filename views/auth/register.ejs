@@ -10,23 +10,24 @@
         <form method="POST" action="/register" name="register_fm">
           <div class="form-group">
             <label class="sr-only" for="reg-name">이름</label>
-            <input type="text" class="form-control" id="reg-name" name="name" placeholder="이름">
+            <input type="text" class="form-control" name="name" maxlength="6" placeholder="2~6자리">
           </div>
           <div class="form-group">
             <label class="sr-only" for="reg-email">아이디</label>
-            <input type="email" class="form-control" id="reg-email" name="id" placeholder="아이디(이메일)">
+            <input type="email" class="form-control" aria-describedby="emailHelp" maxlength="40" name="id" placeholder="아이디(이메일)">
           </div>
           <div class="form-group">
             <label class="sr-only" for="reg-password">비밀번호</label>
-            <input type="password" class="form-control" id="reg-password" name="password" placeholder="비밀번호">
+            <input type="password" class="form-control" name="password" placeholder="8~16자리">
           </div>
           <div class="form-group">
             <label class="sr-only" for="reg-passwordCh">비밀번호 확인</label>
-            <input type="password" class="form-control" id="reg-passwordCh" name="passwordCh" placeholder="비밀번호 확인">
+            <input type="password" class="form-control" name="passwordCh" placeholder="8~16자리">
           </div>
           <div class="form-group">
-            <label class="sr-only" for="reg-tel">핸드폰 번호</label>
-            <input type="text" class="form-control" id="reg-tel" name="tel" placeholder="핸드폰 번호">
+            <label class="sr-only" for="reg-tel">연락처</label>
+            <input type="text" class="form-control" name="tel" maxlength="20" placeholder="01012345678"
+            onKeyPress="if ((event.keyCode<46)||(event.keyCode>57)||(event.keyCode==47)) event.returnValue=false;">
           </div>
           <div class="info-user">
             <div class="agree-checkbox">
@@ -46,3 +47,4 @@
     </div>
   </div>
 </div>
+<script src="js/register.js"></script>

@@ -2,6 +2,8 @@ var mysql = require('mysql');
 var crypto = require('crypto');
 var multer = require('multer');
 var path = require('path');
+var nodemailer = require('nodemailer');
+var smtpTransport = require('nodemailer-smtp-transport');
 
 // mysql pool
 exports.pool = mysql.createPool({
@@ -29,6 +31,15 @@ exports.decrypt = function (text) {
 
     return decipheredPlaintext;
 }
+
+// nodemailer 메일 세팅
+exports.transporter = nodemailer.createTransport(smtpTransport({
+        service: 'gmail',
+        auth: {
+          user: 'ojland17@gmail.com',
+          pass: 'dhlwnskfk'
+        }
+}));
 
 // multer 파일 업로드
 exports.upload = multer({

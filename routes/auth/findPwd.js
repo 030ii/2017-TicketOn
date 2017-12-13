@@ -10,20 +10,20 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
     var body = req.body;
-    var query = "SELECT * FROM user WHERE u_id=?";
+    var query = "SELECT * FROM user WHERE u_name=? AND u_tel=?";
     pool.getConnection(function(err, connection) {
-        connection.query(query, body.id, function(err, rows) {
-            if(err){
-            console.log("err: ", err);
-            }else{
-              if(body.id == rows[0].u_id){
-                console.log(rows);
-                    res.send('<script>alert("비밀번호는 '+ decrypt(rows[0].u_password) +' 입니다!");</script>');
-              }else {
-                res.send('<script>alert("이름, 전화번호가 일치하지 않습니다.");</script>');
-              }
-            connection.release();
+        connection.query(query, [body.name, body.tel], function(err, rows) {
+            if(err) console.log("err: ", err);
+            else if(rows[0]){
+                var IDs = '';
+                rows.forEach(function(element) {
+                    IDs += " [" + element.u_name + "] ";
+                });
+                res.send(IDs);
+            } else {
+                res.send(false);
             }
+            connection.release();
         });
     });
 });

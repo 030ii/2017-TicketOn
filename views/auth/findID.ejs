@@ -9,16 +9,18 @@
             <div class="modal-body">
                 <form method="post" action="/findID" name="findID_fm">
                     <div class="form-group">
-                        <label class="sr-only" for="search-name">이름</label>
-                        <input type="text" class="form-control" name="name" id="search-name" placeholder="이름">
+                        <label for="name">이름</label>
+                        <input type="text" class="form-control" name="name" placeholder="ex) 홍길동">
                     </div>
                     <div class="form-group">
-                        <label class="sr-only" for="search-tel">핸드폰 번호</label>
-                        <input type="text" class="form-control" name="tel" id="search-tel" placeholder="핸드폰 번호">
+                        <label for="tel">핸드폰 번호</label>
+                        <input type="tel" class="form-control" name="tel" placeholder="ex) 01012345678"
+                        onKeyPress="if ((event.keyCode<46)||(event.keyCode>57)||(event.keyCode==47)) event.returnValue=false;">
                     </div>
-                    <button type="submit" class="btn btn-primary form-control">아이디 찾기</button>
+                    <input type="submit" class="btn btn-primary form-control" value="아이디 찾기">
                 </form>
             </div>
         </div>
     </div>
 </div>
+<script src="js/findID.js"></script>
