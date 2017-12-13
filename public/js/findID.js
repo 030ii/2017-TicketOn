@@ -2,7 +2,7 @@ $(document).ready(function() {
       var name = $("#findIdModal").find("input[name=name]");
       var tel = $("#findIdModal").find("input[name=tel]");
 
-      $("#findIdModal button[type=submit]").on('click', function(e) {
+      $("#findIdModal input[type=submit]").on('click', function(e) {
           e.preventDefault();
           if(name.val() == "") {
               name.focus();
@@ -23,7 +23,7 @@ $(document).ready(function() {
                   if(data) {
                       swal(
                         '성공',
-                        '찾으시는 아이디는 [' + data + ']입니다!',
+                        '찾으시는 이메일은 [' + data + ']입니다!',
                         'success'
                       );
                   } else {

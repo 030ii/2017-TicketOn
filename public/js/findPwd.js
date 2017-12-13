@@ -1,7 +1,7 @@
 $(document).ready(function() {
       var id = $("#findPwdModal").find("input[name=id]");
 
-      $("#findPwdModal button[type=submit]").on('click', function(e) {
+      $("#findPwdModal input[type=submit]").on('click', function(e) {
           e.preventDefault();
           if(id.val() == "") {
               id.focus();
@@ -11,13 +11,16 @@ $(document).ready(function() {
                 'error'
               );
           } else {
-              $.post("/findID", {name: name.val(), tel: tel.val()}, function(data) {
+              $.post("/findPwd", {id: id.val()}, function(data) {
                   if(data) {
                       swal(
                         '성공',
                         '가입하신 이메일로 비밀번호를 전송하였습니다!',
                         'success'
-                      );
+                      ).then(function() {
+                        location.href = '/';
+                      });
+
                   } else {
                       swal(
                         '실패',
