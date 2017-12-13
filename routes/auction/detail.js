@@ -18,8 +18,8 @@ router.get('/:aid', function(req, res, next) {
             },
             function(callback) {
                 // 해당 경매에 대한 입찰정보를 내림차순으로 조회
-                queryStr = 'SELECT * FROM bid AS B JOIN user AS U WHERE U.uid=(' +
-                          'SELECT uid FROM bid WHERE aid=?) AND B.aid=? ORDER BY bid DESC';
+                queryStr = 'SELECT * FROM bid AS B JOIN user AS U WHERE U.uid IN (' +
+                          'SELECT uid FROM bid WHERE aid=?) AND B.aid=? ORDER BY B.b_price DESC';
                 connection.query(queryStr, [req.params.aid, req.params.aid], function(err, rows) {
                     if(err) callback(err);
                     callback(null, rows);
@@ -29,7 +29,7 @@ router.get('/:aid', function(req, res, next) {
             if(err) console.log(err);
             var time = getTime(results[0].a_deadline);
             // 경매 상세정보 페이지 렌더링
-            res.render('auction/product', {
+            res.render('auction/detail', {
                 auction: results[0],  // 경매 정보
                 time: time, // 남은 시간
                 bid: results[1],  // 입찰 정보

@@ -164,7 +164,18 @@
                                         </div>
                                         <div class="block-content">
                                             <div class="push-10">
-                                                <div class="h4 font-w600 text-success pull-right push-10-l"><%= auction[i].a_min_price %>원</div>
+                                                <div class="h4 font-w600 text-success pull-right push-10-l">
+                                                  <%
+                                                    var price = auction[i].a_min_price;
+                                                    for(var j = 0; j < bid.length; j++) {
+                                                        if(bid[j].aid == auction[i].aid) {
+                                                            price = bid[j].b_price;
+                                                            break;
+                                                        }
+                                                    }
+                                                  %>
+                                                  <%= price %>원
+                                                </div>
                                                 <p>[<%= auction[i].a_category %>]</p>
                                                 <a class="h4" style="height:2vh;overflow:hidden" href="/auction/detail/<%= auction[i].aid %>"><%= auction[i].a_title %></a>
                                             </div>

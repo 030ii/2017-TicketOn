@@ -31,7 +31,7 @@
                                 <i class="fa fa-bars push-5-r"></i><span class="hidden-xs">목록</span>
                             </a>
                             <button class="btn btn-default" type="button" data-toggle="layout" data-action="side_overlay_toggle">
-                                <i class="fa fa-shopping-cart push-5-r"></i> <span class="hidden-xs">관심경매</span> (3)
+                                <i class="fa fa-shopping-cart push-5-r"></i> <span class="hidden-xs">관심경매</span>
                             </button>
                         </div>
                     </div>
@@ -85,7 +85,7 @@
                                             <hr>
                                             <div align="right">
                                               <% if(session.uid != auction.uid) { %>
-                                                <form action="/auction/bid" method="post" name="bid">
+                                                <form name="bid">
                                                      <input type="number" name="price" step="10" min="<%= ((bid[0]) ? bid[0].b_price : auction.a_min_price)+10 %>"
                                                      value="<%= ((bid[0]) ? bid[0].b_price : auction.a_min_price)+10 %>">
                                                      <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> 입찰</button>
@@ -220,13 +220,11 @@
                     confirmButtonText: '네',
                     cancelButtonText: '아니요'
                 }).then(function () {
-                    $.ajax({
-                        url: '/auction/bid',
-                        type: 'post',
-                        data: {aid:<%= auction.aid %>, uid:<%= session.uid %>, price:$(this).siblings().val()},
-                        success: function (response) {
-                            location.reload();
-                        }
+                    var aid = <%= auction.aid %>;
+                    var uid = <%= session.uid %>;
+                    var price = $("form[name=bid]").find("input[name=price]").val();
+                    $.post('/auction/bid', {aid: aid, uid: uid, price: price}, function(data) {
+                        location.reload();
                     });
                 });
             });
