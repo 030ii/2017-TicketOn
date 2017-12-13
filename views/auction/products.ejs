@@ -163,9 +163,10 @@
                                         <div class="block-content">
                                             <div class="push-10">
                                                 <div class="h4 font-w600 text-success pull-right push-10-l"><%= auction[i].a_min_price %>원</div>
-                                                <p>[<%= auction[i].a_category %>]</p><a class="h4" href="frontend_ecom_product.html"><%= auction[i].a_title %></a>
+                                                <p>[<%= auction[i].a_category %>]</p>
+                                                <a class="h4" style="height:2vh;overflow:hidden" href="/auction/detail/<%= auction[i].aid %>"><%= auction[i].a_title %></a>
                                             </div>
-                                            <p class="text-muted"><%= auction[i].a_content %></p>
+                                            <p class="text-muted" style="height:3vh;overflow:hidden"><%= auction[i].a_content %></p>
                                             <span>마감시간</span><h3 class="timer">00:00:00</h3>
                                         </div>
                                     </div>
