@@ -22,11 +22,13 @@ router.put('/:aid', upload.single('img'), function(req, res, next) {
     console.log('file: ', req.file);
     console.log('body: ', body);
     var img = '';
-    
-    var queryStr = 'UPDATE auction SET a_category=? a_title=? a_content=? a_img=?)'
-                    + 'WHERE aid=?';
-    var inputs = [body.category, body.title, body.content,
-                  req.file.filename, req.params.aid];
+    if(body.img)
+        img = body.img;
+    else if(req.file)
+        img = req.file.filename;
+
+    var queryStr = 'UPDATE auction SET a_category=?, a_title=?, a_content=?, a_img=? WHERE aid=?';
+    var inputs = [body.category, body.title, body.content, img, req.params.aid];
     pool.getConnection(function(err, connection) {
         connection.query(queryStr, inputs, function(err, rows) {
             if(err) console.log("err: ", err);
