@@ -6,38 +6,8 @@
     <div id="page-container" class="header-navbar-fixed header-navbar-transparent">
         <!-- Main Container -->
         <main id="main-container">
-            <!-- e-Commerce Header -->
-            <div class="bg-white">
-                <section class="content content-mini content-boxed">
-                    <div class="row items-push">
-                        <div class="col-xs-2 col-sm-1">
-                            <a class="btn btn-default" href="/">
-                                <i class="fa fa-home push-5-r"></i> <span class="hidden-xs">메인</span>
-                            </a>
-                        </div>
-                        <div class="col-xs-6 col-sm-3">
-                            <form action="/" method="post">
-                                <div class="input-group">
-                                    <input type="text" id="ecom-search" name="ecom-search" class="form-control" placeholder="검색..">
-                                    <div class="input-group-btn">
-                                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-xs-4 col-sm-8 text-right">
-                            <!-- Layout API, functionality initialized in App() -> uiLayoutApi() -->
-                            <a class="btn btn-default" type="button" href="/auction">
-                                <i class="fa fa-bars push-5-r"></i><span class="hidden-xs">목록</span>
-                            </a>
-                            <button class="btn btn-default" type="button" data-toggle="layout" data-action="side_overlay_toggle">
-                                <i class="fa fa-shopping-cart push-5-r"></i> <span class="hidden-xs">관심경매</span>
-                            </button>
-                        </div>
-                    </div>
-                </section>
-            </div>
-            <!-- END e-Commerce Header -->
+
+            <% include ../config/nav0.ejs %>
 
             <!-- Hero Content -->
             <div class="bg-image" style="background-image: url('img/various/ecom_product6.png');">
