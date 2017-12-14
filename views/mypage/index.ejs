@@ -52,7 +52,7 @@
             <!-- END User Header -->
 
             <!-- Main Content -->
-            <form action="base_pages_profile_edit.html" method="post" onsubmit="return false;">
+            <form name="mypage_fm">
                 <div class="block">
                     <ul class="nav nav-tabs nav-justified push-20" data-toggle="tabs">
                         <li class="active">
@@ -98,7 +98,6 @@
                             </div>
                         </div>
                         <!-- END Personal Tab -->
-
                         <!-- Password Tab -->
                         <div class="tab-pane fade" id="tab-profile-password">
                             <div class="row items-push">
@@ -106,48 +105,47 @@
                                     <div class="form-group">
                                         <div class="col-xs-12">
                                             <label for="profile-password">현재 비밀번호</label>
-                                            <input class="form-control input-lg" type="password" id="profile-password" name="profile-password">
+                                            <input class="form-control input-lg" type="password" id="profile-password" name="profile-password" placeholder="현재 비밀번호">
                                         </div>
                                     </div>
                                     <hr>
                                     <div class="form-group">
                                         <div class="col-xs-12">
-                                            <label for="profile-password-new">새로운 비밀번호</label>
-                                            <input class="form-control input-lg" type="password" id="profile-password-new" name="profile-password-new">
+                                            <label for="profile-password-new">새 비밀번호</label>
+                                            <input class="form-control input-lg" type="password" id="profile-password-new" name="profile-password-new" placeholder="새 비밀번호 8~16자리">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-xs-12">
-                                            <label for="profile-password-new-confirm">새로운 비밀번호 확인</label>
-                                            <input class="form-control input-lg" type="password" id="profile-password-new-confirm" name="profile-password-new-confirm">
+                                            <label for="profile-password-new-confirm">새 비밀번호 확인</label>
+                                            <input class="form-control input-lg" type="password" id="profile-password-new-confirm" name="profile-password-new-confirm" placeholder="새 비밀번호 8~16자리">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- END Password Tab -->
-
-                        <!-- Privacy Tab -->
+                        <!-- account Tab -->
                         <div class="tab-pane fade" id="tab-profile-account">
                             <div class="row items-push">
                                 <div class="col-sm-6 col-sm-offset-3 form-horizontal">
                                     <div class="form-group">
                                         <div class="col-xs-12">
                                             <label for="account-bank">은행명</label>
-                                            <input class="form-control input-lg" type="text" maxlength="20" id="account-bank" name="account-bank">
+                                            <input class="form-control input-lg" type="text" maxlength="20" id="account-bank" name="account-bank" placeholder="ex) xx은행">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-xs-12">
                                             <label for="account-number">계좌번호</label>
                                             <input class="form-control input-lg" type="text" id="account-number" name="account-number" maxlength="25"
-                                            onKeyPress="if ((event.keyCode<45)||(event.keyCode>57)||(event.keyCode==47)) event.returnValue=false;">
+                                            onKeyPress="if ((event.keyCode<45)||(event.keyCode>57)||(event.keyCode==47)) event.returnValue=false;" placeholder="ex) xxx-xxxx-xxxxx">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-xs-12">
                                             <label for="account-holder">예금주</label>
-                                            <input class="form-control input-lg" type="text" maxlength="10" id="account-holder" name="account-holder">
+                                            <input class="form-control input-lg" type="text" maxlength="10" id="account-holder" name="account-holder" placeholder="ex) 홍길동">
                                         </div>
                                     </div>
                                 </div>
