@@ -11,6 +11,11 @@ router.get('/', function(req, res) {
                 queryStr = "SELECT * FROM auction WHERE a_status='0' ORDER BY a_deadline ASC";
                 connection.query(queryStr, function(err, auctions) {
                     if(err) callback(err);
+                    auctions.forEach(function(element, index) {
+                        // 마감시간이 지나면
+                        if(element.a_deadline.getTime() < Date.now())
+                            changeStatus(element.aid);  // 경매 상태 변경
+                    });
                     callback(null, auctions);
                 });
             },
@@ -27,7 +32,7 @@ router.get('/', function(req, res) {
             if(err) console.log(err);
             var times = [];
             results[0].forEach(function(element, index) {
-                times[index] = getTime(element.a_deadline);
+                times[index] = getTime(element.a_deadline); // 남은 시간들을 구한다
             });
             // 경매 목록 페이지 랜더링
             res.render('auction/products', {
@@ -39,15 +44,27 @@ router.get('/', function(req, res) {
         });
     });
 });
-router.use('/', require('./detail'));
 router.use('/post', require('./post'));
 router.use('/put', require('./put'));
 router.use('/pay', require('./pay'));
 router.use('/bid', require('./bid'));
+router.use('/', require('./detail'));
 
+// 마감까지 남은 시간을 구함
 var getTime = function(deadline) {
     var time = deadline.getTime() - Date.now(); // 마감시간에서 현재시간을 뺀다
     return (time > 0) ? time : 0; // 시:분:초 형식을 반환한다
 }
 
+// 마감시간이 지난 경매의 상태를 변경
+var changeStatus = function(aid) {
+    pool.getConnection(function(err, connection) {
+        // 경매 상태를 마감으로 바꾼다
+        query = "UPDATE auction SET a_status='1' WHERE aid=?";
+        connection.query(query, aid, function(err, rows) {
+            if(err) console.log(err);
+            connection.release();
+        });
+    });
+}
 module.exports = router;
