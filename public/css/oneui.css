@@ -5093,7 +5093,8 @@ a.list-group-item:focus {
 }
 #header-navbar {
   min-height: 60px;
-  background-color: #fff;
+  /*edit*/
+  /*background-color: #7fc7d7;*/
 }
 #header-navbar:before,
 #header-navbar:after {
@@ -5508,7 +5509,8 @@ a.list-group-item:focus {
   margin-bottom: 39px;
 }
 .content-mini.content-mini-full {
-  padding-bottom: 13px;
+  /*edit*/
+  /*padding-bottom: 13px;*/
 }
 .content-mini.content-mini-full .pull-b {
   margin-bottom: -13px;
@@ -5543,7 +5545,8 @@ a.list-group-item:focus {
     margin-bottom: 39px;
   }
   .content-mini.content-mini-full {
-    padding-bottom: 13px;
+    /*edit*/
+    /*padding-bottom: 13px;*/
   }
   .content-mini.content-mini-full .pull-b {
     margin-bottom: -13px;

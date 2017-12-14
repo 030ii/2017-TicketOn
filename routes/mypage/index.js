@@ -4,8 +4,8 @@ var pool = require('../../config.js').pool;
 
 router.get('/', function(req, res, next){
     pool.getConnection(function (err, connection) {
-        var query = "SELECT * FROM user";
-        connection.query(query, function (err, rows) {
+        var query = "SELECT * FROM user WHERE uid=?";
+        connection.query(query, req.session.uid, function (err, rows) {
             if (err) console.error("err : " + err);
             console.log("rows : " + JSON.stringify(rows));
             res.render('mypage/index', {

@@ -1,12 +1,15 @@
 <!DOCTYPE html>
+<!--[if IE 9]>         <html class="ie9 no-focus" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-focus" lang="en"> <!--<![endif]-->
 <head>
   <% include ../config/header0.ejs %>
 </head>
 <body>
-    <div id="page-container" class="header-navbar-fixed header-navbar-transparent">
+    <div id="page-container" class="header-navbar-fixed">
+        <% include ../config/nav0.ejs %>
+
         <!-- Main Container -->
         <main id="main-container">
-            <% include ../config/nav0.ejs %>
             <!-- Side Content and Products -->
             <div class="a-bg-gray">
                 <section class="content content-boxed">

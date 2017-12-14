@@ -1,39 +1,37 @@
-<!-- e-Commerce Header -->
-<div class="a-bg-primary">
-    <section class="content content-mini content-boxed">
-        <div class="row items-push">
-            <div class="a-logo col-xs-2 col-sm-3">
-                <a href="/auction">
-                    <img src="img/logo.png">
-                    <img src="img/logo_text.png" class="hidden-xs">
-                </a>
-            </div>
-            <div class="col-xs-5 col-sm-4">
-                <form action="#" method="post">
-                    <div class="input-group">
-                        <input type="text" id="ecom-search" name="ecom-search" class="form-control" placeholder="검색..">
-                        <div class="input-group-btn">
-                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="a-nav-menu col-xs-5 col-sm-5 text-right">
-                <!-- Layout API, functionality initialized in App() -> uiLayoutApi() -->
-                <a href="/mypage">
-                    <i class="fa fa-user-circle-o hidden-sm hidden-md hidden-lg"></i>
-                    <span class="hidden-xs">마이페이지</span>
-                </a>
-                <a href="/auction/post">
-                    <i class="fa fa-pencil hidden-sm hidden-md hidden-lg"></i>
-                    <span class="hidden-xs">경매등록</span>
-                </a>
-                <a href="/logout">
-                    <i class="fa fa-sign-out hidden-sm hidden-md hidden-lg"></i>
-                    <span class="hidden-xs">로그아웃</span>
-                </a>
-            </div>
+<!-- Header -->
+<header id="header-navbar" class="content-mini content-mini-full a-bg-primary">
+    <div class=" items-push">
+        <div class="a-logo col-xs-2 col-sm-3">
+            <a href="/auction">
+                <img src="img/logo.png">
+                <img src="img/logo_text.png" class="hidden-xs">
+            </a>
         </div>
-    </section>
-</div>
-<!-- END e-Commerce Header -->
+        <div class="col-xs-5 col-sm-4">
+            <form action="#" method="post">
+                <div class="input-group">
+                    <input type="text" id="ecom-search" name="ecom-search" class="form-control" placeholder="검색..">
+                    <div class="input-group-btn">
+                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="a-nav-menu col-xs-5 col-sm-5 text-right">
+            <!-- Layout API, functionality initialized in App() -> uiLayoutApi() -->
+            <a href="/mypage">
+                <i class="fa fa-user-circle-o hidden-sm hidden-md hidden-lg"></i>
+                <span class="hidden-xs">마이페이지</span>
+            </a>
+            <a href="/auction/post">
+                <i class="fa fa-pencil hidden-sm hidden-md hidden-lg"></i>
+                <span class="hidden-xs">경매등록</span>
+            </a>
+            <a href="/logout">
+                <i class="fa fa-sign-out hidden-sm hidden-md hidden-lg"></i>
+                <span class="hidden-xs">로그아웃</span>
+            </a>
+        </div>
+    </div>
+</header>
+<!-- END Header —>
