@@ -19,15 +19,9 @@ router.post('/', function(req, res, next) {
                       req.session.uid = rows[0].uid;
                       req.session.id = rows[0].u_id;
                       req.session.name = rows[0].u_name;
-<<<<<<< HEAD
                       res.send(true);
                 } else {  // 비밀번호가 다르면
                     res.send(false);
-=======
-                      res.redirect('/auction'); // 메인페이지로 이동
-                }else {
-                      res.redirect('/login/fail2');
->>>>>>> 9b3fb1a2e63035f27bef5df9de6492a3b904109b
                 }
             } else {  // 아이디가 없으면
                 res.send(false);
