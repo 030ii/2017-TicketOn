@@ -17,8 +17,9 @@
     color: white;
     magin-left: 10px; }
     .a-nav-menu a i {
-      font-size: 1.5em;
-      margin-left: 10px; }
+      font-size: 1.5em; }
+    .a-nav-menu a .a-nav-post {
+      margin: 0 10px; }
     .a-nav-menu a span {
       margin-left: 20px; }
 
