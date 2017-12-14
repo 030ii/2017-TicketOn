@@ -19,8 +19,8 @@ router.get('/:aid', function(req, res, next) {
             function(callback) {
                 // 해당 경매에 대한 입찰정보를 내림차순으로 조회
                 queryStr = 'SELECT * FROM bid AS B JOIN user AS U WHERE U.uid IN (' +
-                          'SELECT uid FROM bid WHERE aid=?) AND B.aid=? ORDER BY B.b_price DESC';
-                connection.query(queryStr, [req.params.aid, req.params.aid], function(err, rows) {
+                          'SELECT uid FROM bid WHERE B.uid = uid) AND B.aid=? ORDER BY B.b_price DESC';
+                connection.query(queryStr, req.params.aid, function(err, rows) {
                     if(err) callback(err);
                     callback(null, rows);
                 });
@@ -35,6 +35,36 @@ router.get('/:aid', function(req, res, next) {
                 bid: results[1],  // 입찰 정보
                 session: req.session
             });
+            connection.release();
+        });
+    });
+});
+// 마감시간이 지난 경매 상태 변경
+router.put('/close', function(req,res) {
+    var body = req.body;
+    pool.getConnection(function(err, connection) {
+        async.series([
+            function(callback) {
+                // 해당 경매에 대한 최종 입찰 정보 조회
+                queryStr = 'SELECT * FROM bid AS B JOIN user AS U WHERE U.uid IN (' +
+                          'SELECT uid FROM bid WHERE uid = B.uid) AND B.aid=? ORDER BY B.b_price DESC limit 1';
+                connection.query(queryStr, body.aid, function(err, rows) {
+                    if(err) callback(err);
+                    callback(null, rows[0]);
+                });
+            },
+            function(callback) {
+                // 경매 상태 마감으로 변경
+                queryStr = 'UPDATE auction SET a_status="1" WHERE aid=?';
+                connection.query(queryStr, body.aid, function(err, rows) {
+                    if(err) callback(err);
+                    callback(null, rows);
+                });
+            }
+        ], function(err, results) {
+            if(err) console.log(err);
+            console.log(results[0]);
+            res.send(results[0]); // 낙찰자 정보 전달
             connection.release();
         });
     });

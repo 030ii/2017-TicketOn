@@ -58,8 +58,8 @@
                                             <div align="right">
                                               <% if(session.uid != auction.uid && auction.a_status == '0') { %>
                                                 <form name="bid">
-                                                     <input type="number" name="price" step="10" min="<%= ((bid[0]) ? bid[0].b_price : auction.a_min_price)+10 %>"
-                                                     value="<%= ((bid[0]) ? bid[0].b_price : auction.a_min_price)+10 %>">
+                                                     <input type="number" name="price" step="10" min="<%= (bid[0]) ? bid[0].b_price + 10 : auction.a_min_price %>"
+                                                     value="<%= (bid[0]) ? bid[0].b_price + 10 : auction.a_min_price %>">
                                                      <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> 입찰</button>
                                                 </form>
                                               <% } %>
@@ -81,7 +81,15 @@
                                                         <div class="push-10">
                                                             판매자 <a class="font-w600" href="javascript:void(0)"><%= auction.u_name %></a>
                                                         </div>
-                                                        <p>등록시간 <small><%= String(auction.a_start).substr(0, 24) %></small></p>
+                                                        <p>등록시간 <small><%
+                                                           var aTime = auction.a_start;
+                                                           var date = aTime.getFullYear() + "년 "
+                                                            + (aTime.getMonth() + 1) + "월 "
+                                                            + aTime.getDate() + "일 "
+                                                            + aTime.getHours() + "시 "
+                                                            + aTime.getMinutes() + "분 "
+                                                            + aTime.getSeconds() +"초";
+                                                            %><%= date %></small></p>
                                                         <div>
                                                             <a class="btn btn-sm btn-default" href="javascript:void(0)"><i class="fa fa-plus push-5-r"></i> 관심등록</a>
                                                             <% if(session.uid == auction.uid) { %>
@@ -116,8 +124,19 @@
                                                                 <% for(var i = 0; i < bid.length; i++) { %>
                                                                 <tr>
                                                                     <td style="width: 20%;"><%= bid[i].u_name %></td>
-                                                                    <td><i class="fa fa-check text-success"><%= bid[i].b_price %>원 입찰</i></td>
-                                                                    <td><small><%= String(bid[i].b_time).substr(0, 24) %></small></td>
+                                                                    <td><i class="fa fa-check text-success"> <%= bid[i].b_price %>원 입찰</i></td>
+                                                                    <td>
+                                                                      <%
+                                                                       var bTime = bid[i].b_time;
+                                                                       var date = bTime.getFullYear() + "년 "
+                                                                        + (bTime.getMonth() + 1) + "월 "
+                                                                        + bTime.getDate() + "일 "
+                                                                        + bTime.getHours() + "시 "
+                                                                        + bTime.getMinutes() + "분 "
+                                                                        + bTime.getSeconds() +"초";
+                                                                        %><%= date
+                                                                      %>
+                                                                      </td>
                                                                 </tr>
                                                                 <% } %>
                                                             </tbody>

@@ -35,9 +35,25 @@
                 sec = '00';
                 $(".timer").siblings().text('경매가 마감되었습니다!');
                 clearInterval(timer);
+                $.post('/auction/close?_method=PUT', {aid: <%= auction.aid %>}, function(data) {
+                    swal({
+                      title: '경매 마감',
+                      text: '낙찰자: ' + data.u_name + ' / 낙찰가: ' + data.b_price + '원',
+                      imageUrl: 'https://picsum.photos/400/200/?random',
+                      imageWidth: 400,
+                      imageHeight: 200,
+                      imageAlt: 'Custom image',
+                      animation: false,
+                      allowOutsideClick: false,
+                      allowEscapeKey: false
+                    }).then(function() {
+                        location.href = '/auction';
+                    });
+                });
             }
             if(hour == '00' && Number(min) < 5) {
-                $(".timer").eq(<%=i%>).css('color', 'red');
+                $(".timer").css('color', 'red');
+                $(".timer").siblings().text('마감시간이 임박했습니다!');
             }
             $(".timer").text(hour + ':' + min + ":" + sec);
         }, 1000);
