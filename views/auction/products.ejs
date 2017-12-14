@@ -6,9 +6,7 @@
     <div id="page-container" class="header-navbar-fixed header-navbar-transparent">
         <!-- Main Container -->
         <main id="main-container">
-
             <% include ../config/nav0.ejs %>
-
             <!-- Side Content and Products -->
             <div class="a-bg-gray">
                 <section class="content content-boxed">
@@ -55,7 +53,6 @@
                                     </div>
                                 </div>
                                 <!-- END Categories -->
-
                                 <!-- Best Authors -->
                                 <div class="block">
                                     <a class="block block-link-hover3 block-transparent remove-margin-b" href="javascript:void(0)">
@@ -96,13 +93,10 @@
                                     <option value="72">72</option>
                                 </select>
                                 <select id="ecom-results-sort" name="ecom-results-sort" class="form-control push" size="1">
-                                    <option value="0" disabled selected>분류</option>
                                     <option value="1">남은시간 순(오름차순)</option>
                                     <option value="2">남은시간 순(내림차순)</option>
                                     <option value="3">입찰가 순 (오름차순)</option>
                                     <option value="4">입찰가 순 (내림차순)</option>
-                                    <option value="5">제목 순(오름차순)</option>
-                                    <option value="6">제목 순(내림차순)</option>
                                 </select>
                             </div>
                             <!-- END Sort and Show Filters -->
@@ -116,7 +110,7 @@
                                             <div class="img-options">
                                                 <div class="img-options-content">
                                                     <div class="push-20">
-                                                        <a class="btn btn-sm btn-default" href="/auction/detail/<%= auction[i].aid %>">자세히</a>
+                                                        <a class="btn btn-sm btn-default" href="/auction/<%= auction[i].aid %>">자세히</a>
                                                         <a class="btn btn-sm btn-default" href="javascript:void(0)">
                                                             <i class="fa fa-plus"></i> 관심등록
                                                         </a>
@@ -147,7 +141,7 @@
                                                   <%= price %>원
                                                 </div>
                                                 <p>[<%= auction[i].a_category %>]</p>
-                                                <a class="h4" style="height:2vh;overflow:hidden" href="/auction/detail/<%= auction[i].aid %>"><%= auction[i].a_title %></a>
+                                                <a class="h4" style="height:2vh;overflow:hidden" href="/auction/<%= auction[i].aid %>"><%= auction[i].a_title %></a>
                                             </div>
                                             <p class="text-muted" style="height:3vh;overflow:hidden"><%= auction[i].a_content %></p>
                                             <span>마감시간</span><h3 class="timer">00:00:00</h3>

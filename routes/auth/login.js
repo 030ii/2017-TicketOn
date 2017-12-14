@@ -3,10 +3,6 @@ var router = express.Router();
 var pool = require('../../config.js').pool;
 var decrypt = require('../../config.js').decrypt;
 
-router.get('/', function(req, res, next) {
-    res.render('auth/login');
-});
-
 router.post('/', function(req, res, next) {
     var body = req.body;
     // 입력한 이메일의 사용자정보 조회

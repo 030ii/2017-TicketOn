@@ -5,10 +5,6 @@ var decrypt = require('../../config.js').decrypt;
 var encrypt = require('../../config.js').encrypt;
 var async = require('async');
 
-router.get('/', function(req, res, next) {
-    res.render('auth/register');
-});
-
 router.post('/', function(req, res, next){
     var body = req.body;
     pool.getConnection(function(err, connection) {

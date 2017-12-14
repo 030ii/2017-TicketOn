@@ -26,10 +26,9 @@ router.post('/', function(req, res, next) {
                     callback(null, false);
                 }
             }
-        ], function(err, results) {
+        ], function(err, result) {
             if(err) console.log(err);
-            console.log(results);
-            res.send(results);
+            res.send(result);
             connection.release();
         });
     });

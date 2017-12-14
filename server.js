@@ -32,13 +32,7 @@ app.use('/:a/:b', express.static(path.join(__dirname, 'public')));
 app.use('/:a/:b/:c', express.static(path.join(__dirname, 'public')));
 
 app.use('/', require('./routes/index'));
-// 로그인 상태가 아니면 메인으로 이동wo
-app.get('/:a', function(req, res, next) {
-    if(req.session.name)
-        next();
-    else
-        res.redirect('/');
-});
+
 app.use('/mypage', require('./routes/mypage/index'));
 app.use('/admin', require('./routes/admin/index'));
 app.use('/auction', require('./routes/auction/index'));

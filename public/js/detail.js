@@ -32,6 +32,7 @@ jQuery(function () {
     }, 1000);
 
     $("form[name=bid] button[type=submit]").on('click', function(e) {
+        console.log('start');
         e.preventDefault();
         swal({
             title: $(this).siblings().val() + '원',
@@ -42,10 +43,29 @@ jQuery(function () {
             cancelButtonColor: '#aaa',
             confirmButtonText: '네',
             cancelButtonText: '아니요'
-        }).then(function () {
-            $.post('/auction/bid', {aid:<%= auction.aid %>, uid:<%= session.uid %>, price:$(this).siblings().val()}, function(data) {
-                location.reload();
-            });
+        }).then(function (result) {
+            if (result.value) {
+                var aid = <%= auction.aid %>;
+                var uid = <%= session.uid %>;
+                var price = $(this).siblings().val();
+                console.log('results: ', aid, uid, price);
+                $.post('/auction/bid', {aid: aid, uid: uid, price: price}, function(data) {
+                    if(data) {
+                      console.log('true: ', data);
+                    } else {
+                        console.log('false: ', data);
+                        swal({
+                          title: '입찰가 오류',
+                          html: $('<div>')
+                            .addClass('some-class')
+                            .text('현재 입찰가보다 낮은 금액입니다!'),
+                          animation: false,
+                          customClass: 'animated tada'
+                        });
+                    }
+                });
+            }
         });
+        console.log('end');
     });
 });

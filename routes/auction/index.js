@@ -39,45 +39,9 @@ router.get('/', function(req, res) {
         });
     });
 });
-// 새로고침, ajax로 호출
-router.get('/refresh', function(req, res) {
-    pool.getConnection(function(err, connection) {
-        async.series([
-            function(callback) {
-                // 마감시간 순으로 모든 경매 정보 조회
-                queryStr = 'SELECT * auction ORDER BY a_deadline ASC';
-                connection.query(queryStr, function(err, rows) {
-                    if(err) callback(err);
-                    callback(null, rows);
-                });
-            },
-            function(callback) {
-                // 입찰시간 순으로 경매번호 및 입찰가 조회
-                queryStr = 'SELECT * FROM bid ORDER BY b_time DESC';
-                connection.query(queryStr, function(err, rows) {
-                    if(err) callback(err);
-                    callback(null, rows);
-                });
-            }
-        ], function(err, results) {
-            if(err) console.log(err);
-            var times = [];
-            results[0].forEach(function(element, index) {
-                times[index] = getTime(element.a_deadline);
-            });
-            res.send({
-                auction: results[0],  // 경매 정보
-                time: times,  // 남은 시간
-                bid: results[1] // 입찰 정보
-            });
-            connection.release();
-        });
-    });
-});
-
+router.use('/', require('./detail'));
 router.use('/post', require('./post'));
 router.use('/put', require('./put'));
-router.use('/detail', require('./detail'));
 router.use('/pay', require('./pay'));
 router.use('/bid', require('./bid'));
 
