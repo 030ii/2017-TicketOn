@@ -22,17 +22,15 @@ $(document).ready(function() {
             $.post('/login', {id: id.val(), password: password.val()}, function(data) {
                 if(data) {
                     swal({
-                      title: '로그인 성공',
-                      text: '페이지를 불러오는 중 입니다.',
-                      timer: 2000,
-                      allowOutsideClick: false,
-                      onOpen: () => {
-                        swal.showLoading();
-                      },
-                      onClose: () => {
-                        location.href = "/auction";
-                      }
+                      position: 'center',
+                      type: 'success',
+                      title: '환영합니다!',
+                      showConfirmButton: false,
+                      timer: 1500
                     });
+                    setTimeout(function() {
+                        location.href = "/auction";
+                    }, 1500);
                 } else {
                     swal(
                       '로그인 실패',

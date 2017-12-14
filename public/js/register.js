@@ -4,6 +4,7 @@ $(document).ready(function() {
     var password = $("form[name=register_fm]").find("input[name=password]");
     var passwordCh = $("form[name=register_fm]").find("input[name=passwordCh]");
     var tel = $("form[name=register_fm]").find("input[name=tel]");
+    var check = $("form[name=register_fm]").find("input[name=check]");
     var inputs = [name, id, password, passwordCh, tel];
 
     $("#registerModal button[type=submit]").on('click', function(e) {
@@ -38,6 +39,13 @@ $(document).ready(function() {
             swal(
               '비밀번호 오류',
               '비밀번호가 서로 다르네요!',
+              'error'
+            );
+        } else if(!check.prop('checked')) {
+            check.focus();
+            swal(
+              '이용약관 오류',
+              '이용약관에 동의해주세요!',
               'error'
             );
         } else {

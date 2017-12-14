@@ -3,6 +3,8 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+    if(req.session.name)  // 로그인 상태이면
+        res.redirect('/auction');
     res.render('index', {
         session: req.session
     });
