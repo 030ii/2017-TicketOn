@@ -7,16 +7,16 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-        <form method="post" action="/login" name="login_fm">
+        <form name="login_fm">
           <div class="form-group">
-            <label class="sr-only" for="log-email">아이디</label>
-            <input type="email" class="form-control" id="log-email" name="id" placeholder="아이디(이메일)">
+            <label for="id">아이디</label>
+            <input type="email" class="form-control" name="id" placeholder="아이디(이메일)">
           </div>
           <div class="form-group">
-            <label class="sr-only" for="log-password">비밀번호</label>
-            <input type="password" class="form-control" id="log-password" name="password" placeholder="비밀번호">
+            <label for="password">비밀번호</label>
+            <input type="password" class="form-control" name="password" placeholder="비밀번호">
           </div>
-          <button type="submit" class="btn btn-primary form-control">로그인</button>
+          <input type="submit" class="btn btn-primary form-control" value="로그인">
         </form>
         <div class="info-user">
           <div class="auto-login">
@@ -38,3 +38,4 @@
     </div>
   </div>
 </div>
+<script src="js/login.js"></script>

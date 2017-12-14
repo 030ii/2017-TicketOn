@@ -7,49 +7,28 @@ router.get('/', function(req, res, next) {
     res.render('auth/login');
 });
 
-var admin = 'admin@naver.com';
 router.post('/', function(req, res, next) {
     var body = req.body;
-
+    // 입력한 이메일의 사용자정보 조회
     var query = "SELECT * FROM user WHERE u_id=?";
     pool.getConnection(function(err, connection) {
         connection.query(query, body.id, function(err, rows) {
             if(err) console.log("err: ", err);
-            else if(rows[0]) {
-              if(admin == rows[0].u_id){
-                console.log('admin password ' + decrypt(rows[0].u_password));
-                console.log('admin password ' + body.password);
-                if(body.password == decrypt(rows[0].u_password)){
-                      req.session.id = rows[0].u_id;
-                      res.redirect('/admin');
-                }else {
-                      res.redirect('/login/fail2');
-                }
-              } else{
-                console.log('user password ' + decrypt(rows[0].u_password));
-                if(body.password == decrypt(rows[0].u_password)){
+            else if(rows[0]) {  // 이메일이 일치하는 사용자정보가 존재하면
+                if(body.password == decrypt(rows[0].u_password)) {  // 비밀번호가 일치하면
                       req.session.uid = rows[0].uid;
                       req.session.id = rows[0].u_id;
                       req.session.name = rows[0].u_name;
-                      res.redirect('/auction');
-                }else {
-                      res.redirect('/login/fail2');
+                      res.send(true);
+                } else {  // 비밀번호가 다르면
+                    res.send(false);
                 }
-              }
-            }else {
-              res.redirect('/login/fail1');
+            } else {  // 아이디가 없으면
+                res.send(false);
             }
             connection.release();
         });
     });
-});
-
-router.get('/fail1', function(req, res, next) {
-  res.send('<script>alert("아이디가 존재하지 않습니다!");</script>');
-});
-
-router.get('/fail2', function(req, res, next) {
-  res.send('<script>alert("비밀번호가 틀립니다!");</script>');
 });
 
 module.exports = router;
