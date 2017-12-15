@@ -1,12 +1,27 @@
 $(document).ready(function() {
-    <% for(var i = 0; i < bid.length; i++) { %>
-        $("#<%= bid[i].aid %>").find("span").eq(1).text("<%= bid[i].b_price %>");
-        $("#<%= bid[i].aid %>").find("span").eq(3).text("<%= bid[i].u_name %>");
-    <% } %>
-    <% for(var i = 0; i < bCount.length; i++) { %>
-        $("#<%= bCount[i].aid %>").find("span").eq(2).text("<%= bCount[i].cnt %>");
-    <% } %>
-    $(".deleteAuction").on('click', function(e) {
+    auctions.init();
+});
+var auctions = {
+    init: function () {
+        this.initEvent();
+    },
+    initEvent: function () {
+        var _this = this;
+        this.setSuccessBid();
+        $(document).on('click touchend', '.deleteAuction', this.deleteAuction);
+    },
+    setSuccessBid: function() {
+        <% for(var i = 0; i < bid.length; i++) { %>
+            $("#<%= bid[i].aid %>").find("span").eq(1).text("<%= bid[i].b_price %>");
+            if($("#<%= bid[i].aid %>").next().find("span").text() != "진행") {
+                $("#<%= bid[i].aid %>").find("span").eq(3).text("<%= bid[i].u_name %>");
+            }
+        <% } %>
+        <% for(var i = 0; i < bCount.length; i++) { %>
+            $("#<%= bCount[i].aid %>").find("span").eq(2).text("<%= bCount[i].cnt %>");
+        <% } %>
+    },
+    deleteAuction: function() {
         var aid = $(this).parent().prev().attr('id');
         swal({
           title: '정말 삭제하시겠습니까?',
@@ -30,5 +45,5 @@ $(document).ready(function() {
                 });
             }
         });
-    });
-});
+    }
+};

@@ -3,7 +3,7 @@ var router = express.Router();
 var pool = require('../../config.js').pool;
 var async = require('async');
 
-router.get('/', function(req, res, next){
+router.get('/', function(req, res, next) {
     pool.getConnection(function (err, connection) {
         async.parallel([
             function(callback) {
@@ -47,6 +47,18 @@ router.get('/', function(req, res, next){
                 sucbid: results[3],
                 session: req.session
             });
+            connection.release();
+        });
+    });
+});
+
+router.delete('/', function(req, res) {
+    var body = req.body;
+    pool.getConnection(function (err, connection) {
+        // 사용자 정보 삭제
+        query = "DELETE FROM user WHERE uid=?"
+        connection.query(query, body.uid, function (err) {
+            if(err) console.log(err);
             connection.release();
         });
     });

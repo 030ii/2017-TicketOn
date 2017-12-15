@@ -88,7 +88,7 @@
                     <div class="block block-rounded">
                         <div class="block-content block-content-full">
                             <div class="font-s12 font-w700">오늘의 가입자수</div>
-                            <a class="h2 font-w300 text-primary" href="javascript:void(0)">150</a>
+                            <a class="h2 font-w300 text-primary" href="javascript:void(0)"><%= dCount %></a>
                         </div>
                     </div>
                 </div>
@@ -96,7 +96,7 @@
                     <div class="block block-rounded">
                         <div class="block-content block-content-full">
                             <div class="font-s12 font-w700">이달의 가입자 수</div>
-                            <a class="h2 font-w300 text-primary" href="javascript:void(0)">3600</a>
+                            <a class="h2 font-w300 text-primary" href="javascript:void(0)"><%= mCount %></a>
                         </div>
                     </div>
                 </div>
@@ -104,7 +104,7 @@
                     <div class="block block-rounded">
                         <div class="block-content block-content-full">
                             <div class="font-s12 font-w700">총 회원수</div>
-                            <a class="h2 font-w300 text-primary" href="javascript:void(0)">63000</a>
+                            <a class="h2 font-w300 text-primary" href="javascript:void(0)"><%= user.length %></a>
                         </div>
                     </div>
                 </div>
@@ -132,22 +132,26 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <% for(var i = 0; i < user.length; i++) { %>
+                                  <% var aTime = user[i].u_reg;
+                                     var date = aTime.getFullYear() + "/" + (aTime.getMonth() + 1) + "/" + aTime.getDate();%>
+                                <tr id="<%= user[i].uid %>">
                                     <td class="text-center hidden-xs hidden-sm">
-                                        <img class="img-avatar img-avatar48" src="img/avatars/avatar14.jpg" alt="">
+                                        <img class="img-avatar img-avatar48" src="uploads/<%= user[i].u_img %>" alt="">
                                     </td>
-                                    <td class="font-w600 text-center">이름이름</td>
-                                    <td class="text-center">010-1234-1234</td>
-                                    <td class="text-center hidden-xs">emailemail@email.com</td>
-                                    <td class="text-center hidden-xs hidden-sm">2017/12/12 12:12:12</td>
-                                    <td class="text-center hidden-xs">우리은행 하채영</td>
-                                    <td class="text-center hidden-xs">1002-548046370</td>
+                                    <td class="font-w600 text-center"><%= user[i].u_name %></td>
+                                    <td class="text-center"><%= user[i].u_tel %></td>
+                                    <td class="text-center hidden-xs"><%= user[i].u_id %></td>
+                                    <td class="text-center hidden-xs hidden-sm"><%= date %></td>
+                                    <td class="text-center hidden-xs"><%= user[i].u_bank %>/<%= user[i].u_holder %></td>
+                                    <td class="text-center hidden-xs"><%= user[i].u_account %></td>
                                     <td class="text-center">
-                                        <button class="btn btn-xs btn-default" type="button">
+                                        <button class="deleteUser btn btn-xs btn-default" type="button">
                                             <i class="fa fa-times push-5-r text-danger"></i>추방하기
                                         </button>
                                     </td>
                                 </tr>
+                                <% } %>
                             </tbody>
                         </table>
                     </div>
@@ -162,5 +166,6 @@
 </div>
 <!-- END Page Container -->
 <% include ../config/footer.ejs %>
+<script><% include ../../public/js/admin-users.js %></script>
 </body>
 </html>
