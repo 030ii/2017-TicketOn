@@ -4,15 +4,18 @@ jQuery(function () {
     App.initHelpers(['appear', 'magnific-popup']);
 
 });
-var detail = function() {
-    init: function () {
+var detail = {
+    init: function() {
         this.initEvent();
     },
     initEvent: function () {
         var _this = this;
-        showLoading();
-        showTime();
-        $(document).on('click touchend', 'button[type=submit]', this.doBid(e));
+        this.showLoading();
+        this.showTime();
+        $(document).on('click touchend', 'button[type=submit]', function(e){
+            e.preventDefault();
+            this.doBid();
+        });
     },
     showLoading: function() {
         swal({
@@ -20,7 +23,7 @@ var detail = function() {
           text: '페이지를 불러오는 중 입니다.',
           timer: 800,
           allowOutsideClick: false,
-          onOpen: () => {
+          onOpen: function() {
             swal.showLoading();
           }
         });
@@ -87,8 +90,8 @@ var detail = function() {
             $(".timer").text(hour + ':' + min + ":" + sec);
         }, 1000);
     },
-    doBid: function(e) {
-        e.preventDefault();
+    doBid: function() {
+        // e.preventDefault();
         swal({
             title: $('.ctrl__counter-input').val() + '원',
             text: "정말 입찰하시겠습니까?",

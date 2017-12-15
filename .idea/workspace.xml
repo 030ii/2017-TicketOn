@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a1b9c1f-642a-47f3-b1ef-6a6737d4cc9b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/public/css/auction.css" afterPath="$PROJECT_DIR$/public/css/auction.css" />
-      <change beforePath="$PROJECT_DIR$/public/css/auction.css.map" afterPath="$PROJECT_DIR$/public/css/auction.css.map" />
-      <change beforePath="$PROJECT_DIR$/public/scss/auction.scss" afterPath="$PROJECT_DIR$/public/scss/auction.scss" />
+      <change beforePath="$PROJECT_DIR$/public/js/detail.js" afterPath="$PROJECT_DIR$/public/js/detail.js" />
+      <change beforePath="$PROJECT_DIR$/views/auction/products.ejs" afterPath="$PROJECT_DIR$/views/auction/products.ejs" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,81 +17,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="auction.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/scss/auction.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="837">
-              <caret line="79" column="1" lean-forward="true" selection-start-line="79" selection-start-column="1" selection-end-line="79" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="oneui.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/css/oneui.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="5540" column="35" lean-forward="false" selection-start-line="5540" selection-start-column="35" selection-end-line="5540" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="products.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/auction/products.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="4" column="30" lean-forward="false" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+            <state relative-caret-position="121">
+              <caret line="81" column="147" lean-forward="false" selection-start-line="81" selection-start-column="147" selection-end-line="81" selection-end-column="147" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="auctions.ejs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/admin/auctions.ejs">
+      <file leaf-file-name="detail.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/js/detail.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="75" column="72" lean-forward="false" selection-start-line="75" selection-start-column="67" selection-end-line="75" selection-end-column="72" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="users.ejs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/admin/users.ejs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="668">
-              <caret line="74" column="47" lean-forward="false" selection-start-line="74" selection-start-column="47" selection-end-line="74" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="nav.ejs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/config/nav.ejs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="nav_auctions.ejs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/config/nav_auctions.ejs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-595">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="header.ejs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/config/header.ejs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="20" column="40" lean-forward="false" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="40" />
+            <state relative-caret-position="1786">
+              <caret line="94" column="14" lean-forward="true" selection-start-line="94" selection-start-column="14" selection-end-line="94" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -102,26 +40,39 @@
       <file leaf-file-name="detail.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/auction/detail.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-              <folding>
-                <marker date="1513373080000" expanded="true" signature="645:1277" ph="..." />
-                <marker date="1513373080000" expanded="true" signature="6071:12189" ph="..." />
-                <marker date="1513373080000" expanded="true" signature="6199:7177" ph="..." />
-                <marker date="1513373080000" expanded="true" signature="7237:12101" ph="..." />
-              </folding>
+            <state relative-caret-position="845">
+              <caret line="171" column="7" lean-forward="true" selection-start-line="171" selection-start-column="7" selection-end-line="171" selection-end-column="7" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.ejs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/auction/home.ejs">
+      <file leaf-file-name="detail.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/auction/detail.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="329" column="41" lean-forward="false" selection-start-line="329" selection-start-column="41" selection-end-line="329" selection-end-column="41" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="358">
+              <caret line="34" column="20" lean-forward="false" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="post.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/auction/post.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="post.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/post.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-60">
+              <caret line="10" column="28" lean-forward="true" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -138,8 +89,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>edit</find>
-      <find>edit*/</find>
       <find>nav-he</find>
       <find>bg-primary-li</find>
       <find>경매</find>
@@ -157,7 +106,6 @@
       <find>drop</find>
       <find>warning</find>
       <find>hr</find>
-      <find>관심</find>
       <find>author</find>
       <find>counter</find>
       <find>price</find>
@@ -168,6 +116,9 @@
       <find>img-responsive</find>
       <find>responsive</find>
       <find>style</find>
+      <find>showLo</find>
+      <find>관심</find>
+      <find>doBid</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -221,12 +172,12 @@
         <option value="$PROJECT_DIR$/views/admin/auctions.ejs" />
         <option value="$PROJECT_DIR$/views/config/nav0.ejs" />
         <option value="$PROJECT_DIR$/public/js/post.js" />
-        <option value="$PROJECT_DIR$/public/js/detail.js" />
         <option value="$PROJECT_DIR$/public/js/numberSelector.js" />
         <option value="$PROJECT_DIR$/views/auction/detail.ejs" />
-        <option value="$PROJECT_DIR$/views/auction/products.ejs" />
         <option value="$PROJECT_DIR$/public/scss/auction.scss" />
         <option value="$PROJECT_DIR$/public/css/oneui.css" />
+        <option value="$PROJECT_DIR$/views/auction/products.ejs" />
+        <option value="$PROJECT_DIR$/public/js/detail.js" />
       </list>
     </option>
   </component>
@@ -314,7 +265,24 @@
               <item name="2017-TicketOn" type="b2602c69:ProjectViewProjectNode" />
               <item name="2017-TicketOn" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="2017-TicketOn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="2017-TicketOn" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
               <item name="scss" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="2017-TicketOn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="2017-TicketOn" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="2017-TicketOn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="2017-TicketOn" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+              <item name="auction" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="2017-TicketOn" type="b2602c69:ProjectViewProjectNode" />
@@ -410,12 +378,12 @@
       <workItem from="1513140367946" duration="14760000" />
       <workItem from="1513234330584" duration="13337000" />
       <workItem from="1513253267671" duration="12300000" />
-      <workItem from="1513309515669" duration="48603000" />
+      <workItem from="1513309515669" duration="49444000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111745000" />
+    <option name="totallyTimeSpent" value="112586000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="56" y="67" width="1216" height="733" extended-state="0" />
@@ -545,14 +513,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/auction/detail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="30" column="42" lean-forward="false" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/admin/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -607,14 +567,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="233">
           <caret line="36" column="51" lean-forward="true" selection-start-line="36" selection-start-column="51" selection-end-line="36" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/auction/post.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="23" column="31" lean-forward="true" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -720,22 +672,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/post.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="28" lean-forward="true" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/detail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="100" column="34" lean-forward="false" selection-start-line="100" selection-start-column="34" selection-end-line="100" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/numberSelector.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -802,14 +738,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/auction/products.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="30" lean-forward="false" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/config/header.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
@@ -818,16 +746,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/auction/detail.ejs">
+    <entry file="file://$PROJECT_DIR$/public/css/oneui.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-          <folding>
-            <marker date="1513373080000" expanded="true" signature="645:1277" ph="..." />
-            <marker date="1513373080000" expanded="true" signature="6071:12189" ph="..." />
-            <marker date="1513373080000" expanded="true" signature="6199:7177" ph="..." />
-            <marker date="1513373080000" expanded="true" signature="7237:12101" ph="..." />
-          </folding>
+        <state relative-caret-position="767">
+          <caret line="5540" column="35" lean-forward="false" selection-start-line="5540" selection-start-column="35" selection-end-line="5540" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -839,10 +762,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/oneui.css">
+    <entry file="file://$PROJECT_DIR$/views/auction/products.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="5540" column="35" lean-forward="false" selection-start-line="5540" selection-start-column="35" selection-end-line="5540" selection-end-column="35" />
+        <state relative-caret-position="121">
+          <caret line="81" column="147" lean-forward="false" selection-start-line="81" selection-start-column="147" selection-end-line="81" selection-end-column="147" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/auction/post.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/post.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-60">
+          <caret line="10" column="28" lean-forward="true" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/auction/detail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="34" column="20" lean-forward="false" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/auction/detail.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="845">
+          <caret line="171" column="7" lean-forward="true" selection-start-line="171" selection-start-column="7" selection-end-line="171" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/detail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1786">
+          <caret line="94" column="14" lean-forward="true" selection-start-line="94" selection-start-column="14" selection-end-line="94" selection-end-column="14" />
           <folding />
         </state>
       </provider>
