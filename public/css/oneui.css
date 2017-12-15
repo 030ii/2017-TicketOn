@@ -556,7 +556,9 @@ a.bg-primary-light:focus {
   background-color: #709ed8;
 }
 .bg-primary-lighter {
-  background-color: #ccdcf1;
+  /*edit*/
+  /*background-color: #ccdcf1;*/
+  background-color: #c9e9f0;
 }
 a.bg-primary-lighter:hover,
 a.bg-primary-lighter:focus {
@@ -1485,7 +1487,9 @@ input[type="email"].form-control {
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
   color: #fff;
-  background-color: #5c90d2;
+  /*edit*/
+  /*background-color: #5c90d2;*/
+  background-color: #5db1c3;
 }
 .nav-pills > li.active > a > .badge {
   color: #5c90d2;
@@ -5093,8 +5097,7 @@ a.list-group-item:focus {
 }
 #header-navbar {
   min-height: 60px;
-  /*edit*/
-  /*background-color: #7fc7d7;*/
+  background-color: #ffffff;
 }
 #header-navbar:before,
 #header-navbar:after {
