@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 <!--[if IE 9]>         <html class="ie9 no-focus" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!--> <html class="no-focus" lang="en"> <!--<![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-focus" lang="en"> <![endif]-->
 <head>
     <% include ../config/header.ejs %>
-    <style>
-        .img-responsive {
-            height:35vh;
-        }
-        /* 126줄에  p 태그에 style="height:3vh;overflow:hidden"  */
-    </style>
 </head>
 <body>
     <div id="page-container" class="header-navbar-fixed">
@@ -81,14 +75,11 @@
                                 <div class="auction col-sm-6 col-lg-4">
                                     <div class="block">
                                         <div class="img-container">
-                                            <img class="img-responsive" src="uploads/<%= auction[i].a_img %>" alt="">
+                                            <img class="img-responsive-35" src="uploads/<%= auction[i].a_img %>" alt="">
                                             <div class="img-options">
                                                 <div class="img-options-content">
                                                     <div class="push-20">
-                                                        <a class="btn btn-sm btn-default" href="/auction/<%= auction[i].aid %>">자세히</a>
-                                                        <a class="btn btn-sm btn-default" href="javascript:void(0)">
-                                                            <i class="fa fa-plus"></i> 관심등록
-                                                        </a>
+                                                        <a class="btn btn-sm btn-default" href="/auction/<%= auction[i].aid %>"><i class="fa fa-eye"></i> 자세히 보기</a>
                                                     </div>
                                                     <div class="text-warning">
                                                         <i class="fa fa-star"></i>
@@ -114,7 +105,7 @@
                                                   <%= price %>원
                                                 </div>
                                                 <p>[<%= auction[i].a_category %>]</p>
-                                                <a class="h3" href="/auction/<%= auction[i].aid %>"><%= auction[i].a_title %></a>
+                                                <a class="overflow_contents h3" href="/auction/<%= auction[i].aid %>"><%= auction[i].a_title %></a>
                                             </div>
                                             <span class="overflow_contents text-muted"><%= auction[i].a_content %></span>
                                             <hr>

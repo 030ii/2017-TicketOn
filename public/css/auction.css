@@ -43,4 +43,23 @@
 .inline {
   display: inline; }
 
+.a-text {
+  padding: 16px 10px 12px;
+  font-size: 15px;
+  font-weight: 600; }
+
+.a-btn-primary {
+  border-radius: 5px;
+  height: 46px;
+  color: #fff;
+  background-color: #609096;
+  border-color: #6b8f94; }
+
+.img-responsive-50 {
+  width: 100%; }
+
+.img-responsive-35 {
+  width: 100%;
+  height: 200px; }
+
 /*# sourceMappingURL=auction.css.map */

@@ -5,6 +5,8 @@
         var _this = this;
 
         this.counter = Number(document.querySelector('.ctrl__counter-input').value);
+        this.min = Number(document.querySelector('.ctrl__counter-input').min);
+
         this.els = {
             decrement: document.querySelector('.ctrl__button--decrement'),
             counter: {
@@ -17,7 +19,7 @@
 
         this.decrement = function() {
             var counter = _this.getCounter();
-            var nextCounter = (_this.counter > 1000) ? counter-=100 : counter;
+            var nextCounter = (_this.counter > this.min) ? counter-=100 : counter;
             _this.setCounter(nextCounter);
         };
 

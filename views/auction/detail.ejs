@@ -3,161 +3,161 @@
 <!--[if gt IE 9]><!--> <html class="no-focus" lang="en"> <!--<![endif]-->
 <head>
   <% include ../config/header.ejs %>
-  <style>
-      .img-responsive {
-          height:50vh;
-      }
-  </style>
+    <link rel="stylesheet" href="css/form.css">
 </head>
 <body>
-    <div id="page-container" class="header-navbar-fixed header-navbar-transparent">
+    <div id="page-container" class="header-navbar-fixed">
         <!-- Main Container -->
         <main id="main-container">
             <% include ../config/nav.ejs %>
-            <!-- Hero Content -->
-            <div class="bg-image" style="background-image: url('img/various/ecom_product6.png');">
-                <div class="bg-primary-dark-op">
-                    <section class="content content-full content-boxed overflow-hidden">
-                        <!-- Section Content -->
-                        <div class="push-30-t push-30 text-center">
-                            <h1 class="timer h2 text-white push-10 visibility-hidden" data-toggle="appear" data-class="animated fadeInDown">00:00:00</h1>
-                            <h2 class="h5 text-white-op visibility-hidden" data-toggle="appear" data-class="animated fadeInDown">마감까지 남은 시간 입니다</h2>
-                        </div>
-                        <!-- END Section Content -->
-                    </section>
-                </div>
-            </div>
-            <!-- END Hero Content -->
-            <!-- Side Content and Product -->
-            <div class="bg-gray-lighter">
-                <section class="content content-boxed">
-                    <div class="row">
-                        <div class="col-lg-11">
-                            <!-- Product -->
-                            <div class="block">
+
+            <div class="content content-boxed">
+                <!-- Section -->
+                <div class="bg-image img-rounded overflow-hidden push" style="background-image: url('img/photo29@2x.jpg');">
+                    <div class="bg-black-op">
+                        <div class="content">
+                            <div class="block block-transparent block-themed text-center">
                                 <div class="block-content">
-                                    <div class="row items-push">
-                                        <div class="col-sm-6">
-                                            <!-- Images -->
-                                            <div class="row js-gallery">
-                                                <div class="col-xs-12 push-10">
-                                                    <img class="img-responsive" src="uploads/<%= auction.a_img %>" alt="">
-                                                </div>
-                                            </div>
-                                            <!-- END Images -->
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <!-- Vital Info -->
-                                            <div class="clearfix">
-                                                <div class="pull-right">
-                                                    <span class="h2 font-w700 text-success"><%= (bid[0]) ? bid[0].b_price : auction.a_min_price %>원</span>
-                                                </div>
-                                                <span class="h5">
-                                                    <span class="font-w600 text-success"><%= auction.a_category %></span><br><h2><%= auction.a_title %></h2>
-                                                </span>
-                                            </div>
-                                            <hr>
-                                            <div align="right">
-                                              <% if(session.uid != auction.uid && !session.admin && auction.a_status == '0') { %>
-                                                <form name="bid">
-                                                     <input type="number" name="price" step="10" min="<%= (bid[0]) ? bid[0].b_price + 10 : auction.a_min_price %>"
-                                                     value="<%= (bid[0]) ? bid[0].b_price + 10 : auction.a_min_price %>">
-                                                     <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> 입찰</button>
-                                                </form>
-                                              <% } %>
-                                            </div>
-                                            <hr>
-                                            <div class="">
-                                                <p><%= auction.a_content %></p>
-                                            </div>
-                                            <!-- END Vital Info -->
-                                        </div>
-                                        <div class="col-xs-12">
-                                            <!-- Author -->
-                                            <div class="block block-rounded remove-margin-b">
-                                                <div class="block-content block-content-full bg-gray-lighter clearfix">
-                                                    <div class="pull-right">
-                                                        <img class="img-avatar" src="img/avatars/avatar2.jpg" alt="">
+                                    <h1 class="h1 font-w700 text-white animated fadeInDown push-5">경매 참여</h1>
+                                    <h2 class="h4 font-w400 text-white-op animated fadeInUp">티켓온의 경매들을 조회, 참여할 수 있습니다.</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END Section -->
+                <!-- Side Content and Product -->
+                <div class="a-bg-gray">
+                    <section class="content content-boxed">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <!-- Product -->
+                                        <div class="block">
+                                            <div class="block-content">
+                                                <div class="row js-gallery">
+                                                    <div class="col-xs-12 push-10">
+                                                        <img class="img-responsive-50" src="uploads/<%= auction.a_img %>" alt="">
                                                     </div>
-                                                    <div class="pull-left push-5-t">
-                                                        <div class="push-10">
-                                                            판매자 <a class="font-w600" href="javascript:void(0)"><%= auction.u_name %></a>
+                                                    <div class="col-xs-12 clearfix">
+                                                        <p></p>
+                                                        <span class="font-w600 text-success"><%= auction.a_category %></span>
+                                                        <span class="pull-right font-w700 text-warning">시작가 <%= auction.a_min_price %>원</span>
+                                                        <h2><%= auction.a_title %></h2>
+                                                        <hr>
+                                                        <div><%= auction.a_content %></div>
+                                                        <p></p>
+                                                        <!-- Author -->
+                                                        <div class="block block-rounded ">
+                                                            <div class="block-content block-content-full bg-gray-lighter clearfix">
+                                                                <div class="pull-right">
+                                                                    <img class="img-avatar" src="img/avatars/avatar2.jpg" alt="">
+                                                                </div>
+                                                                <div class="pull-left push-5-t">
+                                                                    <div class="push-10">
+                                                                        판매자 <a class="font-w600" href="javascript:void(0)"><%= auction.u_name %></a>
+                                                                    </div>
+                                                                    <p>등록시간 <small><%
+                                                                            var aTime = auction.a_start;
+                                                                            var date = aTime.getFullYear() + "년 "
+                                                                                    + (aTime.getMonth() + 1) + "월 "
+                                                                                    + aTime.getDate() + "일 "
+                                                                                    + aTime.getHours() + "시 "
+                                                                                    + aTime.getMinutes() + "분 "
+                                                                                    + aTime.getSeconds() +"초";
+                                                                            %><%= date %></small></p>
+                                                                    <div>
+                                                                        <% if(session.uid == auction.uid) { %>
+                                                                        <a class="btn btn-sm btn-default" href="/auction/put/<%= auction.aid %>"><i class="fa fa-pencil push-5-r"></i> 수정</a>
+                                                                        <% } %>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <p>등록시간 <small><%
-                                                           var aTime = auction.a_start;
-                                                           var date = aTime.getFullYear() + "년 "
-                                                            + (aTime.getMonth() + 1) + "월 "
-                                                            + aTime.getDate() + "일 "
-                                                            + aTime.getHours() + "시 "
-                                                            + aTime.getMinutes() + "분 "
-                                                            + aTime.getSeconds() +"초";
-                                                            %><%= date %></small></p>
-                                                        <div>
-                                                            <a class="btn btn-sm btn-default" href="javascript:void(0)"><i class="fa fa-plus push-5-r"></i> 관심등록</a>
-                                                            <% if(session.uid == auction.uid) { %>
-                                                            <a class="btn btn-sm btn-default" href="/auction/put/<%= auction.aid %>"><i class="fa fa-pencil push-5-r"></i> 수정</a>
+                                                        <!-- END Author -->
+                                                    </div>
+                                                    <p></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <a class="block block-rounded block-link-hover3 text-center" href="javascript:void(0)">
+                                            <div class="block-content block-content-full">
+                                                <div class="h1 font-w700">
+                                                    <h1 class="timer h2 push-10 visibility-hidden" data-toggle="appear" data-class="animated fadeInDown">00:00:00</h1>
+                                                    <h2 class="h5 text-muted visibility-hidden" data-toggle="appear" data-class="animated fadeInDown">마감까지 남은 시간 입니다</h2>
+                                                </div>
+                                            </div>
+                                            <div class="block-content block-content-full block-content-mini bg-danger text-white">
+                                                <i class="fa fa-money"></i> &nbsp;현재가 <%= (bid[0]) ? bid[0].b_price : auction.a_min_price %>원
+                                            </div>
+                                        </a>
+                                        <div class="block">
+                                            <div class="block-content">
+                                                <span class="a-text font-w600">입찰하기</span>
+                                                <div class="number-selector">
+                                                    <form name="bid">
+                                                        <p></p>
+                                                        <div class="col-xs-9 ctrl-wrap">
+                                                            <% if(session.uid != auction.uid && !session.admin && auction.a_status == '0') { %>
+                                                                <div class='ctrl'>
+                                                                    <div class='ctrl__button ctrl__button--decrement'>&ndash;</div>
+                                                                    <div class='ctrl__counter'>
+                                                                        <input class='ctrl__counter-input' id="auction-min-price" name="minPrice" maxlength="7" type="number" min="<%= (bid[0]) ? bid[0].b_price + 10 : auction.a_min_price %>"
+                                                                               value="<%= (bid[0]) ? bid[0].b_price + 100 : auction.a_min_price %>">
+                                                                        <div class='ctrl__counter-num'><%= (bid[0]) ? bid[0].b_price + 100 : auction.a_min_price %></div>
+                                                                    </div>
+                                                                    <div class='ctrl__button ctrl__button--increment'>+</div>
+                                                                </div>
                                                             <% } %>
                                                         </div>
-                                                    </div>
+                                                        <button type="submit" class="col-xs-3 a-btn-primary btn">입찰하기</button>
+                                                    </form>
                                                 </div>
                                             </div>
-                                            <!-- END Author -->
-                                        </div>
-                                        <div class="col-xs-12">
-                                            <!-- Extra Info -->
                                             <div class="block">
-                                                <ul class="nav nav-tabs nav-tabs-alt" data-toggle="tabs">
-                                                    <li class="active">
-                                                        <a href="#ecom-product-info">입찰 내역</a>
-                                                    </li>
-                                                </ul>
-                                                <div class="block-content tab-content">
-                                                    <!-- Info -->
-                                                    <div class="tab-pane pull-r-l active" id="ecom-product-info">
-                                                        <table class="table table-striped table-borderless remove-margin-b">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th colspan="1">입찰자</th>
-                                                                    <th colspan="1">입찰가</th>
-                                                                    <th colspan="1">시간</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <% for(var i = 0; i < bid.length; i++) { %>
-                                                                <tr>
-                                                                    <td><%= bid[i].u_name %></td>
-                                                                    <td><i class="fa fa-check text-success"> <%= bid[i].b_price %>원 입찰</i></td>
-                                                                    <td>
-                                                                      <%
-                                                                       var bTime = bid[i].b_time;
-                                                                       var date = bTime.getFullYear() + "년 "
-                                                                        + (bTime.getMonth() + 1) + "월 "
-                                                                        + bTime.getDate() + "일 "
-                                                                        + bTime.getHours() + "시 "
-                                                                        + bTime.getMinutes() + "분 "
-                                                                        + bTime.getSeconds() +"초";
-                                                                        %><%= date
-                                                                      %>
-                                                                      </td>
-                                                                </tr>
-                                                                <% } %>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                    <!-- END Info -->
+                                                <div class="block-content">
+                                                    <table class="table table-striped table-borderless">
+                                                        <thead>
+                                                            <tr>
+                                                                <th colspan="3">입찰 내역 (최근 입찰 순)</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <% for(var i = 0; i < bid.length; i++) { %>
+                                                            <tr>
+                                                                <td class="text-center" style="width:20%;"><%= bid[i].u_name %></td>
+                                                                <td class="text-center" style="width:35%;"><i class="fa fa-check text-success"> <%= bid[i].b_price %>원</i></td>
+                                                                <td class="text-center" >
+                                                                    <%
+                                                                        var bTime = bid[i].b_time;
+                                                                        var date = bTime.getFullYear() + "년 "
+                                                                                + (bTime.getMonth() + 1) + "월 "
+                                                                                + bTime.getDate() + "일 "
+                                                                                + bTime.getHours() + "시  "
+                                                                                + bTime.getMinutes() + "분 "
+                                                                                + bTime.getSeconds() +"초";
+                                                                    %><%= date
+                                                                    %>
+                                                                </td>
+                                                            </tr>
+                                                            <% } %>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             </div>
-                                            <!-- END Extra Info -->
                                         </div>
+                                        <hr>
                                     </div>
                                 </div>
                             </div>
-                            <!-- END Product -->
                         </div>
-                    </div>
-                </section>
+                    </section>
+                </div>
+                <!-- END Side Content and Product -->
             </div>
-            <!-- END Side Content and Product -->
         </main>
         <!-- END Main Container -->
     </div>
@@ -167,5 +167,7 @@
     <script src="vendor/magnific-popup/magnific-popup.min.js"></script>
     <!-- Page JS Code -->
     <script><% include ../../public/js/detail.js %></script>
+
+    <script src="js/numberSelector.js"></script>
 </body>
 </html>
