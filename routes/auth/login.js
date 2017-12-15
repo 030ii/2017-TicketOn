@@ -13,8 +13,9 @@ router.post('/', function(req, res, next) {
             else if(rows[0]) {  // 이메일이 일치하는 사용자정보가 존재하면
                 if(body.password == decrypt(rows[0].u_password)) {  // 비밀번호가 일치하면
                       req.session.uid = rows[0].uid;
-                      req.session.id = rows[0].u_id;
+                      req.session.email = rows[0].u_id;
                       req.session.name = rows[0].u_name;
+                      req.session.img = rows[0].u_img;
                       res.send(true);
                 } else {  // 비밀번호가 다르면
                     res.send(false);

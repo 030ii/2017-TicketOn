@@ -5,14 +5,13 @@ var async = require('async');
 var moment = require('moment');
 
 router.get('/:aid', function(req, res, next) {
-    console.log(req.params.aid);
     pool.getConnection(function(err, connection) {
         async.series([
             function(callback) {
                 // 해당 경매 정보와 판매자 정보 조회
-                queryStr = 'SELECT * FROM auction AS A JOIN user AS U WHERE U.uid=(' +
+                query = 'SELECT * FROM auction AS A JOIN user AS U WHERE U.uid=(' +
                           'SELECT uid FROM auction WHERE aid=?) AND A.aid=?';
-                connection.query(queryStr, [req.params.aid, req.params.aid], function(err, rows) {
+                connection.query(query, [req.params.aid, req.params.aid], function(err, rows) {
                     if(err) callback(err);
                     console.log('rows: ', rows);
                     callback(null, rows[0]);
@@ -20,9 +19,9 @@ router.get('/:aid', function(req, res, next) {
             },
             function(callback) {
                 // 해당 경매에 대한 입찰정보를 내림차순으로 조회
-                queryStr = 'SELECT * FROM bid AS B JOIN user AS U WHERE U.uid IN (' +
+                query = 'SELECT * FROM bid AS B JOIN user AS U WHERE U.uid IN (' +
                           'SELECT uid FROM bid WHERE B.uid = uid) AND B.aid=? ORDER BY B.b_price DESC';
-                connection.query(queryStr, req.params.aid, function(err, rows) {
+                connection.query(query, req.params.aid, function(err, rows) {
                     if(err) callback(err);
                     callback(null, rows);
                 });
@@ -48,25 +47,33 @@ router.put('/close', function(req,res) {
         async.series([
             function(callback) {
                 // 해당 경매에 대한 최종 입찰 정보 조회
-                queryStr = 'SELECT * FROM bid AS B JOIN user AS U WHERE U.uid IN (' +
-                          'SELECT uid FROM bid WHERE uid = B.uid) AND B.aid=? ORDER BY B.b_price DESC limit 1';
-                connection.query(queryStr, body.aid, function(err, rows) {
+                query = 'SELECT * FROM bid AS B JOIN user AS U WHERE U.uid IN (' +
+                      'SELECT uid FROM bid WHERE uid = B.uid) AND B.aid=? ORDER BY B.b_price DESC limit 1';
+                connection.query(query, body.aid, function(err, rows) {
                     if(err) callback(err);
                     callback(null, rows[0]);
                 });
             },
-            function(callback) {
-                // 경매 상태 마감으로 변경
-                queryStr = 'UPDATE auction SET a_status="1" WHERE aid=?';
-                connection.query(queryStr, body.aid, function(err, rows) {
-                    if(err) callback(err);
-                    callback(null, rows);
-                });
+            function(sucbid, callback) {
+                if(sucbid) {  // 입찰자가 존재하면
+                    // 경매 상태 마감으로 변경
+                    query = 'UPDATE auction SET a_status="1" WHERE aid=?';
+                    connection.query(query, body.aid, function(err, rows) {
+                        if(err) callback(err);
+                        callback(null, sucbid);
+                    });
+                } else {  // 입찰자가 존재하지 않으면
+                    // 경매 상태 완료로 변경
+                    query = 'UPDATE auction SET a_status="2" WHERE aid=?';
+                    connection.query(query, body.aid, function(err, rows) {
+                        if(err) callback(err);
+                        callback(null, false);
+                    });
+                }
             }
-        ], function(err, results) {
+        ], function(err, result) {
             if(err) console.log(err);
-            console.log(results[0]);
-            res.send(results[0]); // 낙찰자 정보 전달
+            res.send(result); // 낙찰자 정보 전달 / 입찰자가 없으면 false
             connection.release();
         });
     });

@@ -28,27 +28,30 @@
                                 <!-- Categories -->
                                 <div class="block">
                                     <div class="block-content">
-                                        <ul class="nav nav-pills nav-stacked push">
+                                        <ul id="category" class="nav nav-pills nav-stacked push">
                                             <li>
-                                                <a href="javascript:void(0)"><span class="badge pull-right">7k</span> 뮤지컬/연극</a>
+                                                <a href="javascript:void(0)"><span class="badge pull-right"><%= (count[7]) %></span>전체</a>
                                             </li>
                                             <li>
-                                                <a href="javascript:void(0)"><span class="badge pull-right">2k</span> 영화</a>
+                                                <a href="javascript:void(0)"><span class="badge pull-right"><%= (count[0]) %></span>뮤지컬/연극</a>
                                             </li>
                                             <li>
-                                                <a href="javascript:void(0)"><span class="badge pull-right">3k</span> 전시/체험</a>
+                                                <a href="javascript:void(0)"><span class="badge pull-right"><%= (count[1]) %></span>영화</a>
                                             </li>
                                             <li>
-                                                <a href="javascript:void(0)"><span class="badge pull-right">18k</span> 콘서트/마술</a>
+                                                <a href="javascript:void(0)"><span class="badge pull-right"><%= (count[2]) %></span>전시/체험</a>
                                             </li>
                                             <li>
-                                                <a href="javascript:void(0)"><span class="badge pull-right">2k</span> 외식/편의점</a>
+                                                <a href="javascript:void(0)"><span class="badge pull-right"><%= (count[3]) %></span>콘서트/마술</a>
                                             </li>
                                             <li>
-                                                <a href="javascript:void(0)"><span class="badge pull-right">12k</span> 놀이동산/컨텐츠</a>
+                                                <a href="javascript:void(0)"><span class="badge pull-right"><%= (count[4]) %></span>외식/편의점</a>
                                             </li>
                                             <li>
-                                                <a href="javascript:void(0)"><span class="badge pull-right">6k</span> 뷰티/생활</a>
+                                                <a href="javascript:void(0)"><span class="badge pull-right"><%= (count[5]) %></span>놀이동산/컨텐츠</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0)"><span class="badge pull-right"><%= (count[6]) %></span>뷰티/생활</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -59,22 +62,11 @@
                                     <a class="block block-link-hover3 block-transparent remove-margin-b" href="javascript:void(0)">
                                         <div class="block-content block-content-full clearfix">
                                             <div class="pull-right">
-                                                <img class="img-avatar" src="assets/img/avatars/avatar2.jpg" alt="">
+                                                <img class="img-avatar" src="uploads/<%= session.img %>" alt="">
                                             </div>
                                             <div class="pull-left push-10-t">
-                                                <div class="font-w600 push-5">Susan Elliott</div>
-                                                <div class="text-muted">50k Sales</div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="block block-link-hover3 block-transparent remove-margin-b" href="javascript:void(0)">
-                                        <div class="block-content block-content-full clearfix">
-                                            <div class="pull-right">
-                                                <img class="img-avatar" src="assets/img/avatars/avatar14.jpg" alt="">
-                                            </div>
-                                            <div class="pull-left push-10-t">
-                                                <div class="font-w600 push-5">Jeremy Fuller</div>
-                                                <div class="text-muted">48k Sales</div>
+                                                <div class="font-w600 push-5"><%= session.name %></div>
+                                                <div class="text-muted"><%= session.email %></div>
                                             </div>
                                         </div>
                                     </a>
@@ -84,27 +76,10 @@
                             <!-- END Side Content -->
                         </div>
                         <div class="col-lg-9">
-                            <!-- Sort and Show Filters -->
-                            <div class="form-inline clearfix">
-                                <select id="ecom-results-show" name="ecom-results-show" class="form-control push pull-right" size="1">
-                                    <option value="0" disabled selected>SHOW</option>
-                                    <option value="9">9</option>
-                                    <option value="18">18</option>
-                                    <option value="36">36</option>
-                                    <option value="72">72</option>
-                                </select>
-                                <select id="ecom-results-sort" name="ecom-results-sort" class="form-control push" size="1">
-                                    <option value="1">남은시간 순(오름차순)</option>
-                                    <option value="2">남은시간 순(내림차순)</option>
-                                    <option value="3">입찰가 순 (오름차순)</option>
-                                    <option value="4">입찰가 순 (내림차순)</option>
-                                </select>
-                            </div>
-                            <!-- END Sort and Show Filters -->
                             <!-- Products -->
                             <div class="row">
                                 <% for(var i = 0; i < auction.length; i++) { %>
-                                <div class="col-sm-6 col-lg-4">
+                                <div class="auction col-sm-6 col-lg-4">
                                     <div class="block">
                                         <div class="img-container">
                                             <img class="img-responsive" style="height:35vh" src="uploads/<%= auction[i].a_img %>" alt="">

@@ -91,7 +91,14 @@
                                     <div class="form-group">
                                         <div class="col-xs-6">
                                             <label for="profile-image">프로필 사진</label>
-                                            <input class="form-control input-lg" type="file" id="profile-image" name="profile-image" placeholder="이미지를 입력하세요..">
+                                            <% if(auction.a_img) { %>
+                                              <img src="uploads/<%= user.u_img %>" id="preview-image">
+                                              <input type="hidden" name="image" value="<%= user.u_img %>">
+                                              <input type="file" id="profile-image" name="image">
+                                            <% } else { %>
+                                              <img src="img/no_image.jpg" id="preview-image">
+                                              <input type="file" id="profile-image" name="image">
+                                            <% } %>
                                         </div>
                                     </div>
                                 </div>
@@ -168,6 +175,6 @@
 <!-- END Page Container -->
 
 <% include ../config/footer0.ejs %>
-<% include ../../public/js/mypage.js %>
+<script><% include ../../public/js/mypage.js %></script>
 </body>
 </html>

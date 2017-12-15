@@ -20,11 +20,8 @@ router.get('/:aid', function(req, res, next) {
 
 router.put('/:aid', upload.single('image'), function(req, res, next) {
     var body = req.body;
-    console.log('body: ', body);
-    console.log('file: ', req.file);
-    var img = ''; // 이미지 파일이름을 저장할 변수
-    img = (req.file) ? req.file.filename : ((body.image) ? body.image : 'no_image.jpg');
-    console.log('img: ', img);
+    // 이미지 파일의 이름 저장 (새로운 이미지 / 기존 이미지 / 이미지없음)
+    var img = (req.file) ? req.file.filename : ((body.image) ? body.image : 'no_image.jpg');
 
     var date = new Date();  // 마감시간을 저장할 객체
     date.setTime(date.getTime() + (Number(body.deadline) * 1000 * 60 * 60)); // 마감시간 계산

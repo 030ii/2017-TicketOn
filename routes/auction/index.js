@@ -8,8 +8,8 @@ router.get('/', function(req, res) {
         async.series([
             function(callback) {
                 // 마감시간 순으로 모든 경매 정보 조회
-                queryStr = "SELECT * FROM auction WHERE a_status='0' ORDER BY a_deadline ASC";
-                connection.query(queryStr, function(err, auctions) {
+                query = "SELECT * FROM auction WHERE a_status='0' ORDER BY a_deadline ASC";
+                connection.query(query, function(err, auctions) {
                     if(err) callback(err);
                     auctions.forEach(function(element, index) {
                         // 마감시간이 지나면
@@ -21,10 +21,26 @@ router.get('/', function(req, res) {
             },
             function(callback) {
                 // 모든 입찰 정보 조회
-                queryStr = 'SELECT * FROM bid ORDER BY b_time DESC';
-                connection.query(queryStr, function(err, bids) {
+                query = 'SELECT * FROM bid ORDER BY b_time DESC';
+                connection.query(query, function(err, bids) {
                     if(err) callback(err);
                     callback(null, bids);
+                });
+            },
+            function(callback) {
+                // 분류별
+                query = 'SELECT a_category, count(*) cnt FROM auction GROUP BY a_category';
+                connection.query(query, function(err, category) {
+                    if(err) callback(err);
+                    var list = ['뮤지컬/연극', '영화', '전시/체험', '콘서트/마술', '외식/편의점', '놀이동산/컨텐츠', '뷰티/생활'];
+                    var count = [0,0,0,0,0,0,0,0];
+                    category.forEach(function(element, index) {
+                        count[list.indexOf(element.a_category)] = Number(element.cnt);
+                    });
+                    for(var i = 0; i < count.length - 1; i++) {
+                        count[7] += count[i];  // 전체 갯수를 구한다
+                    }
+                    callback(null, count);
                 });
             }
         ], function(err, results) {
@@ -39,7 +55,8 @@ router.get('/', function(req, res) {
                 session: req.session,
                 auction: results[0],  // 경매 정보
                 time: times,  // 남은 시간
-                bid: results[1] // 입찰 정보
+                bid: results[1], // 입찰 정보
+                count: results[2]
             });
         });
     });

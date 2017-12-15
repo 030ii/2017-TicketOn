@@ -1,4 +1,4 @@
-jQuery(function () {
+$(document).ready(function () {
     // Init page helpers (Appear plugin)
     App.initHelpers('appear');
 
@@ -11,6 +11,44 @@ jQuery(function () {
         swal.showLoading();
       }
     });
+
+    $("#category li").on('click', function(e) {
+        var category = $(this).index();
+        switch(category) {
+            case 0:
+              showCategory("전체");
+              break;
+            case 1:
+              showCategory("뮤지컬/연극");
+              break;
+            case 2:
+              showCategory("영화");
+              break;
+            case 3:
+              showCategory("전시/체험");
+              break;
+            case 4:
+              showCategory("콘서트/마술");
+              break;
+            case 5:
+              showCategory("외식/편의점");
+              break;
+            case 6:
+              showCategory("놀이동산/컨텐츠");
+              break;
+            case 7:
+              showCategory("뷰티/생활");
+              break;
+        }
+    });
+    function showCategory(category) {
+        if(category == "전체") {
+            $(".auction").css('display', 'block');
+            return;
+        }
+        $(".auction").css('display', 'none');
+        $(".auction p:contains('" + category + "')").parent().parent().parent().parent().css('display', 'block');
+    }
 
     var timers = []
         , times = []
