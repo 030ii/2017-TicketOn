@@ -28,8 +28,8 @@ router.get('/', function(req, res) {
                 });
             },
             function(callback) {
-                // 분류별
-                query = 'SELECT a_category, count(*) cnt FROM auction GROUP BY a_category';
+                // 분류별 경매 수 조회
+                query = 'SELECT a_category, count(*) cnt FROM auction WHERE a_status="0" GROUP BY a_category';
                 connection.query(query, function(err, category) {
                     if(err) callback(err);
                     var list = ['뮤지컬/연극', '영화', '전시/체험', '콘서트/마술', '외식/편의점', '놀이동산/컨텐츠', '뷰티/생활'];
@@ -56,7 +56,7 @@ router.get('/', function(req, res) {
                 auction: results[0],  // 경매 정보
                 time: times,  // 남은 시간
                 bid: results[1], // 입찰 정보
-                count: results[2]
+                count: results[2] // 분류별 경매 수
             });
         });
     });
