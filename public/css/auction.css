@@ -26,12 +26,21 @@
     background-color: #ffffff; }
     @media screen and (min-width: 768px) {
       .a-nav-menu .a-nav-menu-dropdown {
-        background-color: #ffffff;
         margin-bottom: 4px;
         margin-left: 20px; } }
     @media screen and (max-width: 768px) {
       .a-nav-menu .a-nav-menu-dropdown {
         margin-top: -10px;
         margin-left: 10px; } }
+
+.overflow_contents {
+  display: inline-block;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+.inline {
+  display: inline; }
 
 /*# sourceMappingURL=auction.css.map */

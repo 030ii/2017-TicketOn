@@ -53,3 +53,16 @@ $a-gray : #e6ecec !default;
     }
   }
 }
+
+.overflow_contents {
+  display: inline-block;
+  width: 100%;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.inline {
+  display: inline;
+}
+

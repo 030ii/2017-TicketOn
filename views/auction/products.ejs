@@ -57,7 +57,7 @@
                                 </div>
                                 <!-- END Categories -->
                                 <!-- Best Authors -->
-                                <div class="block">
+                                 <div class="block">
                                     <a class="block block-link-hover3 block-transparent remove-margin-b" href="javascript:void(0)">
                                         <div class="block-content block-content-full clearfix">
                                             <div class="pull-right">
@@ -101,7 +101,7 @@
                                         </div>
                                         <div class="block-content">
                                             <div class="push-10">
-                                                <div class="h4 font-w600 text-success pull-right push-10-l">
+                                                <div class="h4 font-w600 text-danger pull-right push-10-l">
                                                   <%
                                                     var price = auction[i].a_min_price;
                                                     for(var j = 0; j < bid.length; j++) {
@@ -114,10 +114,15 @@
                                                   <%= price %>원
                                                 </div>
                                                 <p>[<%= auction[i].a_category %>]</p>
-                                                <a class="h4" href="/auction/<%= auction[i].aid %>"><%= auction[i].a_title %></a>
+                                                <a class="h3" href="/auction/<%= auction[i].aid %>"><%= auction[i].a_title %></a>
                                             </div>
-                                            <p class="text-muted"><%= auction[i].a_content %></p>
-                                            <span>마감시간</span><h3 class="timer">00:00:00</h3>
+                                            <span class="overflow_contents text-muted"><%= auction[i].a_content %></span>
+                                            <hr>
+                                            <div class="text-center">
+                                                <h4 class="inline">마감시간 </h4>
+                                                <h3 class="timer inline"> 00:00:00</h3>
+                                            </div>
+                                            <p></p>
                                         </div>
                                     </div>
                                 </div>
