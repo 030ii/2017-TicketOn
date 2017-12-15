@@ -55,7 +55,7 @@ router.get('/', function(req, res, next){
 router.use('/bids', require('./bids'));
 router.use('/changeInfo', require('./changeInfo'));
 router.use('/changePwd', require('./changePwd'));
-router.use('/deposits', require('./deposits'));
+router.use('/changeDeposit', require('./changeDeposit'));
 router.use('/pays', require('./pays'));
 router.use('/requests', require('./requests'));
 router.use('/sucbids', require('./sucbids'));
