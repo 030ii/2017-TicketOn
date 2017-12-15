@@ -15,8 +15,9 @@ router.post('/', upload.single('image'), function(req, res, next) {
     var date = new Date();  // 마감시간을 저장할 객체
     console.log(req.file);
     date.setTime(date.getTime() + (Number(body.deadline) * 1000 * 60 * 60)); // 마감시간 계산
+    var img = (req.file) ? req.file.filename : 'no_image.jpg';
     var inputs = [req.session.uid, body.category, body.title, body.content,
-                  req.file.filename, body.minPrice, date];
+                  img, body.minPrice, date];
     pool.getConnection(function(err, connection) {
         var queryStr = 'INSERT INTO auction(uid, a_category, a_title, a_content, a_img,'
                       + ' a_min_price, a_deadline) VALUES(?,?,?,?,?,?,?)';

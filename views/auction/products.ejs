@@ -2,7 +2,13 @@
 <!--[if IE 9]>         <html class="ie9 no-focus" lang="en"> <![endif]-->
 <!--[if gt IE 9]><!--> <html class="no-focus" lang="en"> <!--<![endif]-->
 <head>
-  <% include ../config/header0.ejs %>
+    <% include ../config/header0.ejs %>
+    <style>
+        .img-responsive {
+            height:35vh;
+        }
+        /* 126줄에  p 태그에 style="height:3vh;overflow:hidden"  */
+    </style>
 </head>
 <body>
     <div id="page-container" class="header-navbar-fixed">
@@ -19,7 +25,7 @@
                             <div class="block hidden-lg">
                                 <div class="block-content">
                                     <button class="btn btn-sm btn-block btn-default push" type="button" data-toggle="class-toggle" data-target=".js-nav-content" data-class="visible-lg">
-                                        <i class="fa fa-list-ul push-5-r"></i> Navigation
+                                        <i class="fa fa-list-ul push-5-r"></i> 네비게이션
                                     </button>
                                 </div>
                             </div>
@@ -82,7 +88,7 @@
                                 <div class="auction col-sm-6 col-lg-4">
                                     <div class="block">
                                         <div class="img-container">
-                                            <img class="img-responsive" style="height:35vh" src="uploads/<%= auction[i].a_img %>" alt="">
+                                            <img class="img-responsive" src="uploads/<%= auction[i].a_img %>" alt="">
                                             <div class="img-options">
                                                 <div class="img-options-content">
                                                     <div class="push-20">
@@ -93,11 +99,9 @@
                                                     </div>
                                                     <div class="text-warning">
                                                         <i class="fa fa-star"></i>
+                                                        <span class="text-white">시작가</span>
+                                                        <span class="text-white"><%= auction[i].a_min_price %>원</span>
                                                         <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <span class="text-white">(998)</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -117,21 +121,14 @@
                                                   <%= price %>원
                                                 </div>
                                                 <p>[<%= auction[i].a_category %>]</p>
-                                                <a class="h4" style="height:2vh;overflow:hidden" href="/auction/<%= auction[i].aid %>"><%= auction[i].a_title %></a>
+                                                <a class="h4" href="/auction/<%= auction[i].aid %>"><%= auction[i].a_title %></a>
                                             </div>
-                                            <p class="text-muted" style="height:3vh;overflow:hidden"><%= auction[i].a_content %></p>
+                                            <p class="text-muted"><%= auction[i].a_content %></p>
                                             <span>마감시간</span><h3 class="timer">00:00:00</h3>
                                         </div>
                                     </div>
                                 </div>
                                 <% } %>
-                                <div class="col-xs-12 push">
-                                    <ul class="pager">
-                                        <li class="next">
-                                            <a href="javascript:void(0)">Next <i class="fa fa-arrow-right"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
                             </div>
                             <!-- END Products -->
                         </div>

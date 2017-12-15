@@ -3,6 +3,7 @@
 <!--[if gt IE 9]><!--> <html class="no-focus" lang="en"> <!--<![endif]-->
 <head>
     <% include ../config/header0.ejs %>
+    <link href="css/form.css" rel="stylesheet">
 </head>
 <body>
 <div id="page-container" class="header-navbar-fixed">
@@ -17,7 +18,7 @@
                 <div class="bg-image" style="background-image: url('assets/img/photos/photo3@2x.jpg');">
                     <div class="block-content bg-primary-op text-center overflow-hidden">
                         <div class="push-30-t push animated fadeInDown">
-                            <img class="img-avatar img-avatar96 img-avatar-thumb" src="assets/img/avatars/avatar10.jpg" alt="">
+                            <img class="img-avatar img-avatar96 img-avatar-thumb" src="uploads/<%= user.u_img %>" alt="">
                         </div>
                         <div class="push-30 animated fadeInUp">
                             <h2 class="h4 font-w600 text-white push-5"><%= user.u_name %></h2>
@@ -34,15 +35,15 @@
                             <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)"><%= bid.length %></a>
                         </div>
                         <div class="col-xs-6 col-sm-3">
-                            <div class="font-w700 text-gray-darker animated fadeIn">낙찰 횟수</div>
+                            <div class="font-w700 text-gray-darker animated fadeIn">낙찰 목록</div>
                             <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)"><%= sucbid.length %></a>
                         </div>
                         <div class="col-xs-6 col-sm-3">
-                            <div class="font-w700 text-gray-darker animated fadeIn">경매 횟수</div>
+                            <div class="font-w700 text-gray-darker animated fadeIn">경매 목록</div>
                             <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)"><%= auction.length %></a>
                         </div>
                         <div class="col-xs-6 col-sm-3">
-                            <div class="font-w700 text-gray-darker animated fadeIn">판매 총액</div>
+                            <div class="font-w700 text-gray-darker animated fadeIn">결제 목록</div>
                             <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">0</a>
                         </div>
                     </div>
@@ -52,7 +53,7 @@
             <!-- END User Header -->
 
             <!-- Main Content -->
-            <form name="mypage_fm">
+            <form name="mypage_fm" action="/mypage/changeInfo?_method=PUT" method="POST" enctype="multipart/form-data">
                 <div class="block">
                     <ul class="nav nav-tabs nav-justified push-20" data-toggle="tabs">
                         <li class="active">
@@ -84,14 +85,14 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-xs-6">
-                                            <label for="profile-tel">전화번호</label>
-                                            <input class="form-control input-lg" type="text" id="profile-tel" name="profile-tel" placeholder="연락처를 입력하세요.." value="<%= user.u_tel %>">
+                                            <label for="tel">전화번호</label>
+                                            <input class="form-control input-lg" type="text" id="profile-tel" name="tel" placeholder="연락처를 입력하세요.." value="<%= user.u_tel %>">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-xs-6">
-                                            <label for="profile-image">프로필 사진</label>
-                                            <% if(auction.a_img) { %>
+                                            <label for="profile-image">프로필 사진</label><br>
+                                            <% if(user.u_img) { %>
                                               <img src="uploads/<%= user.u_img %>" id="preview-image">
                                               <input type="hidden" name="image" value="<%= user.u_img %>">
                                               <input type="file" id="profile-image" name="image">
@@ -111,21 +112,21 @@
                                 <div class="col-sm-6 col-sm-offset-3 form-horizontal">
                                     <div class="form-group">
                                         <div class="col-xs-12">
-                                            <label for="profile-password">현재 비밀번호</label>
-                                            <input class="form-control input-lg" type="password" id="profile-password" name="profile-password" placeholder="현재 비밀번호">
+                                            <label for="pwd">현재 비밀번호</label>
+                                            <input class="form-control input-lg" type="password" id="profile-password" name="pwd" placeholder="현재 비밀번호">
                                         </div>
                                     </div>
                                     <hr>
                                     <div class="form-group">
                                         <div class="col-xs-12">
-                                            <label for="profile-password-new">새 비밀번호</label>
-                                            <input class="form-control input-lg" type="password" id="profile-password-new" name="profile-password-new" placeholder="새 비밀번호 8~16자리">
+                                            <label for="newPwd">새 비밀번호</label>
+                                            <input class="form-control input-lg" type="password" id="profile-password-new" name="newPwd" placeholder="새 비밀번호 8~16자리">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-xs-12">
-                                            <label for="profile-password-new-confirm">새 비밀번호 확인</label>
-                                            <input class="form-control input-lg" type="password" id="profile-password-new-confirm" name="profile-password-new-confirm" placeholder="새 비밀번호 8~16자리">
+                                            <label for="newPwdConfirm">새 비밀번호 확인</label>
+                                            <input class="form-control input-lg" type="password" id="profile-password-new-confirm" name="newPwdConfirm" placeholder="새 비밀번호 8~16자리">
                                         </div>
                                     </div>
                                 </div>
@@ -138,21 +139,21 @@
                                 <div class="col-sm-6 col-sm-offset-3 form-horizontal">
                                     <div class="form-group">
                                         <div class="col-xs-12">
-                                            <label for="account-bank">은행명</label>
-                                            <input class="form-control input-lg" type="text" maxlength="20" id="account-bank" name="account-bank" placeholder="ex) xx은행">
+                                            <label for="bank">은행명</label>
+                                            <input class="form-control input-lg" type="text" maxlength="20" id="account-bank" name="bank" placeholder="ex) xx은행" value="<%= user.u_bank %>">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-xs-12">
-                                            <label for="account-number">계좌번호</label>
-                                            <input class="form-control input-lg" type="text" id="account-number" name="account-number" maxlength="25"
-                                            onKeyPress="if ((event.keyCode<45)||(event.keyCode>57)||(event.keyCode==47)) event.returnValue=false;" placeholder="ex) xxx-xxxx-xxxxx">
+                                            <label for="number">계좌번호</label>
+                                            <input class="form-control input-lg" type="text" id="account-number" name="number" maxlength="25"
+                                            onKeyPress="if ((event.keyCode<45)||(event.keyCode>57)||(event.keyCode==47)) event.returnValue=false;" placeholder="ex) xxx-xxxx-xxxxx" value="<%= user.u_account %>">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-xs-12">
-                                            <label for="account-holder">예금주</label>
-                                            <input class="form-control input-lg" type="text" maxlength="10" id="account-holder" name="account-holder" placeholder="ex) 홍길동">
+                                            <label for="holder">예금주</label>
+                                            <input class="form-control input-lg" type="text" maxlength="10" id="account-holder" name="holder" placeholder="ex) 홍길동"  value="<%= user.u_holder %>">
                                         </div>
                                     </div>
                                 </div>

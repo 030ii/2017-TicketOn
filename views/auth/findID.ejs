@@ -9,12 +9,12 @@
             <div class="modal-body">
                 <form name="findID_fm">
                     <div class="form-group">
-                        <label for="name">이름</label>
-                        <input type="text" class="form-control" name="name" placeholder="ex) 홍길동">
+                        <label class="sr-only" for="name">이름</label>
+                        <input type="text" class="form-control" name="name" placeholder="이름">
                     </div>
                     <div class="form-group">
-                        <label for="tel">핸드폰 번호</label>
-                        <input type="tel" class="form-control" name="tel" placeholder="ex) 01012345678"
+                        <label class="sr-only" for="tel">핸드폰 번호</label>
+                        <input type="tel" class="form-control" name="tel" placeholder="핸드폰 번호 (숫자만)"
                         onKeyPress="if ((event.keyCode<46)||(event.keyCode>57)||(event.keyCode==47)) event.returnValue=false;">
                     </div>
                     <input type="submit" class="btn btn-primary form-control" value="아이디 찾기">

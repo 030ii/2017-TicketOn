@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({
     secret: '^!@dntkdcodudwlgh!@#',
-    resave: false,
+    resave: true,
     saveUninitialized: true
 }));
 app.use(methodOverride('_method'));

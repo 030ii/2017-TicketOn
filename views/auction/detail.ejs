@@ -3,6 +3,11 @@
 <!--[if gt IE 9]><!--> <html class="no-focus" lang="en"> <!--<![endif]-->
 <head>
   <% include ../config/header0.ejs %>
+  <style>
+      .img-responsive {
+          height:50vh;
+      }
+  </style>
 </head>
 <body>
     <div id="page-container" class="header-navbar-fixed header-navbar-transparent">
@@ -23,7 +28,6 @@
                 </div>
             </div>
             <!-- END Hero Content -->
-
             <!-- Side Content and Product -->
             <div class="bg-gray-lighter">
                 <section class="content content-boxed">
@@ -37,7 +41,7 @@
                                             <!-- Images -->
                                             <div class="row js-gallery">
                                                 <div class="col-xs-12 push-10">
-                                                    <img class="img-responsive" style="height:50vh" src="uploads/<%= auction.a_img %>" alt="">
+                                                    <img class="img-responsive" src="uploads/<%= auction.a_img %>" alt="">
                                                 </div>
                                             </div>
                                             <!-- END Images -->
@@ -54,7 +58,7 @@
                                             </div>
                                             <hr>
                                             <div align="right">
-                                              <% if(session.uid != auction.uid && auction.a_status == '0') { %>
+                                              <% if(session.uid != auction.uid && !session.admin && auction.a_status == '0') { %>
                                                 <form name="bid">
                                                      <input type="number" name="price" step="10" min="<%= (bid[0]) ? bid[0].b_price + 10 : auction.a_min_price %>"
                                                      value="<%= (bid[0]) ? bid[0].b_price + 10 : auction.a_min_price %>">
@@ -121,7 +125,7 @@
                                                             <tbody>
                                                                 <% for(var i = 0; i < bid.length; i++) { %>
                                                                 <tr>
-                                                                    <td style="width: 20%;"><%= bid[i].u_name %></td>
+                                                                    <td><%= bid[i].u_name %></td>
                                                                     <td><i class="fa fa-check text-success"> <%= bid[i].b_price %>원 입찰</i></td>
                                                                     <td>
                                                                       <%

@@ -29,7 +29,10 @@ $(document).ready(function() {
                       timer: 1500
                     });
                     setTimeout(function() {
-                        location.href = "/auction";
+                        if(data == 'admin')
+                          location.href = "/admin";
+                        else
+                          location.href = "/auction";
                     }, 1500);
                 } else {
                     swal(
