@@ -4,6 +4,10 @@ var pool = require('../../config.js').pool;
 var async = require('async');
 
 router.get('/', function(req, res, next) {
+    if(!req.session.admin) {  // 관리자가 아니면
+        res.redirect('/');
+        return;
+    }
     pool.getConnection(function(err, connection) {
         async.series([
             function(callback) {

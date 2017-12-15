@@ -2,7 +2,7 @@
 <header id="header-navbar" class="content-mini content-mini-full a-bg-primary">
     <div class="items-push">
         <div class="a-logo col-xs-3 col-sm-3">
-            <a href="/auction">
+            <a href="<%= (session.admin) ? '/admin': '/auction' %>">
                 <img src="img/logo.png">
                 <img src="img/logo_text.png" class="hidden-xs">
             </a>
