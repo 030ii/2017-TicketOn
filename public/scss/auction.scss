@@ -39,4 +39,17 @@ $a-gray : #e6ecec !default;
       margin-left: 20px;
     }
   }
+
+  .a-nav-menu-dropdown {
+    background-color: #ffffff;
+
+    @media screen and (min-width: 768px) {
+      margin-bottom: 4px;
+      margin-left: 20px;
+    }
+    @media screen and (max-width: 768px){
+      margin-top: -10px;
+      margin-left: 10px;
+    }
+  }
 }

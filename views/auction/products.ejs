@@ -22,42 +22,35 @@
                         <div class="col-lg-3">
                             <!-- Buttons which toggles side nav content content in smaller screens -->
                             <!-- Toggle class helper (for .js-nav-content below), functionality initialized in App() -> uiToggleClass() -->
-                            <div class="block hidden-lg">
-                                <div class="block-content">
-                                    <button class="btn btn-sm btn-block btn-default push" type="button" data-toggle="class-toggle" data-target=".js-nav-content" data-class="visible-lg">
-                                        <i class="fa fa-list-ul push-5-r"></i> 네비게이션
-                                    </button>
-                                </div>
-                            </div>
                             <!-- Side Content -->
                             <div class="js-nav-content visible-lg">
                                 <!-- Categories -->
                                 <div class="block">
                                     <div class="block-content">
-                                        <ul id="category" class="nav nav-pills nav-stacked push">
+                                        <ul class="category nav nav-pills nav-stacked push">
                                             <li>
-                                                <a href="javascript:void(0)"><span class="badge pull-right"><%= (count[7]) %></span>전체</a>
+                                                <a href="javascript:void(0)"><span class="bg-gray-dark badge pull-right animated bounceIn"><%= (count[7]) %></span><i class="fa fa-list-ul push-5-r"></i> 전체</a>
                                             </li>
                                             <li>
-                                                <a href="javascript:void(0)"><span class="badge pull-right"><%= (count[0]) %></span>뮤지컬/연극</a>
+                                                <a href="javascript:void(0)"><span class="badge-primary badge pull-right animated bounceIn"><%= (count[0]) %></span><i class="glyphicon glyphicon-music push-5-r"></i> 뮤지컬/연극</a>
                                             </li>
                                             <li>
-                                                <a href="javascript:void(0)"><span class="badge pull-right"><%= (count[1]) %></span>영화</a>
+                                                <a href="javascript:void(0)"><span class="badge-warning badge pull-right animated bounceIn"><%= (count[1]) %></span><i class="glyphicon glyphicon-film push-5-r"></i> 영화</a>
                                             </li>
                                             <li>
-                                                <a href="javascript:void(0)"><span class="badge pull-right"><%= (count[2]) %></span>전시/체험</a>
+                                                <a href="javascript:void(0)"><span class="badge-success badge pull-right" animated bounceIn><%= (count[2]) %></span><i class="fa fa-institution push-5-r"></i> 전시/체험</a>
                                             </li>
                                             <li>
-                                                <a href="javascript:void(0)"><span class="badge pull-right"><%= (count[3]) %></span>콘서트/마술</a>
+                                                <a href="javascript:void(0)"><span class="badge-danger badge pull-right" animated bounceIn><%= (count[3]) %></span><i class="glyphicon glyphicon-sunglasses push-5-r"></i> 콘서트/마술</a>
                                             </li>
                                             <li>
-                                                <a href="javascript:void(0)"><span class="badge pull-right"><%= (count[4]) %></span>외식/편의점</a>
+                                                <a href="javascript:void(0)"><span class="bg-amethyst badge pull-right" animated bounceIn><%= (count[4]) %></span><i class="fa fa-cutlery push-5-r"></i> 외식/편의점</a>
                                             </li>
                                             <li>
-                                                <a href="javascript:void(0)"><span class="badge pull-right"><%= (count[5]) %></span>놀이동산/컨텐츠</a>
+                                                <a href="javascript:void(0)"><span class="bg-city-light badge pull-right" animated bounceIn><%= (count[5]) %></span><i class="fa fa-fort-awesome push-5-r"></i> 놀이동산/컨텐츠</a>
                                             </li>
                                             <li>
-                                                <a href="javascript:void(0)"><span class="badge pull-right"><%= (count[6]) %></span>뷰티/생활</a>
+                                                <a href="javascript:void(0)"><span class="badge-info badge pull-right" animated bounceIn><%= (count[6]) %></span><i class="fa fa-diamond push-5-r"></i> 뷰티/생활</a>
                                             </li>
                                         </ul>
                                     </div>
