@@ -19,6 +19,7 @@
         </div>
         <div class="a-nav-menu col-xs-5 col-sm-5 text-right">
             <!-- Layout API, functionality initialized in App() -> uiLayoutApi() -->
+            <% if(!session.admin) { %>
             <a href="/mypage">
                 <i class="fa fa-user-circle-o hidden-sm hidden-md hidden-lg"></i>
                 <span class="hidden-xs">마이페이지</span>
@@ -27,6 +28,7 @@
                 <i class="a-nav-post fa fa-pencil hidden-sm hidden-md hidden-lg"></i>
                 <span class="hidden-xs">경매등록</span>
             </a>
+            <% } %>
             <a href="/logout">
                 <i class="fa fa-sign-out hidden-sm hidden-md hidden-lg"></i>
                 <span class="hidden-xs">로그아웃</span>

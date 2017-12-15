@@ -58,7 +58,7 @@
                                             </div>
                                             <hr>
                                             <div align="right">
-                                              <% if(session.uid != auction.uid && auction.a_status == '0') { %>
+                                              <% if(session.uid != auction.uid && !session.admin && auction.a_status == '0') { %>
                                                 <form name="bid">
                                                      <input type="number" name="price" step="10" min="<%= (bid[0]) ? bid[0].b_price + 10 : auction.a_min_price %>"
                                                      value="<%= (bid[0]) ? bid[0].b_price + 10 : auction.a_min_price %>">

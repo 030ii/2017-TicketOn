@@ -2,9 +2,19 @@ var express = require('express');
 var router = express.Router();
 var pool = require('../../config.js').pool;
 var decrypt = require('../../config.js').decrypt;
+var admin = require('../../config.js').admin;
 
 router.post('/', function(req, res, next) {
     var body = req.body;
+    // 관리자 로그인
+    if(body.id == admin.id && body.password == admin.password) {
+        req.session.name = '관리자',
+        req.session.email = 'root@root.com',
+        req.session.img = 'no_image.jpg',
+        req.session.admin = true;
+        res.send('admin');
+        return;
+    }
     // 입력한 이메일의 사용자정보 조회
     var query = "SELECT * FROM user WHERE u_id=?";
     pool.getConnection(function(err, connection) {

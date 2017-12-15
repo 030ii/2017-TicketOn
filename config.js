@@ -52,3 +52,8 @@ exports.upload = multer({
     }
   })
 });
+
+exports.admin = {
+    "id" : "root@root.com",
+    "password" : "root1234"
+}
