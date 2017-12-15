@@ -9,26 +9,21 @@
     <!-- Header -->
     <header id="header-navbar">
         <div class="content-mini content-mini-full content-boxed">
-            <!-- Header Navigation Right -->
             <ul class="nav-header pull-right">
                 <li>
-                    <button class="btn btn-default" type="button">
+                    <a class="btn btn-default" href="/logout">
                         <i class="fa fa-sign-out"></i>
                         <span>로그아웃</span>
-                    </button>
+                    </a>
                 </li>
             </ul>
-            <!-- END Header Navigation Right -->
-
-            <!-- Header Navigation Left -->
             <ul class="nav-header pull-left">
                 <li class="a-logo col-xs-2 col-sm-3">
-                    <a href="/auction">
+                    <a href="/admin">
                         <img src="img/logo_admin.png">
                     </a>
                 </li>
             </ul>
-            <!-- END Header Navigation Left -->
         </div>
     </header>
     <!-- END Header -->
@@ -36,25 +31,33 @@
     <!-- Main Container -->
     <main id="main-container">
         <!-- Sub Header -->
-        <div class="bg-gray-lighter visible-xs">
+        <div class="bg-primary-lighter visible-xs">
             <div class="content-mini content-boxed">
-                <button class="btn btn-block btn-default visible-xs push" data-toggle="collapse" data-target="#sub-header-nav">
-                    <i class="fa fa-navicon push-5-r"></i>Menu
-                </button>
+                <ul class="nav nav-pills nav-sub-header push">
+                    <li>
+                        <a href="/admin">
+                            <i class="fa fa-briefcase push-5-r"></i>경매 관리
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="/admin/users">
+                            <i class="fa fa-users push-5-r"></i>회원 관리
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
-
         <div class="bg-primary-lighter collapse navbar-collapse remove-padding" id="sub-header-nav">
             <div class="content-mini content-boxed">
                 <ul class="nav nav-pills nav-sub-header push">
                     <li>
                         <a href="/admin">
-                            <i class="fa fa-briefcase push-5-r"></i>Auctions
+                            <i class="fa fa-briefcase push-5-r"></i>경매 관리
                         </a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="/admin/users">
-                            <i class="fa fa-users push-5-r"></i>Customers
+                            <i class="fa fa-users push-5-r"></i>회원 관리
                         </a>
                     </li>
                 </ul>
@@ -65,13 +68,13 @@
         <!-- Page Content -->
         <div class="content content-boxed">
             <!-- Section -->
-            <div class="bg-image img-rounded overflow-hidden push" style="background-image: url('/img/photo31@2x.jpg');">
+            <div class="bg-image img-rounded overflow-hidden push" style="background-image: url('img/photo31@2x.jpg');">
                 <div class="bg-black-op">
                     <div class="content">
                         <div class="block block-transparent block-themed text-center">
                             <div class="block-content">
-                                <h1 class="h1 font-w700 text-white animated fadeInDown push-5">Customers</h1>
-                                <h2 class="h4 font-w400 text-white-op animated fadeInUp">150 new registrations today!</h2>
+                                <h1 class="h1 font-w700 text-white animated fadeInDown push-5">회원 관리</h1>
+                                <h2 class="h4 font-w400 text-white-op animated fadeInUp">티켓온의 회원들을 조회, 추방할 수 있습니다.</h2>
                             </div>
                         </div>
                     </div>
@@ -84,7 +87,7 @@
                 <div class="col-xs-6 col-sm-4">
                     <div class="block block-rounded">
                         <div class="block-content block-content-full">
-                            <div class="font-s12 font-w700">New</div>
+                            <div class="font-s12 font-w700">오늘의 가입자수</div>
                             <a class="h2 font-w300 text-primary" href="javascript:void(0)">150</a>
                         </div>
                     </div>
@@ -92,7 +95,7 @@
                 <div class="col-xs-6 col-sm-4">
                     <div class="block block-rounded">
                         <div class="block-content block-content-full">
-                            <div class="font-s12 font-w700">All</div>
+                            <div class="font-s12 font-w700">이달의 가입자 수</div>
                             <a class="h2 font-w300 text-primary" href="javascript:void(0)">3600</a>
                         </div>
                     </div>
@@ -100,7 +103,7 @@
                 <div class="col-xs-12 col-sm-4">
                     <div class="block block-rounded">
                         <div class="block-content block-content-full">
-                            <div class="font-s12 font-w700">Purchases</div>
+                            <div class="font-s12 font-w700">총 회원수</div>
                             <a class="h2 font-w300 text-primary" href="javascript:void(0)">63000</a>
                         </div>
                     </div>
@@ -111,237 +114,42 @@
             <!-- Customers -->
             <div class="block">
                 <div class="block-header">
-                    <ul class="block-options">
-                        <li>
-                            <button type="button"><i class="fa fa-plus"></i> Add new</button>
-                        </li>
-                        <li>
-                            <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
-                        </li>
-                    </ul>
-                    <h3 class="block-title">Customers</h3>
+                    <h3 class="block-title">회원 목록</h3>
                 </div>
                 <div class="block-content">
                     <div class="table-responsive">
                         <table class="table table-hover table-vcenter">
+                            <thead>
+                                <tr>
+                                    <th class="text-center hidden-xs hidden-sm">사진</th>
+                                    <th class="text-center">이름</th>
+                                    <th class="text-center">핸드폰</th>
+                                    <th class="text-center hidden-xs">이메일</th>
+                                    <th class="text-center hidden-xs hidden-sm">가입일</th>
+                                    <th class="text-center hidden-xs">은행/예금주</th>
+                                    <th class="text-center hidden-xs">계좌번호</th>
+                                    <th class="text-center">추방하기</th>
+                                </tr>
+                            </thead>
                             <tbody>
-                            <tr>
-                                <td class="text-center">
-                                    <img class="img-avatar img-avatar48" src="assets/img/avatars/avatar14.jpg" alt="">
-                                </td>
-                                <td class="font-w600">Bruce Edwards</td>
-                                <td>
-                                    <span class="label label-primary">Personal</span>
-                                </td>
-                                <td>client1@example.com</td>
-                                <td class="text-right">
-                                    <a class="font-w600" href="javascript:void(0)">21 Purchases</a>
-                                </td>
-                                <td class="text-right">
-                                    <button class="btn btn-xs btn-default" type="button">
-                                        <i class="fa fa-pencil push-5-r text-success"></i>Edit
-                                    </button>
-                                    <button class="btn btn-xs btn-default" type="button">
-                                        <i class="fa fa-times push-5-r text-danger"></i>Remove
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                    <img class="img-avatar img-avatar48" src="assets/img/avatars/avatar13.jpg" alt="">
-                                </td>
-                                <td class="font-w600">Joshua Munoz</td>
-                                <td>
-                                    <span class="label label-primary">Personal</span>
-                                </td>
-                                <td>client2@example.com</td>
-                                <td class="text-right">
-                                    <a class="font-w600" href="javascript:void(0)">53 Purchases</a>
-                                </td>
-                                <td class="text-right">
-                                    <button class="btn btn-xs btn-default" type="button">
-                                        <i class="fa fa-pencil push-5-r text-success"></i>Edit
-                                    </button>
-                                    <button class="btn btn-xs btn-default" type="button">
-                                        <i class="fa fa-times push-5-r text-danger"></i>Remove
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                    <img class="img-avatar img-avatar48" src="assets/img/avatars/avatar15.jpg" alt="">
-                                </td>
-                                <td class="font-w600">John Parker</td>
-                                <td>
-                                    <span class="label label-info">Business</span>
-                                </td>
-                                <td>client3@example.com</td>
-                                <td class="text-right">
-                                    <a class="font-w600" href="javascript:void(0)">64 Purchases</a>
-                                </td>
-                                <td class="text-right">
-                                    <button class="btn btn-xs btn-default" type="button">
-                                        <i class="fa fa-pencil push-5-r text-success"></i>Edit
-                                    </button>
-                                    <button class="btn btn-xs btn-default" type="button">
-                                        <i class="fa fa-times push-5-r text-danger"></i>Remove
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                    <img class="img-avatar img-avatar48" src="assets/img/avatars/avatar14.jpg" alt="">
-                                </td>
-                                <td class="font-w600">Ryan Hall</td>
-                                <td>
-                                    <span class="label label-success">VIP</span>
-                                </td>
-                                <td>client4@example.com</td>
-                                <td class="text-right">
-                                    <a class="font-w600" href="javascript:void(0)">76 Purchases</a>
-                                </td>
-                                <td class="text-right">
-                                    <button class="btn btn-xs btn-default" type="button">
-                                        <i class="fa fa-pencil push-5-r text-success"></i>Edit
-                                    </button>
-                                    <button class="btn btn-xs btn-default" type="button">
-                                        <i class="fa fa-times push-5-r text-danger"></i>Remove
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                    <img class="img-avatar img-avatar48" src="assets/img/avatars/avatar9.jpg" alt="">
-                                </td>
-                                <td class="font-w600">Ethan Howard</td>
-                                <td>
-                                    <span class="label label-info">Business</span>
-                                </td>
-                                <td>client5@example.com</td>
-                                <td class="text-right">
-                                    <a class="font-w600" href="javascript:void(0)">62 Purchases</a>
-                                </td>
-                                <td class="text-right">
-                                    <button class="btn btn-xs btn-default" type="button">
-                                        <i class="fa fa-pencil push-5-r text-success"></i>Edit
-                                    </button>
-                                    <button class="btn btn-xs btn-default" type="button">
-                                        <i class="fa fa-times push-5-r text-danger"></i>Remove
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                    <img class="img-avatar img-avatar48" src="assets/img/avatars/avatar10.jpg" alt="">
-                                </td>
-                                <td class="font-w600">Scott Ruiz</td>
-                                <td>
-                                    <span class="label label-success">VIP</span>
-                                </td>
-                                <td>client6@example.com</td>
-                                <td class="text-right">
-                                    <a class="font-w600" href="javascript:void(0)">42 Purchases</a>
-                                </td>
-                                <td class="text-right">
-                                    <button class="btn btn-xs btn-default" type="button">
-                                        <i class="fa fa-pencil push-5-r text-success"></i>Edit
-                                    </button>
-                                    <button class="btn btn-xs btn-default" type="button">
-                                        <i class="fa fa-times push-5-r text-danger"></i>Remove
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                    <img class="img-avatar img-avatar48" src="assets/img/avatars/avatar9.jpg" alt="">
-                                </td>
-                                <td class="font-w600">Vincent Sims</td>
-                                <td>
-                                    <span class="label label-danger">Disabled</span>
-                                </td>
-                                <td>client7@example.com</td>
-                                <td class="text-right">
-                                    <a class="font-w600" href="javascript:void(0)">90 Purchases</a>
-                                </td>
-                                <td class="text-right">
-                                    <button class="btn btn-xs btn-default" type="button">
-                                        <i class="fa fa-pencil push-5-r text-success"></i>Edit
-                                    </button>
-                                    <button class="btn btn-xs btn-default" type="button">
-                                        <i class="fa fa-times push-5-r text-danger"></i>Remove
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                    <img class="img-avatar img-avatar48" src="assets/img/avatars/avatar16.jpg" alt="">
-                                </td>
-                                <td class="font-w600">Bruce Edwards</td>
-                                <td>
-                                    <span class="label label-success">VIP</span>
-                                </td>
-                                <td>client8@example.com</td>
-                                <td class="text-right">
-                                    <a class="font-w600" href="javascript:void(0)">26 Purchases</a>
-                                </td>
-                                <td class="text-right">
-                                    <button class="btn btn-xs btn-default" type="button">
-                                        <i class="fa fa-pencil push-5-r text-success"></i>Edit
-                                    </button>
-                                    <button class="btn btn-xs btn-default" type="button">
-                                        <i class="fa fa-times push-5-r text-danger"></i>Remove
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                    <img class="img-avatar img-avatar48" src="assets/img/avatars/avatar14.jpg" alt="">
-                                </td>
-                                <td class="font-w600">Adam Hall</td>
-                                <td>
-                                    <span class="label label-success">VIP</span>
-                                </td>
-                                <td>client9@example.com</td>
-                                <td class="text-right">
-                                    <a class="font-w600" href="javascript:void(0)">23 Purchases</a>
-                                </td>
-                                <td class="text-right">
-                                    <button class="btn btn-xs btn-default" type="button">
-                                        <i class="fa fa-pencil push-5-r text-success"></i>Edit
-                                    </button>
-                                    <button class="btn btn-xs btn-default" type="button">
-                                        <i class="fa fa-times push-5-r text-danger"></i>Remove
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                    <img class="img-avatar img-avatar48" src="assets/img/avatars/avatar14.jpg" alt="">
-                                </td>
-                                <td class="font-w600">Jack Greene</td>
-                                <td>
-                                    <span class="label label-success">VIP</span>
-                                </td>
-                                <td>client10@example.com</td>
-                                <td class="text-right">
-                                    <a class="font-w600" href="javascript:void(0)">2 Purchases</a>
-                                </td>
-                                <td class="text-right">
-                                    <button class="btn btn-xs btn-default" type="button">
-                                        <i class="fa fa-pencil push-5-r text-success"></i>Edit
-                                    </button>
-                                    <button class="btn btn-xs btn-default" type="button">
-                                        <i class="fa fa-times push-5-r text-danger"></i>Remove
-                                    </button>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td class="text-center hidden-xs hidden-sm">
+                                        <img class="img-avatar img-avatar48" src="img/avatars/avatar14.jpg" alt="">
+                                    </td>
+                                    <td class="font-w600 text-center">이름이름</td>
+                                    <td class="text-center">010-1234-1234</td>
+                                    <td class="text-center hidden-xs">emailemail@email.com</td>
+                                    <td class="text-center hidden-xs hidden-sm">2017/12/12 12:12:12</td>
+                                    <td class="text-center hidden-xs">우리은행 하채영</td>
+                                    <td class="text-center hidden-xs">1002-548046370</td>
+                                    <td class="text-center">
+                                        <button class="btn btn-xs btn-default" type="button">
+                                            <i class="fa fa-times push-5-r text-danger"></i>추방하기
+                                        </button>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
-                    </div>
-                    <div class="text-center push">
-                        <button class="btn btn-xs btn-default" type="button">
-                            <i class="fa fa-arrow-down push-5-r text-primary"></i>Load More..
-                        </button>
                     </div>
                 </div>
             </div>
@@ -354,7 +162,5 @@
 </div>
 <!-- END Page Container -->
 <% include ../config/footer0.ejs %>
-
-<script src="js/admin.js"></script>
 </body>
 </html>

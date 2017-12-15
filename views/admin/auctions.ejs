@@ -12,10 +12,10 @@
             <!-- Header Navigation Right -->
             <ul class="nav-header pull-right">
                 <li>
-                    <button class="btn btn-default" type="button">
+                    <a class="btn btn-default" href="/logout">
                         <i class="fa fa-sign-out"></i>
                         <span>로그아웃</span>
-                    </button>
+                    </a>
                 </li>
             </ul>
             <!-- END Header Navigation Right -->
@@ -23,7 +23,7 @@
             <!-- Header Navigation Left -->
             <ul class="nav-header pull-left">
                 <li class="a-logo col-xs-2 col-sm-3">
-                    <a href="/auction">
+                    <a href="/admin">
                         <img src="img/logo_admin.png">
                     </a>
                 </li>
@@ -36,31 +36,40 @@
     <!-- Main Container -->
     <main id="main-container">
         <!-- Sub Header -->
-        <div class="bg-gray-lighter visible-xs">
+        <div class="bg-primary-lighter visible-xs">
             <div class="content-mini content-boxed">
-                <button class="btn btn-block btn-default visible-xs push" data-toggle="collapse" data-target="#sub-header-nav">
-                    <i class="fa fa-navicon push-5-r"></i>Menu
-                </button>
-            </div>
-        </div>
-
-        <div class="bg-primary-lighter collapse navbar-collapse remove-padding" id="sub-header-nav">
-            <div class="content-mini content-boxed">
-                <ul class="nav-menu-btn nav nav-pills nav-sub-header push">
-                    <li>
+                <ul class="nav nav-pills nav-sub-header push">
+                    <li class="active">
                         <a href="/admin">
-                            <i class="fa fa-briefcase push-5-r"></i>Auctions
+                            <i class="fa fa-briefcase push-5-r"></i>경매 관리
                         </a>
                     </li>
                     <li>
                         <a href="/admin/users">
-                            <i class="fa fa-users push-5-r"></i>Customers
+                            <i class="fa fa-users push-5-r"></i>회원 관리
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="bg-primary-lighter collapse navbar-collapse remove-padding" id="sub-header-nav">
+            <div class="content-mini content-boxed">
+                <ul class="nav nav-pills nav-sub-header push">
+                    <li class="active">
+                        <a href="/admin">
+                            <i class="fa fa-briefcase push-5-r"></i>경매 관리
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/users">
+                            <i class="fa fa-users push-5-r"></i>회원 관리
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
         <!-- END Sub Header -->
+
         <!-- Page Content -->
         <div class="content content-boxed">
             <!-- Section -->
@@ -69,8 +78,8 @@
                     <div class="content">
                         <div class="block block-transparent block-themed text-center">
                             <div class="block-content">
-                                <h1 class="h1 font-w700 text-white animated fadeInDown push-5">Products</h1>
-                                <h2 class="h4 font-w400 text-white-op animated fadeInUp">There are currently 8 products in your portfolio.</h2>
+                                <h1 class="h1 font-w700 text-white animated fadeInDown push-5">경매 관리</h1>
+                                <h2 class="h4 font-w400 text-white-op animated fadeInUp">티켓온의 경매들을 조회, 삭제할 수 있습니다.</h2>
                             </div>
                         </div>
                     </div>
@@ -83,7 +92,7 @@
                 <div class="col-xs-6 col-sm-3">
                     <div class="block block-rounded">
                         <div class="block-content block-content-full">
-                            <div class="font-s12 font-w700">Products</div>
+                            <div class="font-s12 font-w700">진행중인 경매</div>
                             <a class="h2 font-w300 text-primary" href="javascript:void(0)">8</a>
                         </div>
                     </div>
@@ -91,7 +100,7 @@
                 <div class="col-xs-6 col-sm-3">
                     <div class="block block-rounded">
                         <div class="block-content block-content-full">
-                            <div class="font-s12 font-w700">Tickets</div>
+                            <div class="font-s12 font-w700">마감된 경매</div>
                             <a class="h2 font-w300 text-primary" href="javascript:void(0)">390</a>
                         </div>
                     </div>
@@ -99,7 +108,7 @@
                 <div class="col-xs-6 col-sm-3">
                     <div class="block block-rounded">
                         <div class="block-content block-content-full">
-                            <div class="font-s12 font-w700">Purchases</div>
+                            <div class="font-s12 font-w700">완료된 경매</div>
                             <a class="h2 font-w300 text-primary" href="javascript:void(0)">63000</a>
                         </div>
                     </div>
@@ -107,7 +116,7 @@
                 <div class="col-xs-6 col-sm-3">
                     <div class="block block-rounded">
                         <div class="block-content block-content-full">
-                            <div class="font-s12 font-w700">Earnings</div>
+                            <div class="font-s12 font-w700">전체 경매</div>
                             <a class="h2 font-w300 text-primary" href="javascript:void(0)">$ 980600</a>
                         </div>
                     </div>
@@ -118,15 +127,7 @@
             <!-- Products -->
             <div class="block block-rounded">
                 <div class="block-header">
-                    <ul class="block-options">
-                        <li>
-                            <button type="button"><i class="fa fa-plus"></i> Add new</button>
-                        </li>
-                        <li>
-                            <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
-                        </li>
-                    </ul>
-                    <h3 class="block-title">Products</h3>
+                    <h3 class="block-title">경매 목록</h3>
                 </div>
                 <div class="block-content">
                     <div class="table-responsive">
@@ -236,7 +237,5 @@
 <!-- END Page Container -->
 
 <% include ../config/footer0.ejs %>
-
-<script src="js/admin.js"></script>
 </body>
 </html>
