@@ -1,23 +1,13 @@
 <!-- Header -->
 <header id="header-navbar" class="content-mini content-mini-full a-bg-primary">
     <div class="items-push">
-        <div class="a-logo col-xs-2 col-sm-3">
+        <div class="a-logo col-xs-3 col-sm-3">
             <a href="/auction">
                 <img src="img/logo.png">
                 <img src="img/logo_text.png" class="hidden-xs">
             </a>
         </div>
-        <div class="col-xs-5 col-sm-4">
-            <form action="#" method="post">
-                <div class="input-group">
-                    <input type="text" id="ecom-search" name="ecom-search" class="form-control" placeholder="검색..">
-                    <div class="input-group-btn">
-                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="a-nav-menu col-xs-5 col-sm-5 text-right">
+        <div class="a-nav-menu col-xs-9 col-sm-9 text-right">
             <!-- Layout API, functionality initialized in App() -> uiLayoutApi() -->
             <% if(!session.admin) { %>
             <a href="/mypage">
@@ -33,6 +23,41 @@
                 <i class="fa fa-sign-out hidden-sm hidden-md hidden-lg"></i>
                 <span class="hidden-xs">로그아웃</span>
             </a>
+
+            <div class="a-nav-menu-dropdown btn-group hidden-lg">
+                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button" aria-expanded="true">
+                    <i class="si si-list hidden-sm hidden-md hidden-lg"></i>
+                    <span class="hidden-xs">카테고리</span>
+                    <span class="caret"></span>
+                </button>
+                <ul class="category dropdown-menu dropdown-menu-right">
+                    <li>
+                        <a href="javascript:void(0)"><span class="bg-gray-dark badge pull-right animated bounceIn"><%= (count[7]) %></span><i class="fa fa-list-ul push-5-r"></i> 전체</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="javascript:void(0)"><span class="badge-primary badge pull-right animated bounceIn"><%= (count[0]) %></span><i class="glyphicon glyphicon-music push-5-r"></i> 뮤지컬/연극</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><span class="badge-warning badge pull-right animated bounceIn"><%= (count[1]) %></span><i class="glyphicon glyphicon-film push-5-r"></i> 영화</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><span class="badge-success badge pull-right" animated bounceIn><%= (count[2]) %></span><i class="fa fa-institution push-5-r"></i> 전시/체험</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><span class="badge-danger badge pull-right" animated bounceIn><%= (count[3]) %></span><i class="glyphicon glyphicon-sunglasses push-5-r"></i> 콘서트/마술</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><span class="bg-amethyst badge pull-right" animated bounceIn><%= (count[4]) %></span><i class="fa fa-cutlery push-5-r"></i> 외식/편의점</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><span class="bg-city-light badge pull-right" animated bounceIn><%= (count[5]) %></span><i class="fa fa-fort-awesome push-5-r"></i> 놀이동산/컨텐츠</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><span class="badge-info badge pull-right" animated bounceIn><%= (count[6]) %></span><i class="fa fa-diamond push-5-r"></i> 뷰티/생활</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </header>
