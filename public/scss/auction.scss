@@ -80,9 +80,12 @@ $a-gray : #e6ecec !default;
 }
 
 .img-responsive-50 {
-  height:50vh;
+  width: 100%;
+  //height:50vh;
 }
 
 .img-responsive-35 {
-  height:35vh;
+  width: 100%;
+  height: 200px;
+  //height:35vh;
 }
