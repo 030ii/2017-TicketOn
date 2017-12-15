@@ -76,7 +76,7 @@ jQuery(function () {
     $("form[name=bid] button[type=submit]").on('click', function(e) {
         e.preventDefault();
         swal({
-            title: $(this).siblings().val() + '원',
+            title: $('.ctrl__counter-input').val() + '원',
             text: "정말 입찰하시겠습니까?",
             type: 'info',
             showCancelButton: true,
@@ -88,7 +88,7 @@ jQuery(function () {
             if (result) {
                 var aid = <%= auction.aid %>;
                 var uid = <%= session.uid %>;
-                var price = $("input[name=price]").val();
+                var price = $('.ctrl__counter-input').val();
                 $.post('/auction/bid', {aid: aid, uid: uid, price: price}, function(data) {
                     if(data) {
                         location.reload();

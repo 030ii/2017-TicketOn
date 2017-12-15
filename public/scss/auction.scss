@@ -66,3 +66,16 @@ $a-gray : #e6ecec !default;
   display: inline;
 }
 
+.a-text {
+  padding: 16px 10px 12px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.a-btn-primary {
+  border-radius: 5px;
+  height: 46px;
+  color: #fff;
+  background-color: #609096;
+  border-color: #6b8f94;
+}
+
