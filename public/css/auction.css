@@ -55,4 +55,10 @@
   background-color: #609096;
   border-color: #6b8f94; }
 
+.img-responsive-50 {
+  height: 50vh; }
+
+.img-responsive-35 {
+  height: 35vh; }
+
 /*# sourceMappingURL=auction.css.map */
