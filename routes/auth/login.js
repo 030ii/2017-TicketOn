@@ -8,6 +8,7 @@ router.post('/', function(req, res, next) {
     var body = req.body;
     // 관리자 로그인
     if(body.id == admin.id && body.password == admin.password) {
+        req.session.uid = 0;
         req.session.name = '관리자',
         req.session.email = 'root@root.com',
         req.session.img = 'no_image.jpg',

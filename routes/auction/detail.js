@@ -79,6 +79,18 @@ router.put('/close', function(req,res) {
     });
 });
 
+router.delete('/', function(req, res) {
+    var body = req.body;
+    pool.getConnection(function(err, connection) {
+        query = "DELETE FROM auction WHERE aid=?";
+        connection.query(query, body.aid, function(err) {
+            if(err) console.log(err);
+            res.send(true);
+            connection.release();
+        });
+    })
+});
+
 var getTime = function(deadline) {
     var time = deadline.getTime() - Date.now(); // 마감시간에서 현재시간을 뺀다
     return (time > 0) ? time : 0; // 시:분:초 형식을 반환한다

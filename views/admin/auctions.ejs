@@ -93,7 +93,7 @@
                     <div class="block block-rounded">
                         <div class="block-content block-content-full">
                             <div class="font-s12 font-w700">진행중인 경매</div>
-                            <a class="h2 font-w300 text-primary" href="javascript:void(0)">8</a>
+                            <a class="h2 font-w300 text-primary" href="javascript:void(0)"><%= aCount[0] %></a>
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,7 @@
                     <div class="block block-rounded">
                         <div class="block-content block-content-full">
                             <div class="font-s12 font-w700">마감된 경매</div>
-                            <a class="h2 font-w300 text-primary" href="javascript:void(0)">390</a>
+                            <a class="h2 font-w300 text-primary" href="javascript:void(0)"><%= aCount[1] %></a>
                         </div>
                     </div>
                 </div>
@@ -109,7 +109,7 @@
                     <div class="block block-rounded">
                         <div class="block-content block-content-full">
                             <div class="font-s12 font-w700">완료된 경매</div>
-                            <a class="h2 font-w300 text-primary" href="javascript:void(0)">63000</a>
+                            <a class="h2 font-w300 text-primary" href="javascript:void(0)"><%= aCount[2] %></a>
                         </div>
                     </div>
                 </div>
@@ -117,7 +117,7 @@
                     <div class="block block-rounded">
                         <div class="block-content block-content-full">
                             <div class="font-s12 font-w700">전체 경매</div>
-                            <a class="h2 font-w300 text-primary" href="javascript:void(0)">$ 980600</a>
+                            <a class="h2 font-w300 text-primary" href="javascript:void(0)"><%= aCount[3] %></a>
                         </div>
                     </div>
                 </div>
@@ -133,96 +133,46 @@
                     <div class="table-responsive">
                         <table class="table table-hover table-vcenter">
                             <tbody>
+                            <% for(var i = 0; i < auction.length; i++) {  %>
+                                <% var aTime = auction[i].a_deadline;
+                                   var date = aTime.getFullYear() + "/" + (aTime.getMonth() + 1) + "/" + aTime.getDate();%>
                             <tr>
                                 <td class="text-center hidden-sm hidden-xs" style="width: 200px;">
                                     <div style="width: 180px;">
-                                        <img class="img-responsive" src="assets/img/various/ecom_product10.png" alt="">
+                                        <img class="img-responsive" src="uploads/<%= auction[i].a_img %>" alt="">
                                     </div>
                                 </td>
                                 <td>
-                                    <h4>경매 제목옥옥옥옥옥</h4>
-                                    <p class="remove-margin-b">경매 분류우루루루 ...</p>
-                                    <a class="font-w600" href="javascript:void(0)">판매자 아이디</a>
-                                    <p class="remove-margin-b hidden-sm hidden-md hidden-lg">마감 날짜 : <span class="text-gray-dark">2017/10/02</span></p>
+                                    <a href="/auction/<%= auction[i].aid %>"><h4><%= auction[i].a_title %></h4></a>
+                                    <p class="remove-margin-b"><%= auction[i].a_category %></p>
+                                    <a class="font-w600" href="javascript:void(0)"><%= auction[i].u_name %></a>
+                                    <p class="remove-margin-b hidden-sm hidden-md hidden-lg">마감 날짜 : <span class="text-gray-dark"><%= date %></span></p>
                                 </td>
-                                <td class="hidden-xs">
-                                    <p class="remove-margin-b">시작가 : <span class="text-gray-dark">1000</span></p>
-                                    <p class="remove-margin-b">입찰가 : <span class="text-gray-dark">34000원</span></p>
-                                    <p class="remove-margin-b">입찰 횟수 : <span class="text-gray-dark">200회</span></p>
-                                    <p class="remove-margin-b">낙찰자 : <a class="font-w600">여신챙챙</a></p>
-                                    <p class="remove-margin-b">마감 날짜 : <span class="text-gray-dark">2017/10/02</span></p>
+                                <td id="<%= auction[i].aid %>" class="hidden-xs">
+                                    <p class="remove-margin-b">시작가 : <span class="text-gray-dark"><%= auction[i].a_min_price %></span>원</p>
+                                    <p class="remove-margin-b">입찰가 : <span class="text-gray-dark">-</span>원</p>
+                                    <p class="remove-margin-b">입찰 횟수 : <span class="text-gray-dark">-</span>회</p>
+                                    <p class="remove-margin-b">낙찰자 : <span class="font-w600">-</span></p>
+                                    <p class="remove-margin-b">마감 날짜 : <span class="text-gray-dark"><%= date %></span></p>
                                 </td>
                                 <td class="text-center">
-                                    <span class="h1 font-w700 text-success">상태</span>
+                                    <% if(auction[i].a_status == '0') { %>
+                                        <span class="h1 font-w700 text-warning">진행</span>
+                                    <% } else if (auction[i].a_status == '1') { %>
+                                        <span class="h1 font-w700 text-danger">마감</span>
+                                    <% } else { %>
+                                        <span class="h1 font-w700 text-success">완료</span>
+                                    <% } %>
                                     <p></p>
-                                    <button class="btn btn-xs btn-default" type="button">
+                                    <button class="btn btn-xs btn-default" type="button" onclick="location.href = '/auction/<%= auction[i].aid %>';">
                                         <i class="fa fa-eye push-5-r text-primary"></i><spans class="hidden-xs">자세히</spans>
                                     </button>
-                                    <button class="btn btn-xs btn-default" type="button">
+                                    <button class="deleteAuction btn btn-xs btn-default" type="button">
                                         <i class="fa fa-times push-5-r text-danger"></i><spans class="hidden-xs">삭제</spans>
                                     </button>
                                 </td>
                             </tr>
-                            <tr>
-                                <td class="text-center hidden-sm hidden-xs" style="width: 200px;">
-                                    <div style="width: 180px;">
-                                        <img class="img-responsive" src="assets/img/various/ecom_product10.png" alt="">
-                                    </div>
-                                </td>
-                                <td>
-                                    <h4>경매 제목옥옥옥옥옥</h4>
-                                    <p class="remove-margin-b">경매 분류우루루루 ...</p>
-                                    <a class="font-w600" href="javascript:void(0)">판매자 아이디</a>
-                                    <p class="remove-margin-b hidden-sm hidden-md hidden-lg">마감 날짜 : <span class="text-gray-dark">2017/10/02</span></p>
-                                </td>
-                                <td class="hidden-xs">
-                                    <p class="remove-margin-b">시작가 : <span class="text-gray-dark">1000</span></p>
-                                    <p class="remove-margin-b">입찰가 : <span class="text-gray-dark">34000원</span></p>
-                                    <p class="remove-margin-b">입찰 횟수 : <span class="text-gray-dark">200회</span></p>
-                                    <p class="remove-margin-b">낙찰자 : <a class="font-w600">여신챙챙</a></p>
-                                    <p class="remove-margin-b">마감 날짜 : <span class="text-gray-dark">2017/10/02</span></p>
-                                </td>
-                                <td class="text-center">
-                                    <span class="h1 font-w700 text-success">상태</span>
-                                    <p></p>
-                                    <button class="btn btn-xs btn-default" type="button">
-                                        <i class="fa fa-eye push-5-r text-primary"></i><spans class="hidden-xs">자세히</spans>
-                                    </button>
-                                    <button class="btn btn-xs btn-default" type="button">
-                                        <i class="fa fa-times push-5-r text-danger"></i><spans class="hidden-xs">삭제</spans>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center hidden-sm hidden-xs" style="width: 200px;">
-                                    <div style="width: 180px;">
-                                        <img class="img-responsive" src="assets/img/various/ecom_product10.png" alt="">
-                                    </div>
-                                </td>
-                                <td>
-                                    <h4>경매 제목옥옥옥옥옥</h4>
-                                    <p class="remove-margin-b">경매 분류우루루루 ...</p>
-                                    <a class="font-w600" href="javascript:void(0)">판매자 아이디</a>
-                                    <p class="remove-margin-b hidden-sm hidden-md hidden-lg">마감 날짜 : <span class="text-gray-dark">2017/10/02</span></p>
-                                </td>
-                                <td class="hidden-xs">
-                                    <p class="remove-margin-b">시작가 : <span class="text-gray-dark">1000</span></p>
-                                    <p class="remove-margin-b">입찰가 : <span class="text-gray-dark">34000원</span></p>
-                                    <p class="remove-margin-b">입찰 횟수 : <span class="text-gray-dark">200회</span></p>
-                                    <p class="remove-margin-b">낙찰자 : <a class="font-w600">여신챙챙</a></p>
-                                    <p class="remove-margin-b">마감 날짜 : <span class="text-gray-dark">2017/10/02</span></p>
-                                </td>
-                                <td class="text-center">
-                                    <span class="h1 font-w700 text-success">상태</span>
-                                    <p></p>
-                                    <button class="btn btn-xs btn-default" type="button">
-                                        <i class="fa fa-eye push-5-r text-primary"></i><spans class="hidden-xs">자세히</spans>
-                                    </button>
-                                    <button class="btn btn-xs btn-default" type="button">
-                                        <i class="fa fa-times push-5-r text-danger"></i><spans class="hidden-xs">삭제</spans>
-                                    </button>
-                                </td>
-                            </tr>
+                            <% } %>
                             </tbody>
                         </table>
                     </div>
@@ -237,5 +187,6 @@
 <!-- END Page Container -->
 
 <% include ../config/footer0.ejs %>
+<script><% include ../../public/js/admin-auctions.js %></script>
 </body>
 </html>

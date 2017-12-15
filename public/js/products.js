@@ -12,7 +12,7 @@ $(document).ready(function () {
       }
     });
 
-    $("#category li").on('click', function(e) {
+    $(".category li").on('click', function(e) {
         var category = $(this).index();
         switch(category) {
             case 0:
