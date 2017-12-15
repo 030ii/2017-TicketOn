@@ -44,7 +44,7 @@ router.get('/:aid', function(req, res, next) {
 router.put('/close', function(req,res) {
     var body = req.body;
     pool.getConnection(function(err, connection) {
-        async.series([
+        async.waterfall([
             function(callback) {
                 // 해당 경매에 대한 최종 입찰 정보 조회
                 query = 'SELECT * FROM bid AS B JOIN user AS U WHERE U.uid IN (' +
