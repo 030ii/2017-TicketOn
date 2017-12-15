@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!--[if IE 9]>         <html class="ie9 no-focus" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-focus" lang="en"> <!--<![endif]-->
+<head>
+    <% include ../config/header.ejs %>
+</head>
+<body>
+<div id="page-container" class="sidebar-l side-scroll header-navbar-fixed">
+    <% include ../config/nav %>
+    <!-- Main Container -->
+    <main id="main-container">
+        <!-- Sub Header -->
+        <div class="bg-primary-lighter visible-xs">
+            <div class="content-mini content-boxed">
+                <ul class="nav nav-pills nav-sub-header push">
+                    <li>
+                        <a href="/mypage/auctions">
+                            <i class="fa fa-briefcase push-5-r"></i>경매 목록
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="/mypage/sucbids">
+                            <i class="fa fa-briefcase push-5-r"></i>낙찰 목록
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mypage/pays">
+                            <i class="fa fa-users push-5-r"></i>결제 내역
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="bg-primary-lighter collapse navbar-collapse remove-padding" id="sub-header-nav">
+            <div class="content-mini content-boxed">
+                <ul class="nav nav-pills nav-sub-header push">
+                    <li>
+                        <a href="/mypage/auctions">
+                            <i class="fa fa-briefcase push-5-r"></i>경매 목록
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="/mypage/sucbids">
+                            <i class="fa fa-briefcase push-5-r"></i>낙찰 목록
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mypage/pays">
+                            <i class="fa fa-users push-5-r"></i>결제 내역
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- END Sub Header -->
+
+        <!-- Page Content -->
+        <div class="content content-boxed">
+            <!-- Section -->
+            <div class="bg-image img-rounded overflow-hidden push" style="background-image: url('img/photo25@2x.jpg');">
+                <div class="bg-black-op">
+                    <div class="content">
+                        <div class="block block-transparent block-themed text-center">
+                            <div class="block-content">
+                                <h1 class="h1 font-w700 text-white animated fadeInDown push-5">낙찰 목록</h1>
+                                <h2 class="h4 font-w400 text-white-op animated fadeInUp">회원님이 낙찰된 경매입니다.</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END Section -->
+
+            <!-- Products -->
+            <div class="block block-rounded">
+                <div class="block-header">
+                    <h3 class="block-title">낙찰 목록</h3>
+                </div>
+                <div class="block-content">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-vcenter">
+                            <tbody>
+                            <% for(var i = 0; i < sucbid.length; i++) {  %>
+                            <tr>
+                                <td class="text-center hidden-sm hidden-xs" style="width: 200px;">
+                                    <div style="width: 180px;">
+                                        <img class="img-responsive" src="uploads/<%= sucbid[i].a_img %>" alt="">
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="/auction/<%= sucbid[i].aid %>"><h4><%= sucbid[i].a_title %></h4></a>
+                                    <p class="remove-margin-b"><%= sucbid[i].a_category %></p>
+                                    <a class="font-w600" href="javascript:void(0)"><%= sucbid[i].u_name %></a>
+                                </td>
+                                <td id="<%= sucbid[i].aid %>" class="hidden-xs">
+                                    <p class="remove-margin-b">시작가 : <span class="text-gray-dark"><%= sucbid[i].a_min_price %></span>원</p>
+                                    <p class="remove-margin-b">낙찰가 : <span class="text-gray-dark"><%= sucbid[i].b_price %></span>원</p>
+                                    <p class="remove-margin-b">낙찰자 : <span class="font-w600"><%= session.name %></span></p>
+                                </td>
+                                <td class="text-center">
+                                    <span class="h1 font-w700 text-danger">마감</span>
+                                    <p></p>
+                                    <button class="btn btn-xs btn-default" type="button" onclick="location.href = '/auction/<%= sucbid[i].aid %>';">
+                                        <i class="fa fa-eye push-5-r text-primary"></i><spans class="hidden-xs">자세히</spans>
+                                    </button>
+                                    <button class="payAuction btn btn-xs btn-default" type="button">
+                                        <i class="fa fa-credit-card push-5-r text-danger"></i><spans class="hidden-xs">결제</spans>
+                                    </button>
+                                </td>
+                            </tr>
+                            <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- END Products -->
+        </div>
+        <!-- END Page Content -->
+    </main>
+    <!-- END Main Container -->
+</div>
+<!-- END Page Container -->
+
+<% include ../config/footer.ejs %>
+<script><% include ../../public/js/mypage-sucbids.js %></script>
+</body>
+</html>

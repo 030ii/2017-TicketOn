@@ -37,6 +37,14 @@ router.get('/', function(req, res, next) {
                     if(err) callback(err);
                     callback(null, rows);
                 });
+            },
+            function(callback) {
+                // 사용자의 결제 정보 조회
+                query = "SELECT * FROM pay WHERE uid=?"
+                connection.query(query, req.session.uid, function (err, rows) {
+                    if(err) callback(err);
+                    callback(null, rows);
+                });
             }
         ], function(err, results) {
             if(err) console.log(err);
@@ -45,6 +53,7 @@ router.get('/', function(req, res, next) {
                 bid: results[1],
                 auction: results[2],
                 sucbid: results[3],
+                pay: results[4],
                 session: req.session
             });
             connection.release();
@@ -64,12 +73,11 @@ router.delete('/', function(req, res) {
     });
 });
 
-router.use('/bids', require('./bids'));
 router.use('/changeInfo', require('./changeInfo'));
 router.use('/changePwd', require('./changePwd'));
 router.use('/changeDeposit', require('./changeDeposit'));
 router.use('/pays', require('./pays'));
-router.use('/requests', require('./requests'));
 router.use('/sucbids', require('./sucbids'));
+router.use('/auctions', require('./auctions'));
 
 module.exports = router;

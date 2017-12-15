@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!--[if IE 9]>         <html class="ie9 no-focus" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-focus" lang="en"> <!--<![endif]-->
+<head>
+    <% include ../config/header.ejs %>
+</head>
+<body>
+<div id="page-container" class="sidebar-l side-scroll header-navbar-fixed">
+    <% include ../config/nav %>
+    <!-- Main Container -->
+    <main id="main-container">
+        <!-- Sub Header -->
+        <div class="bg-primary-lighter visible-xs">
+            <div class="content-mini content-boxed">
+                <ul class="nav nav-pills nav-sub-header push">
+                    <li>
+                        <a href="/mypage/auctions">
+                            <i class="fa fa-briefcase push-5-r"></i>경매 목록
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mypage/sucbids">
+                            <i class="fa fa-briefcase push-5-r"></i>낙찰 목록
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="/mypage/pays">
+                            <i class="fa fa-users push-5-r"></i>결제 내역
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="bg-primary-lighter collapse navbar-collapse remove-padding" id="sub-header-nav">
+            <div class="content-mini content-boxed">
+                <ul class="nav nav-pills nav-sub-header push">
+                    <li>
+                        <a href="/mypage/auctions">
+                            <i class="fa fa-briefcase push-5-r"></i>경매 목록
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mypage/sucbids">
+                            <i class="fa fa-briefcase push-5-r"></i>낙찰 목록
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="/mypage/pays">
+                            <i class="fa fa-users push-5-r"></i>결제 내역
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- END Sub Header -->
+
+        <!-- Page Content -->
+        <div class="content content-boxed">
+            <!-- Section -->
+            <div class="bg-image img-rounded overflow-hidden push" style="background-image: url('img/photo25@2x.jpg');">
+                <div class="bg-black-op">
+                    <div class="content">
+                        <div class="block block-transparent block-themed text-center">
+                            <div class="block-content">
+                                <h1 class="h1 font-w700 text-white animated fadeInDown push-5">결제 내역</h1>
+                                <h2 class="h4 font-w400 text-white-op animated fadeInUp">회원님이 결제한 내역입니다.</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END Section -->
+
+            <!-- Stats -->
+            <div class="row text-uppercase">
+                <div class="col-xs-6 col-sm-3">
+                    <div class="block block-rounded">
+                        <div class="block-content block-content-full">
+                            <div class="font-s12 font-w700">결제 횟수</div>
+                            <a class="h2 font-w300 text-primary" href="javascript:void(0)"><%= pay.length %></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="block block-rounded">
+                        <div class="block-content block-content-full">
+                            <div class="font-s12 font-w700">구매 총액</div>
+                            <%
+                              var total = 0;
+                              pay.forEach(function(element, index) {
+                                    total += Number(element.b_price);
+                              });
+                            %>
+                            <a class="h2 font-w300 text-primary" href="javascript:void(0)"><%= total %></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END Stats -->
+
+            <!-- Customers -->
+            <div class="block">
+                <div class="block-header">
+                    <h3 class="block-title">결제 내역</h3>
+                </div>
+                <div class="block-content">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-vcenter">
+                            <thead>
+                                <tr>
+                                    <th class="text-center hidden-xs">번호</th>
+                                    <th class="text-center hidden-xs">제목</th>
+                                    <th class="text-center">가격</th>
+                                    <th class="text-center hidden-xs hidden-sm">일시</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for(var i = 0; i < pay.length; i++) { %>
+                                  <% var aTime = pay[i].p_time;
+                                     var date = aTime.getFullYear() + "/" + (aTime.getMonth() + 1) + "/" + aTime.getDate();%>
+                                <tr>
+                                    <td class="text-center"><%= pay.length - i %></td>
+                                    <td class="font-w600 text-center hidden-xs"><%= pay[i].a_title %></td>
+                                    <td class="text-center"><%= pay[i].b_price %>원</td>
+                                    <td class="text-center"><%= date %></td>
+                                </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- END Customers -->
+        </div>
+        <!-- END Page Content -->
+    </main>
+    <!-- END Main Container -->
+</div>
+<!-- END Page Container -->
+
+<% include ../config/footer.ejs %>
+<script><% include ../../public/js/mypage-pays.js %></script>
+</body>
+</html>

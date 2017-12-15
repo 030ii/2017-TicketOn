@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!--[if IE 9]>         <html class="ie9 no-focus" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-focus" lang="en"> <!--<![endif]-->
+<head>
+    <% include ../config/header.ejs %>
+</head>
+<body>
+<div id="page-container" class="sidebar-l side-scroll header-navbar-fixed">
+    <% include ../config/nav %>
+    <!-- Main Container -->
+    <main id="main-container">
+        <!-- Sub Header -->
+        <div class="bg-primary-lighter visible-xs">
+            <div class="content-mini content-boxed">
+                <ul class="nav nav-pills nav-sub-header push">
+                    <li class="active">
+                        <a href="/mypage/auctions">
+                            <i class="fa fa-briefcase push-5-r"></i>경매 목록
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mypage/sucbids">
+                            <i class="fa fa-briefcase push-5-r"></i>낙찰 목록
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mypage/pays">
+                            <i class="fa fa-users push-5-r"></i>결제 내역
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="bg-primary-lighter collapse navbar-collapse remove-padding" id="sub-header-nav">
+            <div class="content-mini content-boxed">
+                <ul class="nav nav-pills nav-sub-header push">
+                    <li class="active">
+                        <a href="/mypage/auctions">
+                            <i class="fa fa-briefcase push-5-r"></i>경매 목록
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mypage/sucbids">
+                            <i class="fa fa-briefcase push-5-r"></i>낙찰 목록
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mypage/pays">
+                            <i class="fa fa-users push-5-r"></i>결제 내역
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- END Sub Header -->
+
+        <!-- Page Content -->
+        <div class="content content-boxed">
+            <!-- Section -->
+            <div class="bg-image img-rounded overflow-hidden push" style="background-image: url('img/photo25@2x.jpg');">
+                <div class="bg-black-op">
+                    <div class="content">
+                        <div class="block block-transparent block-themed text-center">
+                            <div class="block-content">
+                                <h1 class="h1 font-w700 text-white animated fadeInDown push-5">경매 목록</h1>
+                                <h2 class="h4 font-w400 text-white-op animated fadeInUp">회원님이 등록한 경매입니다.</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END Section -->
+
+            <!-- Stats -->
+            <div class="row text-uppercase">
+                <div class="col-xs-6 col-sm-3">
+                    <div class="block block-rounded">
+                        <div class="block-content block-content-full">
+                            <div class="font-s12 font-w700">진행중인 경매</div>
+                            <a class="h2 font-w300 text-primary" href="javascript:void(0)"><%= aCount[0] %></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="block block-rounded">
+                        <div class="block-content block-content-full">
+                            <div class="font-s12 font-w700">마감된 경매</div>
+                            <a class="h2 font-w300 text-primary" href="javascript:void(0)"><%= aCount[1] %></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="block block-rounded">
+                        <div class="block-content block-content-full">
+                            <div class="font-s12 font-w700">완료된 경매</div>
+                            <a class="h2 font-w300 text-primary" href="javascript:void(0)"><%= aCount[2] %></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="block block-rounded">
+                        <div class="block-content block-content-full">
+                            <div class="font-s12 font-w700">전체 경매</div>
+                            <a class="h2 font-w300 text-primary" href="javascript:void(0)"><%= aCount[3] %></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END Stats -->
+
+            <!-- Products -->
+            <div class="block block-rounded">
+                <div class="block-header">
+                    <h3 class="block-title">경매 목록</h3>
+                </div>
+                <div class="block-content">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-vcenter">
+                            <tbody>
+                            <% for(var i = 0; i < auction.length; i++) {  %>
+                                <% var aTime = auction[i].a_deadline;
+                                   var date = aTime.getFullYear() + "/" + (aTime.getMonth() + 1) + "/" + aTime.getDate();%>
+                            <tr>
+                                <td class="text-center hidden-sm hidden-xs" style="width: 200px;">
+                                    <div style="width: 180px;">
+                                        <img class="img-responsive" src="uploads/<%= auction[i].a_img %>" alt="">
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="/auction/<%= auction[i].aid %>"><h4><%= auction[i].a_title %></h4></a>
+                                    <p class="remove-margin-b"><%= auction[i].a_category %></p>
+                                    <a class="font-w600" href="javascript:void(0)"><%= auction[i].u_name %></a>
+                                    <p class="remove-margin-b hidden-sm hidden-md hidden-lg">마감 날짜 : <span class="text-gray-dark"><%= date %></span></p>
+                                </td>
+                                <td id="<%= auction[i].aid %>" class="hidden-xs">
+                                    <p class="remove-margin-b">시작가 : <span class="text-gray-dark"><%= auction[i].a_min_price %></span>원</p>
+                                    <p class="remove-margin-b">입찰가 : <span class="text-gray-dark">-</span>원</p>
+                                    <p class="remove-margin-b">입찰 횟수 : <span class="text-gray-dark">-</span>회</p>
+                                    <p class="remove-margin-b">낙찰자 : <span class="font-w600">-</span></p>
+                                    <p class="remove-margin-b">마감 날짜 : <span class="text-gray-dark"><%= date %></span></p>
+                                </td>
+                                <td class="text-center">
+                                    <% if(auction[i].a_status == '0') { %>
+                                        <span class="h1 font-w700 text-warning">진행</span>
+                                    <% } else if (auction[i].a_status == '1') { %>
+                                        <span class="h1 font-w700 text-danger">마감</span>
+                                    <% } else { %>
+                                        <span class="h1 font-w700 text-success">완료</span>
+                                    <% } %>
+                                    <p></p>
+                                    <button class="btn btn-xs btn-default" type="button" onclick="location.href = '/auction/<%= auction[i].aid %>';">
+                                        <i class="fa fa-eye push-5-r text-primary"></i><spans class="hidden-xs">자세히</spans>
+                                    </button>
+                                </td>
+                            </tr>
+                            <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- END Products -->
+        </div>
+        <!-- END Page Content -->
+    </main>
+    <!-- END Main Container -->
+</div>
+<!-- END Page Container -->
+
+<% include ../config/footer.ejs %>
+<script><% include ../../public/js/mypage-auctions.js %></script>
+</body>
+</html>
