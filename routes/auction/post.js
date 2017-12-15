@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
     });
 });
 
-router.post('/', upload.single('img'), function(req, res, next) {
+router.post('/', upload.single('image'), function(req, res, next) {
     var body = req.body;
     var date = new Date();  // 마감시간을 저장할 객체
     date.setTime(date.getTime() + (Number(body.deadline) * 1000 * 60 * 60)); // 마감시간 계산

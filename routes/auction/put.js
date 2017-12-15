@@ -18,20 +18,23 @@ router.get('/:aid', function(req, res, next) {
     });
 });
 
-router.put('/:aid', upload.single('img'), function(req, res, next) {
+router.put('/:aid', upload.single('image'), function(req, res, next) {
     var body = req.body;
+    console.log('body: ', body);
+    console.log('file: ', req.file);
     var img = ''; // 이미지 파일이름을 저장할 변수
-    if(body.img)  // 이미 존재하는 파일의 경우
-        img = body.img;
-    else if(req.file) // 새로 추가한 파일의 경우
-        img = req.file.filename;
+    img = (req.file) ? req.file.filename : ((body.image) ? body.image : 'no_image.jpg');
+    console.log('img: ', img);
 
-    var queryStr = 'UPDATE auction SET a_category=?, a_title=?, a_content=?, a_img=? WHERE aid=?';
-    var inputs = [body.category, body.title, body.content, img, req.params.aid];
+    var date = new Date();  // 마감시간을 저장할 객체
+    date.setTime(date.getTime() + (Number(body.deadline) * 1000 * 60 * 60)); // 마감시간 계산
+
+    var queryStr = 'UPDATE auction SET a_category=?, a_title=?, a_content=?, a_img=?, a_deadline=? WHERE aid=?';
+    var inputs = [body.category, body.title, body.content, img, date, req.params.aid];
     pool.getConnection(function(err, connection) {
         connection.query(queryStr, inputs, function(err, rows) {
             if(err) console.log("err: ", err);
-            res.redirect('/auction');
+            res.redirect('/auction/' + req.params.aid);
             connection.release();
         });
     });

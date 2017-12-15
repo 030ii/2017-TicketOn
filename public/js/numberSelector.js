@@ -4,7 +4,7 @@
     function ctrls() {
         var _this = this;
 
-        this.counter = 1000;
+        this.counter = Number(document.querySelector('.ctrl__counter-input').value);
         this.els = {
             decrement: document.querySelector('.ctrl__button--decrement'),
             counter: {

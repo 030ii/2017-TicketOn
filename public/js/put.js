@@ -45,7 +45,7 @@ $(document).ready(function() {
             swal({
               position: 'center',
               type: 'success',
-              title: '경매를 등록하였습니다!',
+              title: '경매를 수정하였습니다!',
               showConfirmButton: false,
               timer: 1500
             });

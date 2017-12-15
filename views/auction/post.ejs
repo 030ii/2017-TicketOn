@@ -3,20 +3,18 @@
 <!--[if gt IE 9]><!--> <html class="no-focus" lang="en"> <!--<![endif]-->
 <head>
     <% include ../config/header0.ejs %>
-
     <link rel="stylesheet" href="css/form.css">
 </head>
 <body>
 <div id="page-container" class="header-navbar-fixed">
     <% include ../config/nav0.ejs %>
-
   <!-- Main Container -->
   <main id="main-container">
     <!-- Page Header -->
     <div class="content content-mini bg-white">
       <ol class="breadcrumb push">
         <li>
-          <a class="link-effect" href="base_pages_projects_dashboard.html">경매</a>
+          <a class="link-effect" href="/auction">경매</a>
         </li>
         <li>
           등록하기
@@ -24,22 +22,20 @@
       </ol>
     </div>
     <!-- END Page Header -->
-
     <!-- Page Content -->
     <div class="content content-boxed">
-
         <div class="block block-bordered">
             <div class="block-header bg-gray-lighter">
                 <h3 class="block-title">경매 등록하기</h3>
             </div>
             <div class="block-content">
-                <form class="form-horizontal push-10-t push-10" method="post" >
+                <form class="form-horizontal push-10-t push-10" action="/auction/post" method="post" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group">
                                 <div class="col-xs-12">
-                                    <label for="auction-title">제목</label>
-                                    <input class="js-maxlength form-control input-lg" type="text" id="auction-title" name="auction-title" maxlength="50" data-always-show="true" placeholder="경매 제목을 입력해주세요. (50자 이내)">
+                                    <label for="title">제목</label>
+                                    <input class="js-maxlength form-control input-lg" type="text" id="auction-title" name="title" maxlength="50" data-always-show="true" placeholder="경매 제목을 입력해주세요. (50자 이내)">
                                 </div>
                             </div>
                         </div>
@@ -48,9 +44,9 @@
                         <div class="col-sm-7">
                             <div class="form-group">
                                 <div class="col-xs-6">
-                                    <label for="auction-category">분류</label>
-                                    <select class="form-height form-control" id="auction-category" name="auction-category">
-                                        <option value="" disabled selected hidden>경매 분류를 선택하세요.</option>
+                                    <label for="category">분류</label>
+                                    <select class="form-height form-control" id="auction-category" name="category">
+                                        <option disabled selected hidden>경매 분류를 선택하세요.</option>
                                         <option value="뮤지컬/연극">뮤지컬/연극</option>
                                         <option value="영화">영화</option>
                                         <option value="전시/체험">전시/체험</option>
@@ -62,9 +58,9 @@
                                     </select>
                                 </div>
                                 <div class="col-xs-6">
-                                    <label for="auction-deadline">경매 기간</label>
-                                    <select class="form-height form-control" id="auction-deadline" name="auction-deadline">
-                                        <option value="" disabled selected hidden>경매 기간을 선택하세요.</option>
+                                    <label for="deadline">경매 기간</label>
+                                    <select class="form-height form-control" id="auction-deadline" name="deadline">
+                                        <option disabled selected hidden>경매 기간을 선택하세요.</option>
                                         <option value="1">1시간</option>
                                         <option value="3">3시간</option>
                                         <option value="6">6시간</option>
@@ -77,11 +73,11 @@
                         <div class="col-sm-5">
                             <div class="form-group number-selector">
                                 <div class="col-xs-12 ctrl-wrap">
-                                    <label for="auction-min-price">시작가</label>
+                                    <label for="minPrice">시작가</label>
                                     <div class='ctrl'>
                                         <div class='ctrl__button ctrl__button--decrement'>&ndash;</div>
                                         <div class='ctrl__counter'>
-                                            <input class='ctrl__counter-input' id="auction-min-price" name="auction-min-price" maxlength='7' type='text' value='1000'>
+                                            <input class='ctrl__counter-input' id="auction-min-price" name="minPrice" maxlength='7' type='text' value='1000'>
                                             <div class='ctrl__counter-num'>1000</div>
                                         </div>
                                         <div class='ctrl__button ctrl__button--increment'>+</div>
@@ -94,20 +90,19 @@
                         <div class="col-sm-7">
                             <div class="form-group">
                                 <div class="col-xs-12">
-                                    <label for="auction-content">내용</label>
-                                    <textarea class="js-maxlength form-control input-lg" id="auction-content" name="auction-content" rows="7" maxlength="200" data-always-show="true" placeholder="경매할 물품에 대한 내용을 작성해주세요. (200자 이내)"></textarea>
+                                    <label for="content">내용</label>
+                                    <textarea class="js-maxlength form-control input-lg" id="auction-content" name="content" rows="7" maxlength="200" data-always-show="true" placeholder="경매할 물품에 대한 내용을 작성해주세요. (200자 이내)"></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-5">
                             <div class="form-group">
-                                <label class="col-xs-12" for="auction-image">사진 업로드</label>
+                                <label class="col-xs-12" for="image">사진 업로드</label>
                                 <div class="col-xs-12">
                                     <img src="img/no_image.jpg" id="preview-image">
-                                    <input type="file" id="auction-image" name="auction-image">
+                                    <input type="file" id="auction-image" name="image">
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <div class="form-group">
@@ -126,20 +121,10 @@
 <!-- END Page Container -->
 
 <% include ../config/footer0.ejs %>
-
+<!-- Page JS Code -->
+<script><% include ../../public/js/post.js %></script>
 <script src="js/numberSelector.js"></script>
-<script src="js/post.js"></script>
-
 <!-- Page JS Plugins -->
 <script src="vendor/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
-
-<!-- Page JS Code -->
-<script>
-    jQuery(function () {
-        // Init page helpers (BS Maxlength + Select2 + Tags Inputs + CKEditor + Appear + CountTo plugins)
-        App.initHelpers(['maxlength']);
-    });
-</script>
-
 </body>
 </html>

@@ -4,14 +4,14 @@ $(document).ready(function() {
 
     $("#loginModal input[type=submit]").on('click', function(e) {
         e.preventDefault();
-        if(id.val() == "") {
+        if(!id.val()) {
             id.focus();
             swal(
               '미입력 오류',
               '입력하지 않은 정보가 있습니다!',
               'error'
             );
-        } else if(password.val() == "") {
+        } else if(!password.val()) {
             password.focus();
             swal(
               '미입력 오류',

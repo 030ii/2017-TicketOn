@@ -3,7 +3,7 @@ $(document).ready(function() {
 
       $("#findPwdModal input[type=submit]").on('click', function(e) {
           e.preventDefault();
-          if(id.val() == "") {
+          if(!id.val()) {
               id.focus();
               swal(
                 '미입력 오류',

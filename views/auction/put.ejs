@@ -1,69 +1,138 @@
 <!DOCTYPE html>
 <!--[if IE 9]>         <html class="ie9 no-focus" lang="en"> <![endif]-->
 <!--[if gt IE 9]><!--> <html class="no-focus" lang="en"> <!--<![endif]-->
-<html>
-  <head>
-    <% include ../config/header.ejs %>
-  </head>
-  <body>
-    <div class="container my-3">
-        <form action="/auction/put/<%= auction.aid %>?_method=PUT" method="POST" enctype="multipart/form-data">
-          <div class="form-group my-3">
-            <div class="form-row">
-              <div class="col-md-1">
-                <strong>제목</strong>
-              </div>
-              <div class="col-md-11">
-                <input type="text" name="title" style="width:100%" placeholder="제목을 입력하세요." value="<%= auction.a_title %>" />
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="form-row">
-              <div class="col-md-4">
-                  <strong>분류</strong>
-                  <select name="category">
-                      <option value="<%= auction.a_category %>"><%= auction.a_category %></option>
-                      <option value="">선택</option>
-                      <option value="뮤지컬/연극">뮤지컬/연극</option>
-                      <option value="영화">영화</option>
-                      <option value="전시/체험">전시/체험</option>
-                      <option value="콘서트/마술">콘서트/마술</option>
-                      <option value="외식/편의점">외식/편의점</option>
-                      <option value="놀이동산/컨텐츠">놀이동산/컨텐츠</option>
-                      <option value="뷰티/생활">뷰티/생활</option>
-                  </select>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="form-row">
-              <div class="col-md-12">
-                <strong>내용: </strong><br>
-                <textarea name="content" rows="4" style="width:100%"><%= auction.a_content %></textarea>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="form-row">
-              <div class="col-md-12">
-                <strong>첨부사진:</strong><br>
-                <% if (auction.a_img) { %>
-                  <input type="text" name="img" style="width:100%;border:solid 1px gray" value="<%= auction.a_img %>" readonly>
-                <% } else { %>
-                  <input type="file" name="img" style="width:100%;border:solid 1px gray"/>
-                <% } %>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-2 mx-auto">
-              <input type="submit" class="btn btn-primary" style="display:inline" value="수정">
-              <a class="btn btn-danger" href="/auction">취소</a>
-            </div>
-          </div>
-        </form>
+<head>
+    <% include ../config/header0.ejs %>
+    <link rel="stylesheet" href="css/form.css">
+</head>
+<body>
+<div id="page-container" class="header-navbar-fixed">
+    <% include ../config/nav0.ejs %>
+  <!-- Main Container -->
+  <main id="main-container">
+    <!-- Page Header -->
+    <div class="content content-mini bg-white">
+      <ol class="breadcrumb push">
+        <li>
+          <a class="link-effect" href="/auction">경매</a>
+        </li>
+        <li>
+          수정하기
+        </li>
+      </ol>
     </div>
-    <% include ../config/footer.ejs %>
-  </body>
+    <!-- END Page Header -->
+    <!-- Page Content -->
+    <div class="content content-boxed">
+        <div class="block block-bordered">
+            <div class="block-header bg-gray-lighter">
+                <h3 class="block-title">경매 수정하기</h3>
+            </div>
+            <div class="block-content">
+                <form class="form-horizontal push-10-t push-10" action="/auction/put/<%= auction.aid %>?_method=PUT" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label for="title">제목</label>
+                                    <input class="js-maxlength form-control input-lg" type="text" id="auction-title" name="title" maxlength="50"
+                                     data-always-show="true" placeholder="경매 제목을 입력해주세요. (50자 이내)" value="<%= auction.a_title %>">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-7">
+                            <div class="form-group">
+                                <div class="col-xs-6">
+                                    <label for="category">분류</label>
+                                    <select class="form-height form-control" id="auction-category" name="category">
+                                        <option value="<%= auction.a_category %>" selected hidden><%= auction.a_category %></option>
+                                        <option value="뮤지컬/연극">뮤지컬/연극</option>
+                                        <option value="영화">영화</option>
+                                        <option value="전시/체험">전시/체험</option>
+                                        <option value="콘서트/마술">콘서트/마술</option>
+                                        <option value="외식/편의점">외식/편의점</option>
+                                        <option value="놀이동산/컨텐츠">놀이동산/컨텐츠</option>
+                                        <option value="뷰티/생활">뷰티/생활</option>
+                                        <option value="기타">기타</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-6">
+                                    <label for="deadline">경매 기간</label>
+                                    <select class="form-height form-control" id="auction-deadline" name="deadline">
+                                        <option disabled selected hidden>경매 기간을 선택하세요.</option>
+                                        <option value="1">1시간</option>
+                                        <option value="3">3시간</option>
+                                        <option value="6">6시간</option>
+                                        <option value="12">12시간</option>
+                                        <option value="24">24시간</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="form-group number-selector">
+                                <div class="col-xs-12 ctrl-wrap">
+                                    <label for="minPrice">시작가</label>
+                                    <div class='ctrl'>
+                                        <div class='ctrl__button ctrl__button--decrement'>&ndash;</div>
+                                        <div class='ctrl__counter'>
+                                            <input class='ctrl__counter-input' id="auction-min-price" name="minPrice" maxlength='7' type='text' min='1000' value='<%= auction.a_min_price %>'>
+                                            <div class='ctrl__counter-num'><%= auction.a_min_price %></div>
+                                        </div>
+                                        <div class='ctrl__button ctrl__button--increment'>+</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-7">
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label for="content">내용</label>
+                                    <textarea class="js-maxlength form-control input-lg" id="auction-content" name="content" rows="7" maxlength="200"
+                                     data-always-show="true" placeholder="경매할 물품에 대한 내용을 작성해주세요. (200자 이내)"><%= auction.a_content %></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <label class="col-xs-12" for="image">사진 업로드</label>
+                                <div class="col-xs-12">
+                                    <% if(auction.a_img) { %>
+                                      <img src="uploads/<%= auction.a_img %>" id="preview-image">
+                                      <input type="hidden" name="image" value="<%= auction.a_img %>">
+                                      <input type="file" id="auction-image" name="image">
+                                    <% } else { %>
+                                      <img src="img/no_image.jpg" id="preview-image">
+                                      <input type="file" id="auction-image" name="image">
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <button class="btn-height btn btn-warning" type="submit"><i class="fa fa-check push-5-r"></i>경매 수정하기</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- END Page Content -->
+  </main>
+  <!-- END Main Container -->
+</div>
+<!-- END Page Container -->
+
+<% include ../config/footer0.ejs %>
+<!-- Page JS Code -->
+<script><% include ../../public/js/put.js %></script>
+<script src="js/numberSelector.js"></script>
+<!-- Page JS Plugins -->
+<script src="vendor/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+</body>
 </html>

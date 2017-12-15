@@ -4,14 +4,14 @@ $(document).ready(function() {
 
       $("#findIdModal input[type=submit]").on('click', function(e) {
           e.preventDefault();
-          if(name.val() == "") {
+          if(!name.val()) {
               name.focus();
               swal(
                 '미입력 오류',
                 '입력하지 않은 정보가 있습니다!',
                 'error'
               );
-          } else if(tel.val() == "") {
+          } else if(!tel.val()) {
               tel.focus();
               swal(
                 '미입력 오류',

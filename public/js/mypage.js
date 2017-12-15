@@ -1,4 +1,3 @@
-<script>
 $(document).ready(function() {
     var tel = $("#profile-tel");
     var img = $("#profile-image");
@@ -15,7 +14,7 @@ $(document).ready(function() {
 
         switch(page) {
             case 0:
-                if(tel.val() == "") {
+                if(!tel.val()) {
                     tel.focus();
                     swal(
                         '미입력 오류',
@@ -35,14 +34,14 @@ $(document).ready(function() {
                 }
                 break;
             case 1:
-                if(curPwd.val() == "") {
+                if(!curPwd.val()) {
                     curPwd.focus();
                     swal(
                         '미입력 오류',
                         '현재 비밀번호를 입력해주세요!',
                         'error'
                     );
-                } else if (newPwd.val() == "" || newPwdConfirm.val() == "") {
+                } else if (!newPwd.val() || !newPwdConfirm.val()) {
                     newPwd.focus();
                     swal(
                         '미입력 오류',
@@ -118,4 +117,3 @@ $(document).ready(function() {
         }
     });
 });
-</script>

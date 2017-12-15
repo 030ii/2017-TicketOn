@@ -5,6 +5,7 @@ var async = require('async');
 var moment = require('moment');
 
 router.get('/:aid', function(req, res, next) {
+    console.log(req.params.aid);
     pool.getConnection(function(err, connection) {
         async.series([
             function(callback) {
@@ -13,6 +14,7 @@ router.get('/:aid', function(req, res, next) {
                           'SELECT uid FROM auction WHERE aid=?) AND A.aid=?';
                 connection.query(queryStr, [req.params.aid, req.params.aid], function(err, rows) {
                     if(err) callback(err);
+                    console.log('rows: ', rows);
                     callback(null, rows[0]);
                 });
             },

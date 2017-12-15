@@ -10,7 +10,7 @@ $(document).ready(function() {
     $("#registerModal button[type=submit]").on('click', function(e) {
         e.preventDefault();
         for(var i = 0; i < inputs.length; i++) {
-            if(inputs[i].val() == "") {
+            if(!inputs[i].val()) {
                 inputs[i].focus();
                 swal(
                   '미입력 오류',
