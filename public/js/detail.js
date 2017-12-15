@@ -16,6 +16,7 @@ var detail = {
             e.preventDefault();
             detail.doBid();
         });
+        $(document).on('click touchend', '#deleteAuction', this.deleteAuction);
     },
     showLoading: function() {
         swal({
@@ -119,6 +120,30 @@ var detail = {
                           customClass: 'animated tada'
                         });
                     }
+                });
+            }
+        });
+    },
+    deleteAuction: function() {
+        swal({
+          title: '정말 삭제하시겠습니까?',
+          text: "삭제 시 되돌릴 수 없습니다!",
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: '네, 삭제합니다!',
+          cancelButtonText: '아니오'
+        }).then(function(result) {
+            if (result) {
+                swal(
+                  '삭제완료!',
+                  '경매를 삭제하였습니다.',
+                  'success'
+                );
+                $.post('/auction?_method=DELETE', {aid: <%= auction.aid %>}, function(data) {
+                    if(data)
+                      location.href = (document.referrer.indexOf('put')) ? '/auction' : document.referrer;
                 });
             }
         });

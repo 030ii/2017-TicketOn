@@ -68,8 +68,9 @@
                                                                                     + aTime.getSeconds() +"초";
                                                                             %><%= date %></small></p>
                                                                     <div>
-                                                                        <% if(session.uid == auction.uid) { %>
-                                                                        <a class="btn btn-sm btn-default" href="/auction/put/<%= auction.aid %>"><i class="fa fa-pencil push-5-r"></i> 수정</a>
+                                                                        <% if(session.uid == auction.uid && bid.length == 0) { %>
+                                                                          <a class="btn btn-sm btn-primary" href="/auction/put/<%= auction.aid %>"><i class="fa fa-pencil push-5-r"></i> 수정</a>
+                                                                          <a id="deleteAuction" class="btn btn-sm btn-danger"><i class="fa fa-times push-5-r"></i> 삭제</a>
                                                                         <% } %>
                                                                     </div>
                                                                 </div>
@@ -98,10 +99,10 @@
                                             <div class="block-content">
                                                 <span class="a-text font-w600">입찰하기</span>
                                                 <div class="number-selector">
+                                                  <% if(session.uid != auction.uid && !session.admin && auction.a_status == '0') { %>
                                                     <form name="bid">
                                                         <p></p>
                                                         <div class="col-xs-9 ctrl-wrap">
-                                                            <% if(session.uid != auction.uid && !session.admin && auction.a_status == '0') { %>
                                                                 <div class='ctrl'>
                                                                     <div class='ctrl__button ctrl__button--decrement'>&ndash;</div>
                                                                     <div class='ctrl__counter'>
@@ -111,10 +112,11 @@
                                                                     </div>
                                                                     <div class='ctrl__button ctrl__button--increment'>+</div>
                                                                 </div>
-                                                            <% } %>
+
                                                         </div>
                                                         <button type="submit" class="col-xs-3 a-btn-primary btn">입찰하기</button>
                                                     </form>
+                                                  <% } %>
                                                 </div>
                                             </div>
                                             <div class="block">
@@ -131,16 +133,11 @@
                                                                 <td class="text-center" style="width:20%;"><%= bid[i].u_name %></td>
                                                                 <td class="text-center" style="width:35%;"><i class="fa fa-check text-success"> <%= bid[i].b_price %>원</i></td>
                                                                 <td class="text-center" >
-                                                                    <%
-                                                                        var bTime = bid[i].b_time;
-                                                                        var date = bTime.getFullYear() + "년 "
-                                                                                + (bTime.getMonth() + 1) + "월 "
-                                                                                + bTime.getDate() + "일 "
-                                                                                + bTime.getHours() + "시  "
-                                                                                + bTime.getMinutes() + "분 "
-                                                                                + bTime.getSeconds() +"초";
-                                                                    %><%= date
-                                                                    %>
+                                                                    <%  var bTime = bid[i].b_time;
+                                                                        var date = bTime.getFullYear() + "년 " + (bTime.getMonth() + 1) + "월 "
+                                                                                + bTime.getDate() + "일 " + bTime.getHours() + "시  "
+                                                                                + bTime.getMinutes() + "분 " + bTime.getSeconds() +"초";%>
+                                                                                <%= date %>
                                                                 </td>
                                                             </tr>
                                                             <% } %>

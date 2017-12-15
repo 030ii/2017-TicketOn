@@ -11,7 +11,9 @@ var post = {
     initEvent: function () {
         var _this = this;
         $(document).on('change touchend', '#auction-image', this.readURL);
-        $(document).on('click touchend', '#postAuctionBtn', this.postAuction(e));
+        $(document).on('click touchend', '#postAuctionBtn', function(e){
+            post.postAuction(e);
+        });
     },
     readURL: function() {
         var file = $('#auction-image')[0].files[0];
