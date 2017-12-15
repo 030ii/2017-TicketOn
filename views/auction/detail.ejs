@@ -105,7 +105,7 @@
                                                                 <div class='ctrl'>
                                                                     <div class='ctrl__button ctrl__button--decrement'>&ndash;</div>
                                                                     <div class='ctrl__counter'>
-                                                                        <input class='ctrl__counter-input' id="auction-min-price" name="minPrice" maxlength="7" type="number" min="<%= (bid[0]) ? bid[0].b_price + 10 : auction.a_min_price %>"
+                                                                        <input class='ctrl__counter-input' id="auction-min-price" name="minPrice" maxlength="7" type="text" min="<%= (bid[0]) ? bid[0].b_price + 10 : auction.a_min_price %>"
                                                                                value="<%= (bid[0]) ? bid[0].b_price + 100 : auction.a_min_price %>">
                                                                         <div class='ctrl__counter-num'><%= (bid[0]) ? bid[0].b_price + 100 : auction.a_min_price %></div>
                                                                     </div>

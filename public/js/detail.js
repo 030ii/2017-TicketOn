@@ -14,7 +14,7 @@ var detail = {
         this.showTime();
         $(document).on('click touchend', 'button[type=submit]', function(e){
             e.preventDefault();
-            this.doBid();
+            detail.doBid();
         });
     },
     showLoading: function() {
