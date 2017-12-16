@@ -45,6 +45,14 @@ router.get('/', function(req, res, next) {
                     if(err) callback(err);
                     callback(null, rows);
                 });
+            },
+            function(callback) {
+                query = "SELECT * FROM auction AS A JOIN user AS U JOIN bid AS B WHERE A.uid=? "
+                  + "AND U.uid=B.uid AND B.b_price=(SELECT MAX(b_price) FROM bid WHERE aid=A.aid) AND A.a_status<>'0'";
+                connection.query(query, req.session.uid, function(err, rows) {
+                    if(err) callback(err);
+                    callback(null, rows);
+                });
             }
         ], function(err, results) {
             if(err) console.log(err);
@@ -54,6 +62,7 @@ router.get('/', function(req, res, next) {
                 auction: results[2],
                 sucbid: results[3],
                 pay: results[4],
+                income: results[5],
                 session: req.session
             });
             connection.release();
