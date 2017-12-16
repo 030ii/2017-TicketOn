@@ -47,8 +47,9 @@ router.get('/', function(req, res, next) {
                 });
             },
             function(callback) {
+                // 사용자의 판매내역 조회
                 query = "SELECT * FROM auction AS A JOIN user AS U JOIN bid AS B WHERE A.uid=? "
-                  + "AND U.uid=B.uid AND B.b_price=(SELECT MAX(b_price) FROM bid WHERE aid=A.aid) AND A.a_status<>'0'";
+                  + "AND U.uid=B.uid AND B.b_price=(SELECT MAX(b_price) FROM bid WHERE aid=A.aid) AND A.aid=B.aid AND A.a_status<>'0'";
                 connection.query(query, req.session.uid, function(err, rows) {
                     if(err) callback(err);
                     callback(null, rows);

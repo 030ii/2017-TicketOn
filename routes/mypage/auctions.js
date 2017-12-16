@@ -9,7 +9,7 @@ router.get('/', function(req, res) {
             function(callback) {
                 // 경매 정보 및 판매자 조회
                 query = "SELECT A.aid, A.a_category, A.a_title, A.a_img, A.a_status, A.a_deadline, A.a_min_price, U.u_name "
-                        + "FROM auction AS A JOIN user AS U WHERE A.uid = U.uid AND A.uid=?;";
+                        + "FROM auction AS A JOIN user AS U WHERE A.uid = U.uid AND A.uid=? ORDER BY A.a_deadline DESC";
                 connection.query(query, req.session.uid, function(err, rows) {
                     if(err) callback(err);
                     callback(null, rows);

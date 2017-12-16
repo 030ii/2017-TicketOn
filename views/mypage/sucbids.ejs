@@ -30,7 +30,7 @@
                     </li>
                     <li>
                         <a href="/mypage/incomes">
-                            <i class="fa fa-gift push-5-r"></i>판매 목록
+                            <i class="fa fa-gift push-5-r"></i>판매 내역
                         </a>
                     </li>
                 </ul>
@@ -56,7 +56,7 @@
                     </li>
                     <li>
                         <a href="/mypage/incomes">
-                            <i class="fa fa-gift push-5-r"></i>판매 목록
+                            <i class="fa fa-gift push-5-r"></i>판매 내역
                         </a>
                     </li>
                 </ul>
@@ -91,7 +91,7 @@
                         <table class="table table-hover table-vcenter">
                             <tbody>
                             <% for(var i = 0; i < sucbid.length; i++) {  %>
-                                  <% var aTime = sucbid[i].b_time;
+                                  <% var aTime = sucbid[i].a_deadline;
                                      var date = aTime.getFullYear() + "/" + (aTime.getMonth() + 1) + "/" + aTime.getDate();%>
                             <tr>
                                 <td class="text-center hidden-sm hidden-xs" style="width: 200px;">
@@ -107,7 +107,7 @@
                                 <td id="<%= sucbid[i].aid %>" class="hidden-xs">
                                     <p class="remove-margin-b">시작가 : <span class="text-gray-dark"><%= sucbid[i].a_min_price %></span>원</p>
                                     <p class="remove-margin-b">낙찰가 : <span class="text-gray-dark"><%= sucbid[i].b_price %></span>원</p>
-                                    <p class="remove-margin-b">입찰일 : <span class="text-gray-dark"><%= date %></span></p>
+                                    <p class="remove-margin-b">낙찰일 : <span class="text-gray-dark"><%= date %></span></p>
                                 </td>
                                 <td class="text-center">
                                     <span class="h1 font-w700 text-danger">마감</span>

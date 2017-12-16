@@ -8,7 +8,8 @@ router.get('/', function(req, res, next) {
         async.series([
             function(callback) {
                 query = "SELECT A.a_img, A.a_title, A.a_deadline, A.a_status, U.uid, U.u_name, B.b_price FROM auction AS A JOIN"
-                  + " user AS U JOIN bid AS B WHERE A.uid=? AND U.uid=B.uid AND B.b_price=(SELECT MAX(b_price) FROM bid WHERE aid=A.aid) AND A.a_status<>'0';";
+                  + " user AS U JOIN bid AS B WHERE A.uid=? AND U.uid=B.uid AND B.b_price=(SELECT MAX(b_price) FROM bid WHERE "
+                  + " aid=A.aid) AND A.a_status<>'0' AND A.aid=B.aid ORDER BY A.a_deadline DESC";
                 connection.query(query, req.session.uid, function(err, rows) {
                     if(err) callback(err);
                     callback(null, rows);
