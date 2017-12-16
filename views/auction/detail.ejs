@@ -96,10 +96,10 @@
                                             </div>
                                         </a>
                                         <div class="block">
+                                          <% if(session.uid != auction.uid && !session.admin && auction.a_status == '0') { %>
                                             <div class="block-content">
                                                 <span class="a-text font-w600">입찰하기</span>
                                                 <div class="number-selector">
-                                                  <% if(session.uid != auction.uid && !session.admin && auction.a_status == '0') { %>
                                                     <form name="bid">
                                                         <p></p>
                                                         <div class="col-xs-9 ctrl-wrap">
@@ -114,11 +114,11 @@
                                                                 </div>
 
                                                         </div>
-                                                        <button type="submit" class="col-xs-3 a-btn-primary btn">입찰하기</button>
+                                                        <button id="bid" type="submit" class="col-xs-3 a-btn-primary btn">입찰하기</button>
                                                     </form>
-                                                  <% } %>
                                                 </div>
                                             </div>
+                                            <% } %>
                                             <div class="block">
                                                 <div class="block-content">
                                                     <table class="table table-striped table-borderless">

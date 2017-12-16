@@ -11,7 +11,7 @@ router.post('/', function(req, res, next) {
             else if(rows[0]) {
                 var IDs = '';
                 rows.forEach(function(element) {
-                    IDs += " [" + element.u_name + "] ";
+                    IDs += " [" + element.u_id + "] ";
                 });
                 res.send(IDs)
             } else {

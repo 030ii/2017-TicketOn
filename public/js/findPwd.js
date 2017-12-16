@@ -7,7 +7,9 @@ var findPwd = {
     },
     initEvent: function () {
         var _this = this;
-        $(document).on('click touchend', '#findPwdModal input[type=submit]', this.findPwd(e));
+        $(document).on('click touchend', '#findPwdModal input[type=submit]', function(e) {
+          findPwd.findPwd(e)
+        });
     },
     findPwd: function(e) {
         var id = $("#findPwdModal").find("input[name=id]");

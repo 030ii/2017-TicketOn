@@ -32,7 +32,7 @@ function sendMail(req, id, password) {
                       subject: '[티켓온]비밀번호 정보',
                       html: '<div align="center" style="border-radius:50px;background-color:#63d3f5;width:35vh;padding:15px;">'
                           + '<h3>회원님의 비밀번호는</h3><h2 style="color:white"> "' + decrypt(password) + '" </h2><h3>입니다.</h3>'
-                          + '<a style="border-radius:20px;padding:15px;text-decoration:none;text-align:center;font-size:2.5em;font-weight:bold;'
+                          + '<a style="border-radius:15px;padding:10px;text-decoration:none;text-align:center;font-size:1.7em;font-weight:bold;'
                           + 'background-color:#fff;" href="http://' + req.get('host') + '/">티켓온 바로가기</a></div>'
                   };
     // 메일 전송

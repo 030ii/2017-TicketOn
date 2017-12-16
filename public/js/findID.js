@@ -7,10 +7,12 @@ var findID = {
     },
     initEvent: function () {
         var _this = this;
-        $(document).on('click touchend', '#findIdModal input[type=submit]', this.findID(e));
+        $(document).on('click touchend', '#findIdModal input[type=submit]', function(e) {
+            findID.findID(e);
+        });
     },
     findID: function(e) {
-        var name = $("#findIdModal").find("input[name=name"]);
+        var name = $("#findIdModal").find("input[name=name]");
         var tel = $("#findIdModal").find("input[name=tel]");
         e.preventDefault();
         if(!name.val()) {
@@ -32,7 +34,7 @@ var findID = {
                 if(data) {
                     swal(
                       '성공',
-                      '찾으시는 이메일은 [' + data + ']입니다!',
+                      '찾으시는 이메일은 "' + data + '" 입니다!',
                       'success'
                     );
                 } else {

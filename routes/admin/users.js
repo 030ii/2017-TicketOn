@@ -11,7 +11,7 @@ router.get('/', function(req,res,next){
     pool.getConnection(function (err, connection) {
         async.series([
             function(callback) {
-                query = "SELECT * FROM user";
+                query = "SELECT * FROM user ORDER BY u_reg DESC";
                 connection.query(query, function (err, rows) {
                     if(err) callback(err);
                     callback(null,rows);

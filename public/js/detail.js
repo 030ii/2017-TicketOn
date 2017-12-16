@@ -12,9 +12,8 @@ var detail = {
         var _this = this;
         this.showLoading();
         this.showTime();
-        $(document).on('click touchend', 'button[type=submit]', function(e){
-            e.preventDefault();
-            detail.doBid();
+        $(document).on('click touchend', '#bid', function(e){
+            detail.doBid(e);
         });
         $(document).on('click touchend', '#deleteAuction', this.deleteAuction);
     },
@@ -50,8 +49,10 @@ var detail = {
                 hour = '00';
                 min = '00';
                 sec = '00';
+                $(".timer").siblings().css('color', 'red');
                 $(".timer").siblings().text('경매가 마감되었습니다!');
                 clearInterval(timer);
+                <% if(auction.a_status == '0') { %>
                 $.post('/auction/close?_method=PUT', {aid: <%= auction.aid %>}, function(data) {
                     if(data) {
                         swal({
@@ -83,16 +84,17 @@ var detail = {
                         });
                     }
                 });
+                <% } %>
             }
-            if(hour == '00' && Number(min) < 5) {
+            if(hour == '00' && Number(min) < 5 && Number(min) != 0) {
                 $(".timer").css('color', 'red');
                 $(".timer").siblings().text('마감시간이 임박했습니다!');
             }
             $(".timer").text(hour + ':' + min + ":" + sec);
         }, 1000);
     },
-    doBid: function() {
-        // e.preventDefault();
+    doBid: function(e) {
+        e.preventDefault();
         swal({
             title: $('.ctrl__counter-input').val() + '원',
             text: "정말 입찰하시겠습니까?",
