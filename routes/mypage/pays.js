@@ -20,9 +20,11 @@ router.get('/', function(req, res, next) {
               connection.query(query, req.session.uid, function(err, rows) {
                   if(err) callback(err);
                   var price = 0;  // 결제 총액
-                  rows.forEach(function(element, index) {
-                      price += element.b_price;
-                  });
+                  if(rows[0]) {
+                      rows.forEach(function(element, index) {
+                          price += element.b_price;
+                      });
+                  }
                   callback(null, price);
               });
           }
