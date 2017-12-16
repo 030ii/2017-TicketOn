@@ -12,6 +12,18 @@ router.get('/', function(req, res) {
         async.series([
             function(callback) {
                 // 마감시간 순으로 모든 경매 정보 조회
+                query = "SELECT * FROM auction WHERE a_status='0'";
+                connection.query(query, function(err, auctions) {
+                    if(err) callback(err);
+                    auctions.forEach(function(element, index) {
+                        if(element.a_deadline.getTime() < Date.now()) // 마감시간이 지나면
+                            changeStatus(element.aid);  // 경매 상태 변경
+                    });
+                    callback(null, true);
+                });
+            },
+            function(callback) {
+                // 마감시간 순으로 모든 경매 정보 조회
                 query = "SELECT * FROM auction WHERE a_status='0' ORDER BY a_deadline ASC";
                 connection.query(query, function(err, auctions) {
                     if(err) callback(err);
@@ -46,16 +58,16 @@ router.get('/', function(req, res) {
             connection.release();
             if(err) console.log(err);
             var times = [];
-            results[0].forEach(function(element, index) {
+            results[1].forEach(function(element, index) {
                 times[index] = getTime(element.a_deadline); // 남은 시간들을 구한다
             });
             // 경매 목록 페이지 랜더링
             res.render('auction/products', {
                 session: req.session,
-                auction: results[0],  // 경매 정보
+                auction: results[1],  // 경매 정보
                 time: times,  // 남은 시간
-                bid: results[1], // 입찰 정보
-                count: results[2] // 분류별 경매 수
+                bid: results[2], // 입찰 정보
+                count: results[3] // 분류별 경매 수
             });
         });
     });
@@ -72,3 +84,15 @@ var getTime = function(deadline) {
     return (time > 0) ? time : 0; // 시:분:초 형식을 반환한다
 }
 module.exports = router;
+
+// 마감시간이 지난 경매의 상태를 변경
+var changeStatus = function(aid) {
+    pool.getConnection(function(err, connection) {
+        // 경매 상태를 마감으로 바꾼다
+        query = "UPDATE auction SET a_status='1' WHERE aid=?";
+        connection.query(query, aid, function(err, rows) {
+            if(err) console.log(err);
+            connection.release();
+        });
+    });
+}

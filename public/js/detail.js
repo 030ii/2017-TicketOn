@@ -60,7 +60,7 @@ var detail = {
                           text: '낙찰자: ' + data.u_name + ' / 낙찰가: ' + data.b_price + '원',
                           imageUrl: 'img/trophy.jpg',
                           imageWidth: 400,
-                          imageHeight: 200,
+                          imageHeight: 300,
                           imageAlt: 'Custom image',
                           animation: false,
                           allowOutsideClick: false,
