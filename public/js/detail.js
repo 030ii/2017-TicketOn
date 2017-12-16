@@ -58,7 +58,7 @@ var detail = {
                         swal({
                           title: '경매 마감',
                           text: '낙찰자: ' + data.u_name + ' / 낙찰가: ' + data.b_price + '원',
-                          imageUrl: 'https://picsum.photos/400/200/?random',
+                          imageUrl: 'img/trophy.jpg',
                           imageWidth: 400,
                           imageHeight: 200,
                           imageAlt: 'Custom image',

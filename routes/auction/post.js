@@ -4,9 +4,17 @@ var pool = require('../../config.js').pool;
 var upload = require('../../config.js').upload;
 
 router.get('/', function(req, res, next) {
-    // 경매 등록 페이지 렌더링
-    res.render('auction/post', {
-        session: req.session
+    pool.getConnection(function(err, connection) {
+        query = "SELECT u_account FROM user WHERE uid=?";
+        connection.query(query, req.session.uid, function(err, rows) {
+            if(err) console.log();
+            console.log(rows);
+            // 경매 등록 페이지 렌더링
+            res.render('auction/post', {
+                account: rows[0].u_account,
+                session: req.session
+            });
+        });
     });
 });
 

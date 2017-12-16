@@ -10,6 +10,18 @@ var post = {
     },
     initEvent: function () {
         var _this = this;
+        <% if(!account) { %>
+            swal(
+                '계좌 미등록',
+                '계좌 정보를 등록해주세요!',
+                'error'
+            ).then(function() {
+                location.href = '/mypage';
+            });
+            setTimeout(function() {
+              location.href = '/mypage';
+            }, 1500);
+        <% } %>
         $(document).on('change touchend', '#auction-image', this.readURL);
         $(document).on('click touchend', '#postAuctionBtn', function(e){
             post.postAuction(e);
