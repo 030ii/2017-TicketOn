@@ -8,7 +8,7 @@ $(document).ready(function() {
     var deadline = $("#auction-deadline");
     var content = $("#auction-content");
 
-    $("button[type=submit]").on('click', function(e) {
+    $("#modifyAuction").on('click', function(e) {
         if(!title.val()) {
             e.preventDefault();
             title.focus();
