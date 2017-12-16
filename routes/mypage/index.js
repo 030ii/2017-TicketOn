@@ -77,6 +77,7 @@ router.use('/changeInfo', require('./changeInfo'));
 router.use('/changePwd', require('./changePwd'));
 router.use('/changeDeposit', require('./changeDeposit'));
 router.use('/pays', require('./pays'));
+router.use('/incomes', require('./incomes'));
 router.use('/sucbids', require('./sucbids'));
 router.use('/auctions', require('./auctions'));
 

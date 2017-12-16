@@ -23,12 +23,12 @@
                             <i class="fa fa-briefcase push-5-r"></i>낙찰 목록
                         </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="/mypage/pays">
                             <i class="fa fa-users push-5-r"></i>결제 내역
                         </a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="/mypage/incomes">
                             <i class="fa fa-users push-5-r"></i>판매 목록
                         </a>
@@ -49,12 +49,12 @@
                             <i class="fa fa-briefcase push-5-r"></i>낙찰 목록
                         </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="/mypage/pays">
                             <i class="fa fa-users push-5-r"></i>결제 내역
                         </a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="/mypage/incomes">
                             <i class="fa fa-users push-5-r"></i>판매 목록
                         </a>
@@ -72,8 +72,8 @@
                     <div class="content">
                         <div class="block block-transparent block-themed text-center">
                             <div class="block-content">
-                                <h1 class="h1 font-w700 text-white animated fadeInDown push-5">결제 내역</h1>
-                                <h2 class="h4 font-w400 text-white-op animated fadeInUp">회원님이 결제한 내역입니다.</h2>
+                                <h1 class="h1 font-w700 text-white animated fadeInDown push-5">판매 목록</h1>
+                                <h2 class="h4 font-w400 text-white-op animated fadeInUp">회원님의 판매 목록입니다.</h2>
                             </div>
                         </div>
                     </div>
@@ -83,19 +83,35 @@
 
             <!-- Stats -->
             <div class="row text-uppercase">
-                <div class="col-xs-6 col-sm-3 col-md-6">
+                <div class="col-xs-6 col-sm-3">
                     <div class="block block-rounded">
                         <div class="block-content block-content-full">
-                            <div class="font-s12 font-w700">결제 횟수</div>
-                            <a class="h2 font-w300 text-primary" href="javascript:void(0)"><%= pay.length %></a>
+                            <div class="font-s12 font-w700">판매 물품</div>
+                            <a class="h2 font-w300 text-primary" href="javascript:void(0)"><%= income.length %></a>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-6 col-sm-3 col-md-6">
+                <div class="col-xs-6 col-sm-3">
                     <div class="block block-rounded">
                         <div class="block-content block-content-full">
-                            <div class="font-s12 font-w700">구매 총액</div>
-                            <a class="h2 font-w300 text-primary" href="javascript:void(0)"><%= price %></a>
+                            <div class="font-s12 font-w700">판매 총액</div>
+                            <a class="h2 font-w300 text-primary" href="javascript:void(0)"><%= price[0] %></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="block block-rounded">
+                        <div class="block-content block-content-full">
+                            <div class="font-s12 font-w700">결제 대기</div>
+                            <a class="h2 font-w300 text-primary" href="javascript:void(0)"><%= price[1] %></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="block block-rounded">
+                        <div class="block-content block-content-full">
+                            <div class="font-s12 font-w700">결제 완료</div>
+                            <a class="h2 font-w300 text-primary" href="javascript:void(0)"><%= price[2] %></a>
                         </div>
                     </div>
                 </div>
@@ -105,7 +121,7 @@
             <!-- Customers -->
             <div class="block">
                 <div class="block-header">
-                    <h3 class="block-title">결제 내역</h3>
+                    <h3 class="block-title">판매 목록</h3>
                 </div>
                 <div class="block-content">
                     <div class="table-responsive">
@@ -115,18 +131,22 @@
                                     <th class="text-center">번호</th>
                                     <th class="text-center">제목</th>
                                     <th class="text-center">가격</th>
-                                    <th class="text-center hidden-xs">일시</th>
+                                    <th class="text-center hidden-xs">구매자</th>
+                                    <th class="text-center hidden-xs">마감시간</th>
+                                    <th class="text-center">상태</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <% for(var i = 0; i < pay.length; i++) { %>
-                                  <% var aTime = pay[i].p_time;
+                                <% for(var i = 0; i < income.length; i++) { %>
+                                  <% var aTime = income[i].a_deadline;
                                      var date = aTime.getFullYear() + "/" + (aTime.getMonth() + 1) + "/" + aTime.getDate();%>
                                 <tr>
-                                    <td class="text-center"><%= pay.length - i %></td>
-                                    <td class="font-w600 text-center"><%= pay[i].a_title %></td>
-                                    <td class="text-center"><%= pay[i].b_price %>원</td>
+                                    <td class="text-center"><%= income.length - i %></td>
+                                    <td class="font-w600 text-center"><%= income[i].a_title %></td>
+                                    <td class="text-center"><%= income[i].b_price %>원</td>
+                                    <td class="text-center hidden-xs"><a id="<%= income[i].uid %>" class="customer"><%= income[i].u_name %></a></td>
                                     <td class="text-center hidden-xs"><%= date %></td>
+                                    <td class="text-center"><%= (income[i].a_status == '1') ? '결제 대기' : '결제 완료' %></td>
                                 </tr>
                                 <% } %>
                             </tbody>
@@ -143,6 +163,6 @@
 <!-- END Page Container -->
 
 <% include ../config/footer.ejs %>
-<script><% include ../../public/js/mypage-pays.js %></script>
+<script><% include ../../public/js/mypage-incomes.js %></script>
 </body>
 </html>
