@@ -18,14 +18,13 @@ router.get('/', function(req, res, next) {
           },
           function(callback) {
               // 결제 금액 조회
-              query = "SELECT B.b_price FROM auction AS A JOIN user AS U JOIN bid AS B WHERE A.uid=? "
-              + "AND U.uid=B.uid AND B.b_price=(SELECT MAX(b_price) FROM bid WHERE aid=A.aid) AND A.a_status='2'";
+              query = "SELECT p_price FROM pay WHERE uid=?";
               connection.query(query, req.session.uid, function(err, rows) {
                   if(err) callback(err);
                   var price = 0;  // 결제 총액
                   if(rows[0]) {
                       rows.forEach(function(element, index) {
-                          price += element.b_price;
+                          price += element.p_price;
                       });
                   }
                   callback(null, price);

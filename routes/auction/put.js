@@ -26,8 +26,8 @@ router.put('/:aid', upload.single('image'), function(req, res, next) {
     var date = new Date();  // 마감시간을 저장할 객체
     date.setTime(date.getTime() + (Number(body.deadline) * 1000 * 60 * 60)); // 마감시간 계산
 
-    var queryStr = 'UPDATE auction SET a_category=?, a_title=?, a_content=?, a_img=?, a_deadline=? WHERE aid=?';
-    var inputs = [body.category, body.title, body.content, img, date, req.params.aid];
+    var queryStr = 'UPDATE auction SET a_category=?, a_title=?, a_content=?, a_img=?, a_deadline=?, a_min_price=? WHERE aid=?';
+    var inputs = [body.category, body.title, body.content, img, date, body.minPrice, req.params.aid];
     pool.getConnection(function(err, connection) {
         connection.query(queryStr, inputs, function(err, rows) {
             if(err) console.log("err: ", err);
